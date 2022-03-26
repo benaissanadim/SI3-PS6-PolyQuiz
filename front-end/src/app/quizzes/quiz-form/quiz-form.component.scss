@@ -1,1 +1,31 @@
-@import '../../../styles/card.scss';
+@import '../../../styles/cards.scss';
+@import '../../../styles/texts.scss';
+
+.input-custom {
+  margin-top : 10px;
+  display: inline-flex;
+  padding : 0 30px ;
+  color : rgb(0, 0, 0);
+  height : 100%;
+  font-size: 20px;
+}
+
+
+.theme {
+  padding: 80px;
+}
+
+
+
+.input-custom-2 {
+  margin-top : 10px;
+  display: inline-flex;
+  padding : 0 30px ;
+  color : rgb(0, 0, 0);
+  height : 100%;
+  font-size: 20px;
+  width: 660px;
+}
+.titre-theme{
+  text-align: center;
+}
