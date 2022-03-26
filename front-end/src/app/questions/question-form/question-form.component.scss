@@ -1,6 +1,55 @@
-@import '../../../styles/card.scss';
+@import '../../../styles/cards.scss';
+@import '../../../styles/texts.scss';
+
+
 
 .answer-form {
-    margin-top: 0.3em;
-    margin-bottom: 0.3em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.input-custom {
+  margin-top : 10px;
+  display: inline-flex;
+  padding : 0 10px ;
+  color : rgb(0, 0, 0);
+  height : 100%;
+  font-size: 20px;
+  width: 650px;
+}
+
+.button{
+  border-radius: 50%;
+  height : 27px;
+  cursor : pointer;
+}
+
+
+.row{
+  display: flex;
+  text-align: left ;
+  grid-column-gap :30px;
+}
+
+.input-reponse {
+  display: inline-flex;
+  padding : 0 3px ;
+  color : rgb(0, 0, 0);
+  height : 100%;
+  font-size: 18px;
+  width: 250px;
+}
+
+
+.right{
+  display: block;
+  float:right;
+  margin-right: 150px;
+  font-size: 17px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(240, 69, 69);
+}
+
+.correct{
+  font-size: 20px;
 }

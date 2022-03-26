@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
-import { Quiz } from 'src/models/quiz.model';
 import { Question } from 'src/models/question.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-form',
@@ -11,12 +11,13 @@ import { Question } from 'src/models/question.model';
 })
 export class QuestionFormComponent implements OnInit {
 
-  @Input()
-  quiz: Quiz;
-
   public questionForm: FormGroup;
+  id : string
+  nbAnswer =0;
+  alert = false;
 
-  constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
+  constructor(private route: ActivatedRoute, public router : Router,
+              public formBuilder: FormBuilder, private quizService: QuizService) {
     // Form creation
     this.initializeQuestionForm();
   }
@@ -24,11 +25,14 @@ export class QuestionFormComponent implements OnInit {
   private initializeQuestionForm() {
     this.questionForm = this.formBuilder.group({
       label: ['', Validators.required],
+      indice:[''],
       answers: this.formBuilder.array([])
     });
   }
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+
   }
 
   get answers() {
@@ -38,19 +42,26 @@ export class QuestionFormComponent implements OnInit {
   private createAnswer() {
     return this.formBuilder.group({
       value: '',
+      image: '',
       isCorrect: false,
     });
   }
 
   addAnswer() {
-    this.answers.push(this.createAnswer());
+    if(this.nbAnswer <3){
+      this.nbAnswer ++;
+      this.answers.push(this.createAnswer());}
+    else{
+      this.alert = true;
+    }
   }
 
   addQuestion() {
     if(this.questionForm.valid) {
       const question = this.questionForm.getRawValue() as Question;
-      this.quizService.addQuestion(this.quiz, question);
+      this.quizService.addQuestion(this.id, question);
       this.initializeQuestionForm();
+      this.router.navigateByUrl('/edit-quiz/'+this.id)
     }
   }
 }

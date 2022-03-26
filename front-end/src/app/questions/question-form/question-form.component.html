@@ -1,28 +1,42 @@
+<div class ="page-title"> AJOUTER QUESTION </div>
 <div class="card">
-  <h2>Create a new question</h2>
+
   <form class="quiz-form" [formGroup]="questionForm">
-    <label for="label">
-      Title <br>
-      <input class="input-custom" type="text" id="label" [formControlName]="'label'">
+
+    <label for="title" class="title">
+      Intitulé Question :      {{quiz}}
+      <input class="input-custom"  type="text" id="label" [formControlName]="'label'">
     </label>
     <br>
-    <button class="button-card" (click)="addAnswer()">Add Answer</button>
-    <div class="answer" formArrayName="answers">
-      <div *ngFor="let address of answers.controls; let i=index">
+    <br>
+    Ajouter une Réponse
+    <button  class="button" (click)="addAnswer()">
+      <span><i class="fa fa-plus"></i></span>
+    </button>
+
+    <div *ngIf="alert" class="right">
+      <i class='fas fa-exclamation-circle'></i>
+      Maximum 3 réponses possibles  </div>
+    <div class="row" formArrayName="answers">
+      <div class="column" *ngFor="let address of answers.controls; let i=index">
         <div class="answer-form" [formGroupName]="i">
-          <label>
-            Answer
-            <input type="text" [formControlName]="'value'">
-            <br>
-            Correct
-            <input type="checkbox" [formControlName]="'isCorrect'">
-          </label>
+          <input type="text" class="input-reponse" placeholder="reponse" [formControlName]="'value'">
+          <br>
+          <input type="text" class="input-reponse" placeholder="image" [formControlName]="'image'">
+          <br>
+          <span class="correct">Correct </span>
+          <input type="checkbox" [formControlName]="'isCorrect'">     <br>
         </div>
       </div>
     </div>
-    <button type="submit" class="button-card" (click)="addQuestion()">Create</button>
+    <br>
+    <label for="title" class="title">
+      Indice Question :
+      <input class="input-custom" type="text" id="indice" [formControlName]="'indice'">
+    </label>
+    <br> <br>
+    <div style='text-align:center'>
+      <button type="submit" class="button-card" (click)="addQuestion()">Ajouter</button>
+    </div>
   </form>
 </div>
-
-<!-- Uncomment below to see your form structure and how it changes-->
-<!-- <br><br>{{quizForm.getRawValue() | json}} -->
