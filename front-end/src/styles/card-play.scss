@@ -1,0 +1,33 @@
+@import  "./variables";
+  
+  .card-play {
+    padding-left: 20px;
+    padding-right: 100px;
+    max-width: 1000px;
+    background-color: $white;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.card-play .question-title {
+    font-size: 50px;
+    font-family: 'calibri';
+    color: rgb(59, 54, 54);
+    font-weight: 1000;
+    border-bottom: 2px solid #d3d3d3;
+    padding-bottom: 25px;
+    line-height: 25px;
+    text-align: center;
+
+}
+
+  .row{
+  display: flex; 
+  text-align: center;
+
+  }
+.column{
+    padding: 15px;
+    flex :100%
+}
