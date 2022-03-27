@@ -1,5 +1,35 @@
-@import '../../../styles/card.scss';
+@import '../../../styles/cards.scss';
+@import '../../../styles/texts.scss';
 
-.edit {
-    margin-left: 0.3em;
+
+  .card .title {
+    color : black;
+    font-size: 25px ;
+    font-weight : bold ;
+    }
+
+  .card .text{
+    padding: 0 5px;
+    text-align : center ;
+    font-size: 15px ;
+    margin-bottom : 0.5em;
+  }
+
+
+.button-card{
+  background-color:  #d9d9f0;
+  border : none ;
+  font-size: 15px;
+  padding : 1em;
+  border-radius : 5px;
+  color : #06023b;
+  font-weight: bold;
+  cursor: pointer;
 }
+
+  .image{
+      height : 250px;
+      width: 100%;
+      border-radius: 10px;
+
+  }
