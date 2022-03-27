@@ -1,3 +1,56 @@
+@import '../../../styles/texts.scss';
+
 .quiz-list {
-  display: flex;
+  padding : 3em ;
+}
+
+
+.quiz-container{
+  display: grid; 
+  grid-template-columns : 1fr 1fr 1fr  ;
+  grid-column-gap :5px;
+}
+
+.button{
+  display: inline-flex;
+  height : 50px;
+  padding : 0 ;
+  background-color: #009578;
+  border : none;
+  outline : none;
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: 'Quicksand' , sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor : pointer;
+  margin-left: 1150px;
+}
+
+.button:hover{
+  background-color: #006e58;
+
+}
+
+.buttontext, .buttonicon { 
+ display: inline-flex;
+  align-items: center;
+  padding : 0 24px ;
+  color : white;
+  height : 100%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.button__icon{
+  font-size: 1.6m;
+  background: rgba(0,0,0,0.08);
+}
+
+
+.container{
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 80px;
 }
