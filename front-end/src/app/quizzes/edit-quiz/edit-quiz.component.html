@@ -1,6 +1,35 @@
 <button class="button-card" routerLink="/quiz-list">Back</button>
-
-<ng-container *ngIf="quiz">
-    <h2>{{quiz.name}}</h2>
-    <app-question-list [quiz]="quiz"></app-question-list>
-</ng-container>
+<div class ="page-title"> MODIFIER QUIZ </div>
+<div class="card">
+  <br> 
+  {{quiz.id}}
+    <form class="quiz-form" [formGroup]="quizForm">
+      <div class="titre-theme">
+      <label for="title" class="title">
+        Titre    
+        <input class="input-custom" value="{{quiz.name}}" type="text" id="name" [formControlName]="'name'">
+      </label>
+      <label for="theme" class="theme">
+        Theme 
+        <input class="input-custom" value="{{quiz.theme}}" type="text" id="theme" [formControlName]="'theme'">
+      </label>
+    </div>
+      <br><br>
+      <label for="image">
+        Image
+        <input class="input-custom-2" value="{{quiz.image}}" type="text" id="theme" [formControlName]="'image'">
+      </label>
+      <br><br>
+      <div style='text-align:center'>
+        Ajouter une Question      
+        <button routerLink="/add-question/{{quiz.id}}" class="button" >
+          <span><i class="fa fa-plus"></i></span>
+      </button>      <br> <br>
+        </div>
+      <app-question-list [quiz]="quiz"></app-question-list>
+      <br>
+      <div style='text-align:center'>
+      <button type="submit" class="button-card" routerLink="/quiz-list/">Confirmer</button>
+      </div>
+    </form>
+  </div>

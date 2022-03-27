@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
-import { Question } from 'src/models/question.model';
+import { Question } from '../../../models/question.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
