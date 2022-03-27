@@ -13,6 +13,7 @@ import { QuestionListComponent } from './questions/question-list/question-list.c
 import { QuestionFormComponent } from './questions/question-form/question-form.component';
 import { QuestionComponent } from './questions/question/question.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PlayQuizComponent } from './play/play-quiz/play-quiz.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     EditQuizComponent,
     QuestionListComponent,
     QuestionFormComponent,
-    QuestionComponent
+    QuestionComponent,
+    PlayQuizComponent
   ],
   imports: [
     BrowserModule,
