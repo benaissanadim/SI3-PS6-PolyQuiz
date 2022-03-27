@@ -1,5 +1,17 @@
-@import '../../../styles/card.scss';
+@import '../../../styles/cards.scss';
 
 .question-list {
     display: flex;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-style: hidden;
+    font-size: 18px;
+}
+table tr {
+    vertical-align: middle;
+    padding: 0.5rem;
+    border: 2px solid rgb(248, 18, 114);
 }
