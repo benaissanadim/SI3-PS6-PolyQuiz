@@ -1,1 +1,41 @@
-@import '../../../styles/card.scss';
+
+.question{
+    width: 350px;
+}
+.answer{
+    text-align: center;
+    width : 120px
+}
+
+.image{
+    width : 40px;
+    height : 40px;
+}
+
+.edit{
+    text-align: center;
+
+    float:right;
+    width : 50px
+}
+
+.delete{
+    text-align: center;
+    float:right;
+    width: 50px;
+    
+}
+
+.btn{
+   width: 30px; 
+   height: 30px; 
+   cursor : pointer;
+   background-color: white;
+   border-color: rgb(1, 1, 133) ;
+   border-radius: 5px;
+
+}
+td {
+    vertical-align: middle;
+    padding: 0.5rem;
+}
