@@ -14,6 +14,7 @@ import { QuestionFormComponent } from './questions/question-form/question-form.c
 import { QuestionComponent } from './questions/question/question.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlayQuizComponent } from './play/play-quiz/play-quiz.component';
+import { YesNoQuizComponent } from './play/yes-no-quiz/yes-no-quiz.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PlayQuizComponent } from './play/play-quiz/play-quiz.component';
     QuestionListComponent,
     QuestionFormComponent,
     QuestionComponent,
-    PlayQuizComponent
+    PlayQuizComponent,
+    YesNoQuizComponent
   ],
   imports: [
     BrowserModule,

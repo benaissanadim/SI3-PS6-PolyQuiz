@@ -1,0 +1,27 @@
+<div *ngIf="!isEnd() " class='card-play' >
+  <div class="left"> <span class="question-number"> Récapitulons !!! </span> </div>
+  <div class="right"> <span class="question-number"> {{quiz.name}} </span> </div>
+  <br><br>
+  <div  *ngIf="!resultAffiche" >
+    <div class="question-title">{{quiz.questions[indexQuiz].label}}</div>
+    <div class="row">
+      <div class="column">
+        <img class="image_result"  src="{{printAnswer().image}}">
+        <h3>   {{answerToPrint.value}} </h3>
+        <button class="button_rep" (click)="incrementCorrect(True)"  >True</button>
+        <button class="button_rep" (click)="incrementCorrect(False)"  >False</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="resultAffiche">
+    <div class="question-title">{{quiz.questions[indexQuiz].label}}</div>
+    <div class="row">
+      <div class="column">
+        <img class="image_result"  src="{{answerToPrint.image}}">
+        <h3>   {{answerToPrint.value}} </h3>
+        <div class="text_result " >{{printCorrect()}}</div>
+      </div>
+    </div>
+
+  </div>
+</div>
