@@ -1,0 +1,15 @@
+<div class='card-play'>
+    <div class ="page-title"> Recapitulatif Final</div>
+      <br>
+      <h3 class="felicitation">Félicitation !! </h3>
+      <table class="table">
+        <tr *ngFor="let question of quiz.questions; let q=index;">
+          <td class="question">{{ question.label }}</td>
+          <td class="answer">{{getCorrectAnswer(q).value}} 
+            <br><img class="image"  src="{{getCorrectAnswer(q).image}}">
+          </td>
+        </tr>
+      </table>
+      <button class="button_rep" (click)="replay()"> Rejouer</button>
+      <button class="button_rep" (click)="exit()" >Sortir</button>
+    </div>

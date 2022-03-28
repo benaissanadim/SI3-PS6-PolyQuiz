@@ -1,0 +1,55 @@
+@import '../../../styles/play-card.scss';
+@import '../../../styles/texts.scss';
+
+
+.felicitation{
+  text-align: center;
+  color:rgb(0, 0, 151)
+}
+
+td{
+  vertical-align: middle;
+  padding: 0.5rem;
+}
+
+.question{
+  width: 800px;
+}
+.answer{
+  text-align: center;
+  width : 100px
+}
+
+.image{
+  width : 70px;
+  height : 50px;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-style: hidden;
+  font-size: 25px;
+}
+table tr {
+  vertical-align: middle;
+  padding: 0.5rem;
+  border: 2px solid rgb(248, 18, 114);
+}
+
+.card-play  .button_rep{
+    margin-right: 10%;
+    background-color:  #d9d9f0;
+    border : none ;
+    padding : 1em;
+    border-radius : 5px;
+    color : #06023b;
+    font-weight: bold;
+    width: 25%;
+    cursor : pointer;
+  }
+  
+  .card-play  .button_rep:hover{
+    box-shadow: 0px 7px 7px #b2bebc ;
+    color : #eb4d4b;
+  }
