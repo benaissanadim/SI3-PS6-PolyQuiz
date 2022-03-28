@@ -3,37 +3,35 @@ import { ActivatedRoute } from '@angular/router';
 import { Answer, Question } from '../../../models/question.model';
 import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from '../../../services/quiz.service';
-
 @Component({
-  selector: 'app-play-quiz',
-  templateUrl: './play-quiz.component.html',
-  styleUrls: ['./play-quiz.component.scss']
+  selector: 'app-yes-no-quiz',
+  templateUrl: './yes-no-quiz.component.html',
+  styleUrls: ['./yes-no-quiz.component.scss']
 })
-export class PlayQuizComponent implements OnInit {
-
+export class YesNoQuizComponent implements OnInit {
   indexQuiz: number = 0;
   CorrectAnsw: number = 0;
-  selectedAnswer = new Map();
   public question: Question;
   public answer: Answer;
   public quiz: Quiz;
   resultAffiche : boolean = false;
-  id : string
-
+  answerToPrint : Answer;
+  valueAdded: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private quizService: QuizService,
   ) {
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
   }
-
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(this.id);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.quizService.setSelectedQuiz(id);
   }
-
   isEnd() {
     return this.indexQuiz >= this.quiz.questions.length;
+  }
+  ngAfterViewInit(){
+    this.answerToPrint = this.printAnswer();
   }
   getCorrectAnswer() {
     for (let i = 0; i < 4; i++) {
@@ -42,15 +40,23 @@ export class PlayQuizComponent implements OnInit {
       }
     }
   }
-
+  printAnswer(){
+    if(this.valueAdded === false){
+      const rand = Math.floor(Math.random() * this.quiz.questions[this.indexQuiz].answers.length);
+      this.answerToPrint =  this.quiz.questions[this.indexQuiz].answers[rand];
+      this. valueAdded = true ;
+    }
+    return this.answerToPrint ;
+  }
   incrementCorrect(answerr) {
-    var correct = this.getCorrectAnswer().value;
-    if (correct == answerr) {
+    if(answerr === this.printCorrect()) {
       this.CorrectAnsw++;
     }
     this.resultAffiche = true;
-    this.selectedAnswer.set(this.indexQuiz, answerr);
-    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;     console.log(this.indexQuiz);    }, 1000);
-
+    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;  this.valueAdded = false }, 1000);
+  }
+  printCorrect(){
+    if(this.answerToPrint.value === this.getCorrectAnswer().value) return "True"
+    else return "False"
   }
 }
