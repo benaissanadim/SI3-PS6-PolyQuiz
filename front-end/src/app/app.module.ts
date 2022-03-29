@@ -16,9 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlayQuizComponent } from './play/play-quiz/play-quiz.component';
 import { YesNoQuizComponent } from './play/yes-no-quiz/yes-no-quiz.component';
 import { RecapQuizComponent } from './play/recap-quiz/recap-quiz.component';
+import { UserComponent } from './users/user/user.component';
+import { UserListComponent } from './users/user-list/user-list.component';
 
 @NgModule({
   declarations: [
+    UserComponent,
+    UserListComponent,
     RecapQuizComponent,
     AppComponent,
     QuizListComponent,

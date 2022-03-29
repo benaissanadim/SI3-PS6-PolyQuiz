@@ -5,9 +5,11 @@ import { EditQuizComponent } from './quizzes/edit-quiz/edit-quiz.component';
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import { QuestionFormComponent } from './questions/question-form/question-form.component';
 import { PlayQuizComponent } from './play/play-quiz/play-quiz.component';
+import { UserListComponent } from './users/user-list/user-list.component';
 
 const routes: Routes = [
     {path: 'quiz-list', component: QuizListComponent},
+    {path: 'user-list', component: UserListComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
     {path: 'quiz-add', component : QuizFormComponent},
