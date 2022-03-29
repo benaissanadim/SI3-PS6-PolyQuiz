@@ -1,0 +1,8 @@
+<div class="card">
+    <div class="text">
+        <div class="title">{{user.name}}</div>
+        <img  class="image"src="{{user.image}}">
+        <button class="button-card" routerLink="/edit-user/{{user.id}}"> <i class="fa fa-pen"></i>    Modifier</button>
+        <button class="button-card" (click)="delete()"> <i class="fa fa-trash"> </i>    Supprimer</button> 
+    </div>
+</div>
