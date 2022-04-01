@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {UserService} from 'src/services/user.service';
 import { User } from '../../../models/user.model';
@@ -36,7 +36,23 @@ export class UserAddComponent implements OnInit{
 
   addUser(){
     this.userService.addUser(this.user);
-    this.router.navigate(['/'])
+    this.router.navigate(['/user-add'])
+  }
+  toggleCheckbox(form: NgForm): void {
+    switch (form.value.radioGroup) {
+      case 'light':
+        this.user.hint = false;
+        this.user.deleteFalseAnswer = false;
+        break;
+      case 'medium':
+        this.user.hint = true;
+        this.user.deleteFalseAnswer = false;
+        break;
+      case 'heavy':
+        this.user.hint = true;
+        this.user.deleteFalseAnswer = true;
+        break;
+    }
   }
 
 

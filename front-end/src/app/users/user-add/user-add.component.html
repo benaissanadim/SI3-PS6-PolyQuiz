@@ -10,6 +10,23 @@
       <input class="input-custom" type="text" id="image" [formControlName]="'theme'">
     </label>
   </div>
-  <br><br>
+  <div class="form-group severity-form">
+    <div class="radio-button">
+      <label class="form-group-title">Stade d'Alhzeimer :</label>
+      <div class="stade">
+        <label> <span>Léger</span>
+          <input type="radio" value="light" name="radioGroup" [formControlName]="user.stade" >
+        </label>
+        <label> <span>Moyen</span>
+          <input type="radio" value="medium" name="radioGroup" [(ngModel)]="user.stade">
+        </label>
+        <label> <span>Lourd</span>
+          <input type="radio" value="heavy" name="radioGroup" [(ngModel)]="user.stade" >
+        </label>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 

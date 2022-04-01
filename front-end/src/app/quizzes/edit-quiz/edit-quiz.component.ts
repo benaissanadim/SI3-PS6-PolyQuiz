@@ -39,7 +39,6 @@ export class EditQuizComponent implements OnInit {
     this.quizService.setSelectedQuiz(this.id);
   }
   editquiz(){
-    this.quizService.updateQuiz(this.quiz)
     this.router.navigate(['/quiz-list']);
   }
 }
