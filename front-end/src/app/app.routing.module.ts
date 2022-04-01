@@ -6,6 +6,7 @@ import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import { QuestionFormComponent } from './questions/question-form/question-form.component';
 import { PlayQuizComponent } from './play/play-quiz/play-quiz.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import  {UserAddComponent} from './users/user-add/user-add.component';
 
 const routes: Routes = [
     {path: 'quiz-list', component: QuizListComponent},
@@ -15,6 +16,8 @@ const routes: Routes = [
     {path: 'quiz-add', component : QuizFormComponent},
     {path: 'add-question/:id',component:  QuestionFormComponent },
     {path: 'quiz-play/:id',component: PlayQuizComponent},
+    {path:'user-add',component: UserAddComponent},
+
 
 ];
 
@@ -22,6 +25,7 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
+
 export class AppRoutingModule {
 
 }

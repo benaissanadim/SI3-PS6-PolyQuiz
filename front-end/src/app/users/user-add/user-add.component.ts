@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QuizService } from 'src/services/quiz.service';
+import {UserService} from 'src/services/user.service';
 import { User } from '../../../models/user.model';
 
 
@@ -17,7 +17,7 @@ export class UserAddComponent implements OnInit{
   public user: User;
 
   constructor(private route: ActivatedRoute, public router : Router,
-              public formBuilder: FormBuilder, private quizService: QuizService) {
+              public formBuilder: FormBuilder, private userService: UserService) {
 
   }
 
@@ -32,7 +32,11 @@ export class UserAddComponent implements OnInit{
       hint:false
     };
 
-    
+  }
+
+  addUser(){
+    this.userService.addUser(this.user);
+    this.router.navigate(['/'])
   }
 
 

@@ -18,7 +18,10 @@ import { YesNoQuizComponent } from './play/yes-no-quiz/yes-no-quiz.component';
 import { RecapQuizComponent } from './play/recap-quiz/recap-quiz.component';
 import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import  {UserAddComponent} from './users/user-add/user-add.component';
 
+// @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [
     UserComponent,
@@ -34,7 +37,8 @@ import { UserListComponent } from './users/user-list/user-list.component';
     QuestionFormComponent,
     QuestionComponent,
     PlayQuizComponent,
-    YesNoQuizComponent
+    YesNoQuizComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,
@@ -45,4 +49,6 @@ import { UserListComponent } from './users/user-list/user-list.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }
