@@ -10,7 +10,7 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
   providedIn: 'root'
 })
 export class QuizService {
-  
+
   /**
    * Services Documentation:
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
@@ -71,6 +71,27 @@ export class QuizService {
   deleteQuestion(quiz: Quiz, question: Question) {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
     this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+
+  }
+
+  editQuiz(quiz : Quiz,id){
+    const urlWithId = this.quizUrl + '/' + id;
+    this.http.put<Quiz>(urlWithId, quiz, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
+
+  }
+  retrieveQuizzes(): void {
+    this.http.get<Quiz[]>(this.quizUrl).subscribe((quizList) => {
+      this.quizzes = quizList;
+      this.quizzes$.next(this.quizzes);
+    });
+  }
+  updateQuiz(quiz: Quiz): void {
+    const urlWithId = this.quizUrl + '/' + quiz.id;
+    const quizEdited = {
+      id: quiz.id,
+      name: quiz.name,
+    };
+    this.http.post<Quiz>(urlWithId, quizEdited, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }
 
   /** Note: The functions below don't interact with the server. It's an example of implementation for the exercice 10.
