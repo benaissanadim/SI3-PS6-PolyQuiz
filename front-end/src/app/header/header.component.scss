@@ -1,47 +1,74 @@
 @import "../../styles/variables";
 
-:host {
-  color: $white;
+.head{
+  background-color: white;
+  font-size: 25px;
+  font-weight: bold;
+  border-bottom-style: solid ;
+  border-bottom-color:#dbeded ;
+  border-bottom-width: 3px;
+
 }
 
-.header {
-  overflow: hidden;
-  background-color: #70acdc;
-  top: 0;
+.table{
   width: 100%;
-}
-
-.header a , .header input[type=text], .header .search-container button{
-  float: left;
-  display: block;
-  color: black;
+  height : 70px;
   text-align: center;
-  padding: 25px 25px;
-  text-decoration: none;
+}
+
+td{
+  border-top-style: solid ;
+  border-top-color: #134856  ;
+  border-top-width: 5px;
+  color :#134856;
+  vertical-align: middle;
+
+}
+
+.none1{
+  width : 10%;
+
+}
+
+.quiz{
+  width : 10%;
+  border-top-style : solid ;
+  border-top-color : #7aab45;
+  border-top-width : 4px;
+  color: #7aab45;
+}
+
+.utilisateur{
+  width : 20%;
+
+}
+
+.image{
+  width: 55%;
+  height: 8%;
+}
+
+.logo{
+  width: 20%;
+  border-top-style : solid ;
+  border-top-color : #f7a14e;
+  border-top-width : 4px;
+  color: #f7a14e;
+}
+
+.deconnexion{
+  width: 40%;
+}
+
+
+span{
   font-size: 25px;
-  font-family: calibri ;
-  font-weight: 700;
+  display: block;
+  margin-right: 5%;
+  text-align: right;
 }
 
-.header a:hover {
-  background: rgb(92, 100, 212);
-  color: rgb(0, 0, 0);
-}
-
-.header input[type=text] {
-  width: 800px;
-  padding: 6px;
-  margin-top: 20px;
-  font-size: 25px;
-  border: none;
-}
-
-.header .search-container button {
-
-  padding: 12px 10px;
-  margin-top: 20px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
+.image-logout{
+  width: 8%;
+  height: 8%;
 }
