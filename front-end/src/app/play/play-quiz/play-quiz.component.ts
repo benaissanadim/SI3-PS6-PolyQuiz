@@ -22,10 +22,7 @@ export class PlayQuizComponent implements OnInit {
 
   
 
-constructor(
-    private route: ActivatedRoute,
-    private quizService: QuizService,
-  ) {
+constructor(private route: ActivatedRoute, private quizService: QuizService,) {
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
   }
 
@@ -37,6 +34,7 @@ constructor(
   isEnd() {
     return this.indexQuiz >= this.quiz.questions.length;
   }
+
   getCorrectAnswer() {
     for (let i = 0; i < 4; i++) {
       if (this.quiz.questions[this.indexQuiz].answers[i].isCorrect) {
@@ -52,7 +50,6 @@ constructor(
     }
     this.resultAffiche = true;
     this.selectedAnswer.set(this.indexQuiz, answerr);
-    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;     console.log(this.indexQuiz);    }, 1000);   
- 
+    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;     console.log(this.indexQuiz);    }, 5000);    
   }
 }

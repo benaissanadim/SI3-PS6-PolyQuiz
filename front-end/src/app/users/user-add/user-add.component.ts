@@ -16,7 +16,7 @@ export class UserAddComponent implements OnInit{
 
   public user: User;
 
-  constructor(private route: ActivatedRoute, public router : Router,
+  constructor( public router : Router,
               public formBuilder: FormBuilder, private userService: UserService) {
 
   }
@@ -25,32 +25,43 @@ export class UserAddComponent implements OnInit{
     this.user = {
       id:'0',
       name:'',
-      picture:'',
-      stade:'',
-      withRecap:false,
+      image:'',
+      stade:'leger',
+      withRecap:true,
       deleteFalseAnswer:false,
-      hint:false
+      hint:false,
+      vocal:false
     };
 
   }
 
   addUser(){
+    if (this.user.image === '')
+    this.user.image = '/assets/profile.png';
     this.userService.addUser(this.user);
     this.router.navigate(['/user-add'])
   }
-  toggleCheckbox(form: NgForm): void {
+
+
+  addOptions(form: NgForm): void {
     switch (form.value.radioGroup) {
-      case 'light':
+      case 'leger':
         this.user.hint = false;
         this.user.deleteFalseAnswer = false;
+        this.user.withRecap = true;
+        this.user.vocal = false ;
         break;
-      case 'medium':
-        this.user.hint = true;
-        this.user.deleteFalseAnswer = false;
-        break;
-      case 'heavy':
+      case 'modere':
         this.user.hint = true;
         this.user.deleteFalseAnswer = true;
+        this.user.withRecap = false;
+        this.user.vocal = false ;
+        break;
+      case 'severe':
+        this.user.hint = true;
+        this.user.deleteFalseAnswer = false;
+        this.user.withRecap = false;
+        this.user.vocal = true 
         break;
     }
   }

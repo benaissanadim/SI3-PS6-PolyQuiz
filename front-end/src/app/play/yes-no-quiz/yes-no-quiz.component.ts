@@ -53,7 +53,7 @@ export class YesNoQuizComponent implements OnInit {
       this.CorrectAnsw++;
     }
     this.resultAffiche = true;
-    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;  this.valueAdded = false }, 1000);
+    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;  this.valueAdded = false }, 5000);
   }
   printCorrect(){
     if(this.answerToPrint.value === this.getCorrectAnswer().value) return "True"

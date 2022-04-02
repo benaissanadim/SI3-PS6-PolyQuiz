@@ -1,9 +1,10 @@
 export interface User{
   id:string
   name:string
-  picture:string
+  image:string
   stade:string
   withRecap:boolean
   deleteFalseAnswer:boolean
   hint:boolean
+  vocal:boolean
 }
