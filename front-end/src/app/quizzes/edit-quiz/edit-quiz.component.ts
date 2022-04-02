@@ -38,7 +38,8 @@ export class EditQuizComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(this.id);
   }
-  editquiz(){
-    this.router.navigate(['/quiz-list']);
+  onSubmit(): void {
+    this.quizService.updateQuiz(this.quiz);
+    this.router.navigate(['/quiz-list']).catch();
   }
 }

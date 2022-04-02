@@ -1,21 +1,21 @@
 <button class="button-card" routerLink="/quiz-list">Back</button>
 <div class ="page-title"> MODIFIER QUIZ </div>
 <div class="card" *ngIf="quiz">
-  <form class="quiz-form" [formGroup]="quizForm">
+  <form class="quiz-form" (ngSubmit)="onSubmit()" #f="ngForm" >
     <div class="titre-theme">
       <label for="title" >
         Titre
-        <input class="input-custom"type="text" id="title" [formControlName]="'name'">
+        <input class="input-custom"type="text" id="title" name="title"[(ngModel)]="quiz.title">
       </label>
       <label for="theme" >
         Theme
-        <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
+        <input class="input-custom" type="text" id="theme" name="theme"[(ngModel)]="quiz.theme">
       </label>
     </div>
     <br><br>
     <label for="image">+
       Image
-         <input class="input-custom-2" type="text" id="image" [formControlName]="'image'">
+         <input class="input-custom-2" type="text" id="image" name="image"[(ngModel)]="quiz.image">
     </label>
     <br><br><br><br>
       <div style='text-align:center'>
@@ -27,7 +27,7 @@
       <app-question-list [quiz]="quiz"></app-question-list>
       <br>
       <div style='text-align:center'>
-      <button type="submit" class="button-card" (click)="editquiz()">Confirmer</button>
+      <button type="submit" class="button-card" [disabled]="f.invalid">Confirmer</button>
       </div>
   </form>
 </div>
