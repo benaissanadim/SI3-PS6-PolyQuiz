@@ -6,7 +6,9 @@
     <div class ="page-title"> GESTION QUIZ </div>
     <i class="fa-solid fa-plus"></i>
     <div class="quiz-container">
-    <div class="quiz" *ngFor="let quiz of quizList">
-        <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"></app-quiz>
+    <div class="quiz" *ngFor="let quiz of quizList" >
+        <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"
+                  [idUser]="idUser"></app-quiz>
     </div>
   </div>
+</section>

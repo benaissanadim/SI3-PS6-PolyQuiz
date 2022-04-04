@@ -39,7 +39,7 @@ export class UserAddComponent implements OnInit{
     if (this.user.image === '')
     this.user.image = '/assets/profile.png';
     this.userService.addUser(this.user);
-    this.router.navigate(['/user-add'])
+    this.router.navigate(['/user-list'])
   }
 
 

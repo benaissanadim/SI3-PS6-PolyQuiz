@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/models/user.model';
 import { Answer, Question } from '../../../models/question.model';
 import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from '../../../services/quiz.service';
@@ -17,18 +18,20 @@ export class PlayQuizComponent implements OnInit {
   public question: Question;
   public answer: Answer;
   public quiz: Quiz;
+  public user: User;
   resultAffiche : boolean = false;
-  id : string
+  idQuiz : string
+  idUser : string
 
-  
+
 
 constructor(private route: ActivatedRoute, private quizService: QuizService,) {
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(this.id);
+    this.idQuiz = this.route.snapshot.paramMap.get('id');
+    this.quizService.setSelectedQuiz(this.idQuiz);
   }
 
   isEnd() {
@@ -50,6 +53,38 @@ constructor(private route: ActivatedRoute, private quizService: QuizService,) {
     }
     this.resultAffiche = true;
     this.selectedAnswer.set(this.indexQuiz, answerr);
-    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;     console.log(this.indexQuiz);    }, 5000);    
+    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;     console.log(this.indexQuiz);    }, 5000);
   }
+
+  deleteFalse(question: Question,answer: Answer): void {
+    const index = question.answers.indexOf(answer);
+    question.answers.splice(index, 1);
+  }
+
+  falseAnswerCase(question : Question , answer : Answer){
+    if(this.user.deleteFalseAnswer){
+      this.deleteFalse(question,answer);
+    }
+    else{
+      this.incrementCorrect(answer);
+    }
+  }
+
+  getUser(){
+
+  }
+
+  answerQuestion(answer: Answer){
+    if(answer.isCorrect) {
+      this.resultAffiche = true;
+      setTimeout(() => {
+        this.resultAffiche = false;
+        this.indexQuiz++;
+        console.log(this.indexQuiz);
+      })
+    }else{
+
+      }
+  }
+
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import {ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
 
@@ -11,14 +11,18 @@ import { Quiz } from '../../../models/quiz.model';
 export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
+  
+  idUser:Number;
 
-  constructor(private router: Router, public quizService: QuizService) {
+
+  constructor(private router: Router, public quizService: QuizService,private route: ActivatedRoute) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
   }
 
   ngOnInit() {
+    this.idUser = +this.route.snapshot.paramMap.get('idUser');
   }
 
   quizSelected(selected: boolean) {
@@ -33,3 +37,7 @@ export class QuizListComponent implements OnInit {
     this.quizService.deleteQuiz(quiz);
   }
 }
+function input() {
+    throw new Error('Function not implemented.');
+}
+

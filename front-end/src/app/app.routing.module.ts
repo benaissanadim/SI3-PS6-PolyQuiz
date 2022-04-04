@@ -9,13 +9,13 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import  {UserAddComponent} from './users/user-add/user-add.component';
 
 const routes: Routes = [
-    {path: 'quiz-list', component: QuizListComponent},
+    {path: 'quiz-list/:idUser', component: QuizListComponent},
     {path: 'user-list', component: UserListComponent},
     {path: 'edit-quiz/:id', component: EditQuizComponent},
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
     {path: 'quiz-add', component : QuizFormComponent},
     {path: 'add-question/:id',component:  QuestionFormComponent },
-    {path: 'quiz-play/:id',component: PlayQuizComponent},
+    {path: 'quiz-play/:idUser/idQuiz',component: PlayQuizComponent},
     {path:'user-add',component: UserAddComponent},
 
 
