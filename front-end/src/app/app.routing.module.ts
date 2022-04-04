@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
     {path: 'quiz-add', component : QuizFormComponent},
     {path: 'add-question/:id',component:  QuestionFormComponent },
-    {path: 'quiz-play/:idUser/idQuiz',component: PlayQuizComponent},
+    {path: 'quiz-play/:idUser/:idQuiz',component: PlayQuizComponent},
     {path:'user-add',component: UserAddComponent},
 
 

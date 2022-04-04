@@ -24,8 +24,8 @@ export class YesNoQuizComponent implements OnInit {
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
   }
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(id);
+    const idQuiz = this.route.snapshot.paramMap.get('idQuiz');
+    this.quizService.setSelectedQuiz(idQuiz);
   }
   isEnd() {
     return this.indexQuiz >= this.quiz.questions.length;

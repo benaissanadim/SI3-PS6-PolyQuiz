@@ -13,15 +13,14 @@ export class RecapQuizComponent implements OnInit {
   public question: Question;
   public answer: Answer;
   public quiz: Quiz;
-  public id
   
 constructor(private route: ActivatedRoute,private quizService: QuizService,private router: Router) {
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
   }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(this.id);
+    const idQuiz = this.route.snapshot.paramMap.get('idQuiz');
+    this.quizService.setSelectedQuiz(idQuiz);
   }
 
   getCorrectAnswer(index) {

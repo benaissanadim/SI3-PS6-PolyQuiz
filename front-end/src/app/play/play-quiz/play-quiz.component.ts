@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.model';
+import { UserService } from 'src/services/user.service';
 import { Answer, Question } from '../../../models/question.model';
 import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from '../../../services/quiz.service';
@@ -20,18 +21,21 @@ export class PlayQuizComponent implements OnInit {
   public quiz: Quiz;
   public user: User;
   resultAffiche : boolean = false;
-  idQuiz : string
-  idUser : string
 
 
 
-constructor(private route: ActivatedRoute, private quizService: QuizService,) {
+
+constructor(private route: ActivatedRoute, private quizService: QuizService, private userService: UserService,) {
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
+    this.userService.userSelected$.subscribe((user) => (this.user = user));
+
   }
 
   ngOnInit(): void {
-    this.idQuiz = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(this.idQuiz);
+    const idQuiz = this.route.snapshot.paramMap.get('idQuiz');
+    this.quizService.setSelectedQuiz(idQuiz);
+    const idUser = this.route.snapshot.paramMap.get('idUser');
+    this.userService.setSelectedUser(idUser);
   }
 
   isEnd() {

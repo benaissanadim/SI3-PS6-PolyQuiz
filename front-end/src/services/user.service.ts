@@ -14,12 +14,23 @@ export class UserService{
   private users : User[] = [];
   public users$ :  BehaviorSubject<User[]> = new BehaviorSubject(this.users);
   private userUrl = serverUrl + '/users';
+  public userSelected$: Subject<User> = new Subject();
+
 
   private httpOptions = httpOptionsBase;
 
   constructor(private http : HttpClient) {
     this.setUsersFromUrl();
   }
+
+  
+  setSelectedUser(userId: string) {
+    const urlWithId = this.userUrl + '/' + userId;
+    this.http.get<User>(urlWithId).subscribe((user) => {
+      this.userSelected$.next(user);
+    });
+  }
+
 
   setUsersFromUrl() {
     this.http.get<User[]>(this.userUrl).subscribe((quizList) => {
