@@ -1,14 +1,19 @@
 <div *ngIf="!isEnd()"class='card-play' >
+    <table>
+        <td class="number"><span class="quiz-info">
+             Question {{indexQuiz + 1}} / {{quiz.questions.length}} </span>
+            </td>
+        <td class="question"> <span class="question-title">{{quiz.questions[indexQuiz].label}} 
+        </span></td>
+        <td  class="name"> <span class="quiz-info"> {{quiz.name}} </span> </td>
 
-    <div class="left"> <span class="question-number"> Question {{indexQuiz + 1}} / {{quiz.questions.length}} </span> </div>
-    <div class="right"> <span class="question-number"> {{quiz.name}} </span> </div>
-    <br><br>
-    <div class="question-title">{{quiz.questions[indexQuiz].label}}</div>
+    </table>
+
     <div   *ngIf="!resultAffiche" >
     <div class="row">
     <div class="column" *ngFor="let answer of quiz.questions[indexQuiz].answers ; let i = index;">
         <img class="image" (click)="incrementCorrect(quiz.questions[indexQuiz].answers[i].value)" src="{{quiz.questions[indexQuiz].answers[i].image}}">
-        <button class="button_rep" (click)="incrementCorrect(quiz.questions[indexQuiz].answers[i].value)"  >
+       <br> <button class="button_rep" (click)="incrementCorrect(quiz.questions[indexQuiz].answers[i].value)"  >
                 {{quiz.questions[indexQuiz].answers[i].value}}</button>
     </div>
     </div>
@@ -16,6 +21,7 @@
     <div *ngIf="resultAffiche">
     <div class="row">
         <div class="column">
+            <h1 > La réponse correcte est :</h1>
             <img class="image_result"  src="{{this.getCorrectAnswer().image}}"><br>
             <div class="text_result " >{{getCorrectAnswer().value}}</div>
         </div>

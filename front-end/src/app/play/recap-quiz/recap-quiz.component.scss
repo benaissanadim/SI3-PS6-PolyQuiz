@@ -1,6 +1,15 @@
-@import '../../../styles/play-card.scss';
 @import '../../../styles/texts.scss';
 
+.card-play {
+text-align: center;
+padding-left: 20px;
+padding-right: 100px;
+max-width: 1500px;
+background-color: white;
+margin: 40px auto;
+padding: 30px;
+border-radius: 10px;
+}
 
 .felicitation{
   text-align: center;
@@ -27,11 +36,10 @@ td{
 
 table {
   margin: 0 auto;
-  border-collapse: collapse;
-  border-style: hidden;
   font-size: 25px;
 }
 table tr {
+  margin : 50px;
   vertical-align: middle;
   padding: 0.5rem;
   border: 2px solid rgb(248, 18, 114);
