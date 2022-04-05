@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Answer, Question } from 'src/models/question.model';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-recap-quiz',
@@ -13,14 +14,18 @@ export class RecapQuizComponent implements OnInit {
   public question: Question;
   public answer: Answer;
   public quiz: Quiz;
+  public idUser : string;
   
-constructor(private route: ActivatedRoute,private quizService: QuizService,private router: Router) {
+constructor(private route: ActivatedRoute,private quizService: QuizService, 
+  private userService: UserService,private router: Router) {
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
   }
 
   ngOnInit(): void {
     const idQuiz = this.route.snapshot.paramMap.get('idQuiz');
     this.quizService.setSelectedQuiz(idQuiz);
+    this.idUser = this.route.snapshot.paramMap.get('idUser');
+    this.userService.setSelectedUser(this.idUser);
   }
 
   getCorrectAnswer(index) {
@@ -37,7 +42,7 @@ constructor(private route: ActivatedRoute,private quizService: QuizService,priva
   
   exit(){
     console.log("test")
-    this.router.navigate(['/quiz-list/']);
+    this.router.navigate(['/quiz-list/'+this.idUser]);
   }
 
 }
