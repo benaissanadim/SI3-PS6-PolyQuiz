@@ -11,8 +11,9 @@
   <div  *ngIf="!resultAffiche" >
     <div class="row">
       <div class="column">
-        <img class="image_result"  src="{{printAnswer().image}}">
-        <h3> C'est :   {{answerToPrint.value}} ? </h3>
+        <h3> C'est :   {{ printAnswer().value}} ? </h3>
+        <img class="image_result"  src="{{answerToPrint.image}}">
+        <h3>  </h3>
         <button class="button_rep" (click)="incrementCorrect(True)"  >Vrai</button>
         <button class="button_rep" (click)="incrementCorrect(False)"  >Faux</button>
       </div>
@@ -21,8 +22,10 @@
   <div *ngIf="resultAffiche">
     <div class="row">
       <div class="column">
-        <h1 > La réponse correcte est :</h1>
+        <h3> C'est :   {{ printAnswer().value}} ? </h3>
         <img class="image_result"  src="{{answerToPrint.image}}">
+        <h3>  </h3>
+        <h1 > La réponse correcte est :</h1>
         <div class="text_result " >{{printCorrect()}}</div>
       </div>
     </div>
