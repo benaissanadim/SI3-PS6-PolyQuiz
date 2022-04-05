@@ -1,11 +1,10 @@
-<section class="user-list">
+<section class="quiz-list">
     <button type="button" class="button" routerLink="/user-add">
         <span class="buttontext"> Ajouter Utilisateur</span>
         <span class="buttonicon"><i class="fa fa-plus"></i></span>
     </button>
     <div class ="page-title"> GESTION UTILISATEUR </div>
-    <i class="fa-solid fa-plus"></i>
-    <div class="user-container">
+    <div class="quiz-container">
     <div class="user" *ngFor="let user of userList">
         <app-user [user]="user" (userSelected)="userSelected($event)" (deleteUser)="deleteUser($event)" (editUser)="editUser($event)"></app-user>
     </div>
