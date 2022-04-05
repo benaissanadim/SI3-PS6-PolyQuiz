@@ -3,19 +3,22 @@
 
   <form (ngSubmit)="addUser()" #f="ngForm">
 
-  <div class="name-image">
+  <div class="quiz-form">
+    <div class="titre-theme">
     <label for="name" >Nom
-      <input type="text" id="name" name="name" [(ngModel)]="user.name" required>
+      <input class="input-custom" type="text" id="name" name="name" [(ngModel)]="user.name" required>
     </label>
     <label for="image" >Image
       <input class="input-custom" name="image" type="text" id="image" [(ngModel)]="user.image">
     </label>
+   </div> 
   </div>
 
   <div class="form-group severity-form">
     
     <div class="radio-button">
       <label class="form-group-title">Stade d'Alhzeimer :</label>
+      <br>
       <div class="stade">
         <label> <span>Léger</span>
           <input type="radio" value="leger" name="radioGroup" [(ngModel)]="user.stade" (change)=" addOptions(f)" >
@@ -57,11 +60,14 @@
     </div>
 
   </div>
-  
-    <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Ajouter</button>
-    <div [hidden]="f.valid" class="alert alert-danger">
+
+  <div style='text-align:center'>
+    <button class="button-card"  type="submit" [disabled]="f.invalid">Ajouter</button>
+    <div [hidden]="f.valid" >
       Remplir les champs svp !
     </div>
+  </div>
+  
   </form>
 </div>
 

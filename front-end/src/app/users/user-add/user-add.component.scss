@@ -1,0 +1,36 @@
+@import '../../quizzes/quiz-form/quiz-form.component.scss';
+
+.severity-form {
+    font-size: 20px;
+
+    margin-bottom: 0.2rem;
+
+    .radio-button {
+      display: flex;
+      padding: 1rem 0 1rem 0;
+
+      .form-group-title {
+        position: relative;
+        top: 10px;
+      }
+
+      .severity {
+        border: 2px  solid;
+        padding: 0.3rem 0.3rem 0.3rem 1rem;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+
+      span {
+        position: relative;
+        top: 2px;
+        margin-right: 0.1rem;
+      }
+
+      input {
+        margin-right: 1rem;
+        background: white;
+      }
+    }
+
+  }
