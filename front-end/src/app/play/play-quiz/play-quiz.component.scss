@@ -1,1 +1,17 @@
 @import '../../../styles/play-card.scss';
+.span{
+    font-size: 50px;
+    font-weight: bold;
+    color: #c85306;
+    margin-right : 350px;
+    margin-left : 350px;
+    text-align: center;
+    border-top : 6px solid #c85306;
+    border-bottom: 6px solid #c85306;
+    line-height: 70px;
+}
+
+.yes-no{
+    position: relative;
+    margin-top: 15%;
+}
