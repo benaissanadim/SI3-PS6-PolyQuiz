@@ -22,6 +22,7 @@ export class UserEditComponent implements OnInit{
   ngOnInit(){
     const idUser = this.route.snapshot.paramMap.get('id');
     this.userService.setSelectedUser(idUser);
+    
   }
   updateUser(){
     if (this.user.image === '')

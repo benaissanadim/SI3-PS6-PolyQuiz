@@ -12,9 +12,9 @@ import  {UserEditComponent} from './users/user-edit/user-edit.component';
 const routes: Routes = [
     {path: 'quiz-list/:idUser', component: QuizListComponent},
     {path: 'user-list', component: UserListComponent},
-    {path: 'edit-quiz/:id', component: EditQuizComponent},
+    {path: 'edit-quiz/:id/:idUser', component: EditQuizComponent},
     { path: '', redirectTo: '/quiz-list', pathMatch: 'full' },
-    {path: 'quiz-add', component : QuizFormComponent},
+    {path: 'quiz-add/:idUser', component : QuizFormComponent},
     {path: 'add-question/:id',component:  QuestionFormComponent },
     {path: 'quiz-play/:idUser/:idQuiz',component: PlayQuizComponent},
     {path:'user-add',component: UserAddComponent},

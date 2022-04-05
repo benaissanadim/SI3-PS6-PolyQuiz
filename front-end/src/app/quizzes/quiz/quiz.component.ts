@@ -13,6 +13,7 @@ export class QuizComponent implements OnInit {
 
   @Input()
   idUser : Number
+   
 
   @Output()
   quizSelected: EventEmitter<boolean> = new EventEmitter<boolean>();

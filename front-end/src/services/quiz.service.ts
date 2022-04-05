@@ -92,7 +92,7 @@ export class QuizService {
       id: quiz.id,
       name: quiz.name,
     };
-    this.http.post<Quiz>(urlWithId, quizEdited, this.httpOptions).subscribe(() => this.retrieveQuizzes());
+    this.http.put<Quiz>(urlWithId, quizEdited, this.httpOptions).subscribe(() => this.retrieveQuizzes());
   }
 
   /** Note: The functions below don't interact with the server. It's an example of implementation for the exercice 10.
