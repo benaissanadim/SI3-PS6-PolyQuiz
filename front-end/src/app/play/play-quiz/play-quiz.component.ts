@@ -18,12 +18,17 @@ export class PlayQuizComponent implements OnInit {
   public quiz: Quiz;
   public user: User;
   resultAffiche : boolean = false;
-  listAnswer : Answer[]
+  listAnswer : Answer[];
+  toYesNo : boolean = false;
+  begin: boolean = true;
+
+
   constructor(private route: ActivatedRoute, private quizService: QuizService, private userService: UserService,) {
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
     this.userService.userSelected$.subscribe((user) => (this.user = user));
   }
   ngOnInit(): void {
+    setTimeout(() => {this.begin= false},4000);
     const idQuiz = this.route.snapshot.paramMap.get('idQuiz');
     this.quizService.setSelectedQuiz(idQuiz);
     const idUser = this.route.snapshot.paramMap.get('idUser');
@@ -49,7 +54,13 @@ export class PlayQuizComponent implements OnInit {
   }
   resultDisplay(){
     this.resultAffiche = true;
-    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++; }, 5000);
+    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;
+      if(this.indexQuiz === this.quiz.questions.length && this.user.withRecap ){
+        console
+        this.toYesNo = true;
+              setTimeout(() => {this.toYesNo = false; }, 4000);
+      }
+    }, 4000);
   }
   answerQuestion(answer: Answer){
     if(answer.isCorrect) {
