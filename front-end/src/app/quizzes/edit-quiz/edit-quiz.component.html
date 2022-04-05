@@ -1,11 +1,10 @@
-<button class="button-card" routerLink="/quiz-list">Back</button>
 <div class ="page-title"> MODIFIER QUIZ </div>
 <div class="card" *ngIf="quiz">
   <form class="quiz-form" (ngSubmit)="onSubmit()" #f="ngForm" >
     <div class="titre-theme">
       <label for="title" >
         Titre
-        <input class="input-custom"type="text" id="title" name="title"[(ngModel)]="quiz.title">
+        <input class="input-custom"type="text" id="title" name="title"[(ngModel)]="quiz.name">
       </label>
       <label for="theme" >
         Theme

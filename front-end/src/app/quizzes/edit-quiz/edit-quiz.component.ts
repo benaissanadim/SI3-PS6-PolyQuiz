@@ -17,6 +17,7 @@ export class EditQuizComponent implements OnInit {
   public quizForm: FormGroup;
   quizUrl: string;
   id: string;
+  idUser: string
 
 
   constructor(public router:Router ,private route: ActivatedRoute,public formBuilder: FormBuilder, private quizService: QuizService) {
@@ -37,9 +38,10 @@ export class EditQuizComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.quizService.setSelectedQuiz(this.id);
+    this.idUser = this.route.snapshot.paramMap.get('idUser');
   }
   onSubmit(): void {
     this.quizService.updateQuiz(this.quiz);
-    this.router.navigate(['/quiz-list']).catch();
+    this.router.navigate(['/quiz-list/'+this.idUser]).catch();
   }
 }

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-form',
@@ -20,8 +21,9 @@ export class QuizFormComponent implements OnInit {
    * More information about Reactive Forms: https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance
    */
   public quizForm: FormGroup;
+  public idUser:string
 
-  constructor(public router:Router , public formBuilder: FormBuilder, public quizService: QuizService) {
+  constructor(public router:Router , public formBuilder: FormBuilder, public quizService: QuizService, private route:ActivatedRoute) {
     this.quizForm = this.formBuilder.group({
       name: [''],
       theme: [''],
@@ -30,6 +32,7 @@ export class QuizFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.idUser = this.route.snapshot.paramMap.get('idUser');
   }
 
 
@@ -38,7 +41,7 @@ export class QuizFormComponent implements OnInit {
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
 
     this.quizService.addQuiz(quizToCreate);
-    this.router.navigate(['/quiz-list']);
+    this.router.navigate(['/quiz-list/'+this.idUser]);
   }
 
 }
