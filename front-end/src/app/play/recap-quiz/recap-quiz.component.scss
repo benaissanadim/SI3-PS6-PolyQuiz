@@ -1,15 +1,11 @@
 @import '../../../styles/texts.scss';
 
 .card-play {
-text-align: center;
-padding-left: 20px;
-padding-right: 100px;
-max-width: 1500px;
-background-color: white;
-margin: 40px auto;
-padding: 30px;
-border-radius: 10px;
-}
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-top: 50px;
+  text-align: center;
+
 
 .felicitation{
   text-align: center;
@@ -37,15 +33,16 @@ td{
 table {
   margin: 0 auto;
   font-size: 25px;
+  text-align: center;
+  
 }
-table tr {
+ td {
   margin : 50px;
   vertical-align: middle;
-  padding: 0.5rem;
-  border: 2px solid rgb(248, 18, 114);
+  border: 3px solid  rgb(248, 18, 114);
 }
 
-.card-play  .button_rep{
+.button_rep{
     margin-right: 10%;
     background-color:  #d9d9f0;
     border : none ;
@@ -57,7 +54,8 @@ table tr {
     cursor : pointer;
   }
   
-  .card-play  .button_rep:hover{
+   .button_rep:hover{
     box-shadow: 0px 7px 7px #b2bebc ;
     color : #eb4d4b;
   }
+}
