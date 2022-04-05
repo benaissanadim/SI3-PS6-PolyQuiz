@@ -46,5 +46,12 @@ router.delete('/:userId', (req, res) => {
     manageAllErrors(res, err)
   }
 })
+router.post('/:userId', (req, res) => {
+  try {
+    res.status(200).json(User.update(req.params.userId, req.body))
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
 
 module.exports = router
