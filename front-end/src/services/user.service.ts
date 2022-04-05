@@ -23,7 +23,7 @@ export class UserService{
     this.setUsersFromUrl();
   }
 
-  
+
   setSelectedUser(userId: string) {
     const urlWithId = this.userUrl + '/' + userId;
     this.http.get<User>(urlWithId).subscribe((user) => {
@@ -46,6 +46,16 @@ export class UserService{
   deleteUser(quiz: User) {
     const urlWithId = this.userUrl + '/' + quiz.id;
     this.http.delete<User>(urlWithId, this.httpOptions).subscribe(() => this.setUsersFromUrl());
+  }
+  updateUser(user: User): void {
+    const urlWithId = this.userUrl + '/' + user.id;
+    this.http.post<User>(urlWithId, user, this.httpOptions).subscribe(() => this.retrieveUsers());
+  }
+  retrieveUsers(): void {
+    this.http.get<User[]>(this.userUrl).subscribe((userList) => {
+      this.users = userList;
+      this.users$.next(this.users);
+    });
   }
 
 

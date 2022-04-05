@@ -19,6 +19,7 @@ import { RecapQuizComponent } from './play/recap-quiz/recap-quiz.component';
 import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import  {UserAddComponent} from './users/user-add/user-add.component';
+import  {UserEditComponent} from './users/user-edit/user-edit.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -38,7 +39,8 @@ import  {UserAddComponent} from './users/user-add/user-add.component';
     QuestionComponent,
     PlayQuizComponent,
     YesNoQuizComponent,
-    UserAddComponent
+    UserAddComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

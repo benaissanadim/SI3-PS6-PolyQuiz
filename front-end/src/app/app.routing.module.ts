@@ -7,6 +7,7 @@ import { QuestionFormComponent } from './questions/question-form/question-form.c
 import { PlayQuizComponent } from './play/play-quiz/play-quiz.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import  {UserAddComponent} from './users/user-add/user-add.component';
+import  {UserEditComponent} from './users/user-edit/user-edit.component';
 
 const routes: Routes = [
     {path: 'quiz-list/:idUser', component: QuizListComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
     {path: 'add-question/:id',component:  QuestionFormComponent },
     {path: 'quiz-play/:idUser/:idQuiz',component: PlayQuizComponent},
     {path:'user-add',component: UserAddComponent},
+    {path:'edit-user/:id',component: UserEditComponent},
 
 
 ];
