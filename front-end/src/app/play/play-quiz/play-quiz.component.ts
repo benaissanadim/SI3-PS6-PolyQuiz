@@ -32,6 +32,7 @@ export class PlayQuizComponent implements OnInit {
   toYesNo: boolean = false;
   begin: boolean = true;
   answernumb:number
+  isStoppedSpeechRecog:boolean
 
   constructor(private route: ActivatedRoute, private quizService: QuizService,
               private userService: UserService, private textspeechService: TextSpeechService,
@@ -124,6 +125,65 @@ export class PlayQuizComponent implements OnInit {
       }
     }
   }
+
+  start(id: String) {
+    document.getElementById('sound').classList.add('animated');
+    this.isStoppedSpeechRecog = false;
+    this.vocalservice.sound.start();
+    console.log('Reconnaissance vocale a commencé');
+    this.vocalservice.sound.addEventListener('end', (condition) => {
+      this.b = false;
+      this.vocalservice.text = this.vocalservice.tempWords;
+
+      console.log(this.vocalservice.text);
+
+      let index = 0;
+      let tab: string[] = [];
+      for (
+        let i = 0;
+        i < this.quiz.questions[this.questionIndex].answers.length;
+        i++
+      ) {
+        tab.push('numéro ' + i);
+      }
+
+      for (; index < tab.length; index++) {
+        if (tab[index] == this.vocalservice.text) {
+          this.answernumb = index;
+          this.isStoppedSpeechRecog = true;
+          break;
+        }
+      }
+
+      if (this.isStoppedSpeechRecog) {
+        this.vocalservice.stop();
+        document.getElementById('nombre' + index).style.backgroundColor =
+          'rgb(94, 199, 85)';
+        // Correcte Answers
+        setTimeout(() => {
+          this.increment();
+        }, 4000);
+        this.isStoppedSpeechRecog = false;
+        this.vocalservice.stop();
+      }
+      this.vocalservice.stop();
+      this.vocalservice.sound.start();
+    });
+  }
+
+  trueQuestionIndex(): number {
+    const answers = this.quiz.questions[this.questionIndex].answers;
+    for (let index = 0; index < answers.length; index++)
+      if (answers[index].isCorrect) return index;
+  }
+
+  increment() {
+    if (!this.isEnd()) {
+      if (this.answernumb == this.trueQuestionIndex()) this.CorrectAnsw++;
+      this.questionIndex++;
+    }
+  }
+
 
 
 
