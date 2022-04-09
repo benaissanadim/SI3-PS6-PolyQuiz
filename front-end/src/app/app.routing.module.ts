@@ -20,7 +20,6 @@ const routes: Routes = [
     {path:'user-add',component: UserAddComponent},
     {path:'edit-user/:id',component: UserEditComponent},
 
-
 ];
 
 @NgModule({

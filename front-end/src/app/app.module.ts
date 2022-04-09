@@ -40,7 +40,7 @@ import  {UserEditComponent} from './users/user-edit/user-edit.component';
     PlayQuizComponent,
     YesNoQuizComponent,
     UserAddComponent,
-    UserEditComponent
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
