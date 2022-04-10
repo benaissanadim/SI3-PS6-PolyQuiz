@@ -10,11 +10,10 @@ export class VoiceRecognitionService {
   beginspeech = false;
   public text: String = '';
   tempWords: String;
-  b: boolean;
 
   constructor() {}
 
-  startRecognition() {
+  init() {
     this.sound.interimResults = true;
     this.sound.lang = 'fr-FR';
     this.sound.addEventListener('result', (e) => {
@@ -27,17 +26,22 @@ export class VoiceRecognitionService {
     });
   }
 
+  getText() {
+    return this.text;
+  }
+  setText(){
+    this.text = "";
+  }
+
   stop() {
+    this.text = "";
     document.getElementById('sound').classList.remove('animated');
     this.sound.stop();
+    console.log('Terminer');
   }
 
   wordConcat() {
     this.text = this.text + ' ' + this.tempWords + '.';
     this.tempWords = '';
-  }
-
-  getText() {
-    return this.text;
   }
 }
