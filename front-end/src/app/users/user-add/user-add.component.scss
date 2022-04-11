@@ -1,36 +1,101 @@
 @import '../../quizzes/quiz-form/quiz-form.component.scss';
 
-.severity-form {
-    font-size: 20px;
+.header {
+  display: flex;
+  justify-content: center;
+  padding-block: 0.5em;
+  padding-inline: 1em;
+}
 
-    margin-bottom: 0.2rem;
 
-    .radio-button {
-      display: flex;
-      padding: 1rem 0 1rem 0;
+.get-in-touch {
+  max-width: 800px;
+  margin: 50px auto;
+  position: relative;
 
-      .form-group-title {
-        position: relative;
-        top: 10px;
-      }
+}
+.radio-button{
+  padding-bottom: 20px;
+}
+.get-in-touch .title {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 3.1em;
+  line-height: 48px;
+  padding-bottom: 30px;
+  color: #5543ca;
+  background: #5543ca;
+  background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+  background: -webkit-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+  background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
 
-      .severity {
-        border: 2px  solid;
-        padding: 0.3rem 0.3rem 0.3rem 1rem;
-        border-radius: 20px;
-        background-color: rgba(255, 255, 255, 0.6);
-      }
+.contact-form .form-field {
+  position: relative;
+  margin: 32px 0;
+}
+.contact-form .input-text {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color: #5543ca;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.contact-form .input-text:focus {
+  outline: none;
+}
+.contact-form .input-text:focus + .label,
+.contact-form .input-text.not-empty + .label {
+  -webkit-transform: translateY(-24px);
+  transform: translateY(-24px);
+}
+.contact-form .label {
+  position: absolute;
+  left: 20px;
+  bottom: 11px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  color: #5543ca;
+  cursor: text;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out,
+  -webkit-transform .2s ease-in-out;
+}
+.contact-form .submit-btn {
+  display: inline-block;
+  background-color: #000;
+  background-image: linear-gradient(125deg,#a72879,#064497);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  width:200px;
+  cursor: pointer;
+}
+.stade{
+  padding-left: 175px;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-      span {
-        position: relative;
-        top: 2px;
-        margin-right: 0.1rem;
-      }
 
-      input {
-        margin-right: 1rem;
-        background: white;
-      }
-    }
-
-  }

@@ -1,25 +1,22 @@
-<div class ="page-title"> Ajouter un utilisateur </div>
+<section class="get-in-touch">
+<div class ="title"> Ajouter un utilisateur </div>
 <div class="card">
 
-  <form (ngSubmit)="addUser()" #f="ngForm">
+  <form (ngSubmit)="addUser()" #f="ngForm" class="contact-form row">
 
-  <div class="quiz-form">
-    <div class="titre-theme">
-    <label for="name" >Nom
-      <input class="input-custom" type="text" id="name" name="name" [(ngModel)]="user.name" required>
-    </label>
-    <label for="image" >Image
-      <input class="input-custom" name="image" type="text" id="image" [(ngModel)]="user.image">
-    </label>
-   </div> 
-  </div>
+    <div class="form-field col-lg-6">
+      <input id="name" class="input-text js-input" type="text" name="name" [(ngModel)]="user.name" placeholder="Nom *" required>
+    </div>
+    <div class="form-field col-lg-6 ">
+      <input id="image" class="input-text js-input" type="text" name="image"[(ngModel)]="user.image"placeholder="Image *">
+    </div>
+
 
   <div class="form-group severity-form">
-    
+
     <div class="radio-button">
-      <label class="form-group-title">Stade d'Alhzeimer :</label>
-      <br>
       <div class="stade">
+        <label class="form-group-title">Stade d'Alhzeimer :</label>
         <label> <span>Léger</span>
           <input type="radio" value="leger" name="radioGroup" [(ngModel)]="user.stade" (change)=" addOptions(f)" >
         </label>
@@ -33,24 +30,24 @@
     </div>
 
     <div >
-      <label>
+      <label class="container">
       <input type="checkbox" name="hints" [(ngModel)]="user.hint" disabled>
         Ajout d'indices
       </label>
-      <label>
+      <label class="container">
       <input type="checkbox" name="yes-no-recap" [(ngModel)]="user.withRecap" disabled>
        Récapitulatif avec questions vrai/faux
-      </label>
-      <label>
+      </label >
+      <label class="container">
         <input type="checkbox" name="delete-false" [(ngModel)]="user.deleteFalseAnswer" disabled>
         Suppression des réponses fausses
       </label>
         <div>
-          <label>
+          <label class="container">
         <input type="checkbox" name="vocal-quiz" [(ngModel)]="user.vocal" disabled>
         Répondre par voix
       </label>
-      <label>
+      <label class="container">
         <input type="checkbox" name="vocal-quiz" [checked]="!user.vocal" disabled>
         Répondre par clic
       </label>
@@ -62,14 +59,11 @@
   </div>
 
   <div style='text-align:center'>
-    <button class="button-card"  type="submit" [disabled]="f.invalid">Ajouter</button>
-    <div [hidden]="f.valid" >
-      Remplir les champs svp !
-    </div>
+    <button class="submit-btn"  type="submit" [disabled]="f.invalid">Ajouter</button>
   </div>
-  
+
   </form>
 </div>
-
+</section>
 
 

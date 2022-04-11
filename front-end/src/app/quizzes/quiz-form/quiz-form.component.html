@@ -1,25 +1,27 @@
-<div class ="page-title"> AJOUT QUIZ </div>
-<div class="card">
-  <br>
-  <form class="quiz-form" [formGroup]="quizForm">
-    <div class="titre-theme">
-      <label for="title" class="title">
-        Titre
-        <input class="input-custom" type="text" id="name" [formControlName]="'name'">
-      </label>
-      <label for="theme" class="theme">
-        Theme
-        <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
-      </label>
+<section class="get-in-touch">
+  <h1 class="title">AJOUT QUIZ</h1>
+  <form class="contact-form row" [formGroup]="quizForm">
+    <div class="form-field col-lg-6">
+      <input id="name" class="input-text js-input" type="text" [formControlName]="'name'"placeholder="Titre *" required>
     </div>
-    <br><br>
-    <label for="image">
-      Image
-      <input class="input-custom-2" type="text" id="theme" [formControlName]="'image'">
-    </label>
-    <br><br><br><br>
-    <div style='text-align:center'>
-      <button type="submit" class="button-card" (click)="addQuiz()">Ajouter</button>
+    <div class="form-field col-lg-6 ">
+      <input id="email" class="input-text js-input" type="email" [formControlName]="'theme'"placeholder="Theme *"required>
+    </div>
+    <div class="form-field col-lg-6 ">
+      <input id="company" class="input-text js-input" type="text" [formControlName]="'image'"placeholder="Image">
+    </div>
+    <div class="form-field col-lg-12">
+      <button type="submit" class="submit-btn" (click)="addQuiz()">Ajouter</button>
     </div>
   </form>
-</div>
+</section>
+
+
+
+
+
+
+
+
+
+
