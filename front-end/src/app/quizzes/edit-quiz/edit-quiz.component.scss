@@ -1,7 +1,6 @@
 
+@import '../../quizzes/quiz-form/quiz-form.component.scss';
 
-@import '../../../styles/cards.scss';
-@import '../../../styles/texts.scss';
 
 .input-custom {
   margin-top : 10px;
@@ -12,9 +11,6 @@
   font-size: 20px;
 }
 
-.title{
-  padding: 80px;
-}
 
 .theme {
   padding: 80px;
