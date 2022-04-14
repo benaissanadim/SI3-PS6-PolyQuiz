@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import {AnswerHistory, QuizHistory } from 'src/models/quiz-history.model';
 import { User } from 'src/models/user.model';
+import { HistoryService } from 'src/services/history.service';
 import { UserService } from 'src/services/user.service';
 import { VoiceRecognitionService } from 'src/services/voice-quiz-service';
 import { Answer, Question } from '../../../models/question.model';
@@ -17,6 +19,8 @@ import { TextSpeechService } from '../../../services/text-speech.service';
 
 export class PlayQuizComponent implements OnInit {
   public question: Question;
+  private quizHistory: QuizHistory;
+  private answerHistory: AnswerHistory;
   public quiz: Quiz;
   public user: User;
   resultAffiche: boolean = false;
@@ -34,7 +38,7 @@ export class PlayQuizComponent implements OnInit {
 
 
   constructor( private route: ActivatedRoute, private quizService: QuizService,
-    private userService: UserService, private textspeechService: TextSpeechService,
+    private userService: UserService, private textspeechService: TextSpeechService, public historyService: HistoryService,
     public service: VoiceRecognitionService) {
     this.service.init();
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
@@ -43,9 +47,11 @@ export class PlayQuizComponent implements OnInit {
 
   ngOnInit() {
     this.voiceInfo = this.info;
+    this.quizHistory=null;
+    this.answerHistory=null;
 
     setTimeout(() => {
-      this.begin = false, this.indexQuiz++ ; this.speak(); 
+      this.begin = false, this.indexQuiz++ ; this.speak();
 
       setTimeout(()=> {
         this.startVoice()
@@ -62,7 +68,17 @@ export class PlayQuizComponent implements OnInit {
   startVoice() {
     if(this.user.vocal)
     this.start('sound');
-    }
+  }
+
+  recordHistory(): void {
+    this.quizHistory = {
+      id: '',
+      name: this.quiz.name,
+      date: Date.now(),
+      userId: this.user.id,
+    };
+    this.historyService.addQuizHistory(this.quizHistory);
+  }
 
   speechRecogStop: boolean;
   start(id: String) {
@@ -183,5 +199,6 @@ export class PlayQuizComponent implements OnInit {
         this.resultDisplay();
       }
     }
+    this.historyService.addAnswerHistory(this.quizHistory, this.answerHistory);
   }
 }

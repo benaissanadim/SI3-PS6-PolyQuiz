@@ -1,0 +1,13 @@
+<div class="card" >
+  <div class="header">
+    <a class="return-button" routerLink="/user-history/{{user.id}}"><i class="fas fa-arrow-left"></i></a>
+    <h1>Historique</h1>
+    <img src="{{user.picture}}" alt="user-picture" class="user-picture">
+  </div>
+  <ul id="list">
+    <li class="element" *ngFor="let instance of history" routerLink="/user-history/{{user.id}}">
+      <span class="date">{{instance.date | date:'d/M/yy'}}</span> <span class="sep">|</span>
+      <span class="name">{{instance.name}}</span> <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+    </li>
+  </ul>
+</div>

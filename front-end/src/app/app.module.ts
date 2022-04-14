@@ -20,6 +20,7 @@ import { UserComponent } from './users/user/user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import  {UserAddComponent} from './users/user-add/user-add.component';
 import  {UserEditComponent} from './users/user-edit/user-edit.component';
+import { UserHistoryComponent } from './users/user-history/user-history.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -41,6 +42,7 @@ import  {UserEditComponent} from './users/user-edit/user-edit.component';
     YesNoQuizComponent,
     UserAddComponent,
     UserEditComponent,
+    UserHistoryComponent,
   ],
   imports: [
     BrowserModule,
