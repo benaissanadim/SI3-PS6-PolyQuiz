@@ -1,8 +1,7 @@
 <div class="card" >
   <div class="header">
-    <a class="return-button" routerLink="/user-history/{{user.id}}"><i class="fas fa-arrow-left"></i></a>
     <h1>Historique</h1>
-    <img src="{{user.picture}}" alt="user-picture" class="user-picture">
+    <img src="{{user.image}}" alt="user-picture" class="user-picture">
   </div>
   <ul id="list">
     <li class="element" *ngFor="let instance of history" routerLink="/user-history/{{user.id}}">

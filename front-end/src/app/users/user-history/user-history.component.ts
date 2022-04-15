@@ -21,7 +21,7 @@ export class UserHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    throw new Error("Method not implemented.");
+    this.getUser();
   }
 
   getUserHistory(): void {

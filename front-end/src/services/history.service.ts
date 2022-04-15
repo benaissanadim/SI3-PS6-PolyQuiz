@@ -43,6 +43,14 @@ export class HistoryService {
     return this.quizHistories.filter(quizHistory => quizHistory.userId === userId);
   }
 
+  retrieveAnswerHistory(quizHistoryId: string): void {
+    const url = this.quizHistoryUrl + '/' + quizHistoryId + this.answerHistoryUrl;
+    this.http.get<AnswerHistory[]>(url).subscribe((answerHistoryList) => {
+      this.answerHistories = answerHistoryList;
+      this.answerHistories$.next(this.answerHistories);
+    });
+  }
+
   addAnswerHistory(quizHistory: QuizHistory, answerHistory: AnswerHistory): void {
     const answerUrl = this.quizHistoryUrl + '/' + quizHistory.id + '/answerHistory';
     this.http.post<Question>(answerUrl, answerHistory, this.httpOptions).subscribe(() => this.setSelectedQuizHistory(quizHistory.id));
