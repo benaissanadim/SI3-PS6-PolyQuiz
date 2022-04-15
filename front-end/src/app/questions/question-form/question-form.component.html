@@ -1,14 +1,12 @@
-<div class ="page-title"> AJOUTER QUESTION </div>
+<section class="get-in-touch">
+<div class ="title"> AJOUTER QUESTION </div>
 <div class="card">
+  <form class="contact-form row" [formGroup]="questionForm">
 
-  <form class="quiz-form" [formGroup]="questionForm">
+    <div class="form-field col-lg-6">
+      <input id="name" class="input-text js-input" type="text" [formControlName]="'label'"placeholder="Intitulé de la question *" required>
+    </div>
 
-    <label for="title" class="title">
-      Intitulé Question :      {{quiz}}
-      <input class="input-custom"  type="text" id="label" [formControlName]="'label'">
-    </label>
-    <br>
-    <br>
     Ajouter une Réponse
     <button  class="button" (click)="addAnswer()">
       <span><i class="fa fa-plus"></i></span>
@@ -16,7 +14,7 @@
 
     <div *ngIf="alert" class="right">
       <i class='fas fa-exclamation-circle'></i>
-      Maximum 3 réponses possibles  </div>
+      Maximum 4 réponses possibles  </div>
     <div class="row" formArrayName="answers">
       <div class="column" *ngFor="let address of answers.controls; let i=index">
         <div class="answer-form" [formGroupName]="i">
@@ -30,10 +28,11 @@
       </div>
     </div>
     <br>
-  
+
     <br> <br>
     <div style='text-align:center'>
-      <button type="submit" class="button-card" (click)="addQuestion()">Ajouter</button>
+      <button type="submit" class="submit-btn" (click)="addQuestion()">Ajouter</button>
     </div>
   </form>
 </div>
+</section>

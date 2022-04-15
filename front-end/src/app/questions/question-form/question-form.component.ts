@@ -48,7 +48,7 @@ export class QuestionFormComponent implements OnInit {
   }
 
   addAnswer() {
-    if(this.nbAnswer <3){
+    if(this.nbAnswer <4){
       this.nbAnswer ++;
       this.answers.push(this.createAnswer());}
     else{
