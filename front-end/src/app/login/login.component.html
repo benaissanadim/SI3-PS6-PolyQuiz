@@ -1,0 +1,16 @@
+
+
+  <main id="main-holder">
+
+    <h1 id="login-header">Connexion</h1>
+    
+    <div id="login-error-msg-holder">
+      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+    </div>
+    <form  (ngSubmit)="login()" #f="ngForm"  id="login-form">
+        <input type="text" name="nom utilisateur" id="username-field" class="login-form-field" placeholder="nom utilisateur">
+        <input type="password" name="mot de passe" id="password-field" class="login-form-field" placeholder="mot de passe">
+        <input type="submit" value="Se conecter" id="login-form-submit">
+    </form>
+    <br>
+  </main>
