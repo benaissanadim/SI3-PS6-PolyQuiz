@@ -40,6 +40,15 @@ router.put('/:quizId', (req, res) => {
   try {
     res.status(200).json(Quiz.update(req.params.quizId, req.body))
   } catch (err) {
+    manage
+
+    AllErrors(res, err)
+  }
+})
+router.post('/:quizId', (req, res) => {
+  try {
+    res.status(200).json(Quiz.update(req.params.quizId, req.body))
+  } catch (err) {
     manageAllErrors(res, err)
   }
 })
