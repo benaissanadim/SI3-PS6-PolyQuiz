@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../../../models/user.model';
 
 @Component({
@@ -20,7 +21,7 @@ export class UserComponent implements OnInit {
   @Output()
   deleteUser: EventEmitter<User> = new EventEmitter<User>();
 
-  constructor() {
+  constructor(public router : Router) {
   }
 
   ngOnInit() {
@@ -36,5 +37,8 @@ export class UserComponent implements OnInit {
 
   delete() {
     this.deleteUser.emit(this.user);
+  }
+  history(){
+    this.router.navigate(['/user-history/'+this.user.id]);
   }
 }
