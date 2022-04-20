@@ -16,6 +16,7 @@ export interface QuestionHistory {
 
 export interface AnswerHistory {
   questionHistoryId: any,
+  userId : any,
   answer : string,
   correct : boolean,
   date : any

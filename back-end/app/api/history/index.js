@@ -36,7 +36,9 @@ router.get('/one/:id', (req, res) => {
       console.log(questions)
       const questionsWithAnswers = quest.map((question) => {
           const answerHistory = HistoryAnswer.get()
-          const answers = answerHistory.filter((answer) => parseInt(answer.questionHistoryId, 10) === parseInt(question.id, 10) )
+          const answers = answerHistory.filter((answer) => 
+          parseInt(answer.questionHistoryId, 10) === parseInt(question.id, 10)
+          &&  parseInt(answer.userId, 10) === parseInt(history.userId, 10))
           return { ...question, answers: answers }
       })
       const historyUser = {...history, questions: questionsWithAnswers}

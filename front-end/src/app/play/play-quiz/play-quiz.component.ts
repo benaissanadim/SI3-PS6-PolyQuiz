@@ -51,7 +51,6 @@ export class PlayQuizComponent implements OnInit {
   ngOnInit() {
     this.quizHistory = null;
     this.answerHistory = null;
-    this.historyGenerated = false;
     this.voiceInfo = this.info;
     setTimeout(() => {
       this.begin = false, this.indexQuiz++ ; this.speak();
@@ -210,7 +209,6 @@ export class PlayQuizComponent implements OnInit {
   resultDisplay() {
     this.resultAffiche = true;
     this.speak();
-    this.answerGenerated = false;
 
     setTimeout(() => {
       this.resultAffiche = false;
@@ -232,10 +230,10 @@ export class PlayQuizComponent implements OnInit {
         date : Date.now(),
         answer : answer.value,
         correct : answer.isCorrect,
+        userId : this.user.id,
         questionHistoryId : this.quiz.questions[this.indexQuiz].id
       }
       this.historyService.addAnswerHistory(this.quizHistory.id,this.quiz.questions[this.indexQuiz].id,this.answerHistory)
-    this.generateAnswer(answer);
     this.textspeechService.stop();
     if (answer.isCorrect) {
       this.resultDisplay()
