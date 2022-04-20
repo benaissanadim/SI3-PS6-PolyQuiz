@@ -3,7 +3,6 @@
         <span class="buttontext"> Ajouter Utilisateur</span>
         <span class="buttonicon"><i class="fa fa-plus"></i></span>
     </button>
-    <div class ="page-title"> GESTION UTILISATEUR </div>
     <div class="quiz-container">
     <div class="user" *ngFor="let user of userList">
         <app-user [user]="user" (userSelected)="userSelected($event)" (deleteUser)="deleteUser($event)" (editUser)="editUser($event)"></app-user>

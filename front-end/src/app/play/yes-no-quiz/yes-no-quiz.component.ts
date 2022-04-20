@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Answer, Question } from '../../../models/question.model';
 import { Quiz } from '../../../models/quiz.model';
 import { QuizService } from '../../../services/quiz.service';
+import { TextSpeechService } from '../../../services/text-speech.service';
+
 @Component({
   selector: 'app-yes-no-quiz',
   templateUrl: './yes-no-quiz.component.html',
@@ -17,10 +19,10 @@ export class YesNoQuizComponent implements OnInit {
   resultAffiche : boolean = false;
   answerToPrint : Answer;
   valueAdded: boolean = false;
-  constructor(
+
+  constructor( private textspeechService: TextSpeechService,
     private route: ActivatedRoute,
-    private quizService: QuizService,
-  ) {
+    private quizService: QuizService,) {
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
   }
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class YesNoQuizComponent implements OnInit {
     return this.indexQuiz >= this.quiz.questions.length;
   }
   ngAfterViewInit(){
+    this.speak();
     this.answerToPrint = this.printAnswer();
   }
   getCorrectAnswer() {
@@ -40,6 +43,31 @@ export class YesNoQuizComponent implements OnInit {
       }
     }
   }
+
+  
+  public speak(){
+    if (this.indexQuiz >= 0) {
+      if (!this.resultAffiche) this.speakQuestion();
+      else this.speakResultat()
+    }
+  }
+
+
+  public speakQuestion(): void {
+    var text = this.quiz.questions[this.indexQuiz].label + '\n';
+    text+= 'C est : ' + this.printAnswer().value+ '?\n';
+    text += '1- VRAI \n 2- FAUX'
+    this.textspeechService.speak(text);
+
+
+  }
+
+  public speakResultat(): void {
+    var text = 'la reponse correcte est : \n' + this.printCorrect();
+    this.textspeechService.speak(text);
+
+  }
+
   printAnswer(){
     if(this.valueAdded === false){
       const rand = Math.floor(Math.random() * this.quiz.questions[this.indexQuiz].answers.length);
@@ -53,7 +81,8 @@ export class YesNoQuizComponent implements OnInit {
       this.CorrectAnsw++;
     }
     this.resultAffiche = true;
-    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;  this.valueAdded = false }, 5000);
+    this.speak();
+    setTimeout(() => {this.resultAffiche = false; this.indexQuiz++;  this.valueAdded = false; this.speak(); }, 6000);
   }
   printCorrect(){
     if(this.answerToPrint.value === this.getCorrectAnswer().value) return "Vrai"

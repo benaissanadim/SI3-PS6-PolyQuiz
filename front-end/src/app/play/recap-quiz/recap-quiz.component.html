@@ -1,6 +1,5 @@
 <div class='card-play'>
-    <div class ="page-title"> Recapitulatif Final</div>
-      <h3 class="felicitation">Félicitation </h3>
+    <div class ="title"> Recapitulatif Final</div>
       <table class="table">
         <tr *ngFor="let question of quiz.questions; let q=index;">
           <td class="question">{{ question.label }}</td>
@@ -10,6 +9,8 @@
         </tr>
       </table>
       <br>
-      <button class="button_rep" (click)="replay()"> Rejouer</button>
+      <div class="buttons">
+      <button class="button_rep" (click)="replay()"> Faire un autre quiz</button>
       <button class="button_rep" (click)="exit()" >Sortir</button>
+    </div> 
     </div>
