@@ -21,6 +21,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import  {UserAddComponent} from './users/user-add/user-add.component';
 import  {UserEditComponent} from './users/user-edit/user-edit.component';
 import { UserHistoryComponent } from './users/user-history/user-history.component';
+import { LoginComponent } from './login/login.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -43,6 +44,7 @@ import { UserHistoryComponent } from './users/user-history/user-history.componen
     UserAddComponent,
     UserEditComponent,
     UserHistoryComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

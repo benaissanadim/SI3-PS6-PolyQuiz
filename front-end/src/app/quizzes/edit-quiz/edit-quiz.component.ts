@@ -23,12 +23,7 @@ export class EditQuizComponent implements OnInit {
   constructor(public router:Router ,private route: ActivatedRoute,public formBuilder: FormBuilder, private quizService: QuizService) {
     this.quizService.quizSelected$.subscribe((quiz) =>{
       this.quiz = quiz
-     console.log("into subscribe",quiz);
-      this.quizForm = this.formBuilder.group({
-        name: [quiz.name],
-        theme: [quiz.theme],
-        image:[quiz.image]
-      });
+
     });
     console.log("after subscribe", this.quiz)
 
@@ -43,5 +38,6 @@ export class EditQuizComponent implements OnInit {
   onSubmit(): void {
     this.quizService.updateQuiz(this.quiz);
     this.router.navigate(['/quiz-list/'+this.idUser]).catch();
+    console.log(this.quiz);
   }
 }
