@@ -1,15 +1,22 @@
 export interface QuizHistory {
   id: any;
-  userId: string;
   name: string;
-  date: any;
+  quizId: string;
+  userId: string;
+  questions : QuestionHistory[]
 }
 
+export interface QuestionHistory {
+  id: any;
+  nom: string;
+  nbCorrect ?: number
+  answers: AnswerHistory[] ;
+  recaps :AnswerHistory[];
+}
 
 export interface AnswerHistory {
-  id: any;
-  quizHistoryId: number;
-  question: string;
-  answer: string;
-  correct: boolean;
+  questionHistoryId: any,
+  answer : string,
+  correct : boolean,
+  date : any
 }

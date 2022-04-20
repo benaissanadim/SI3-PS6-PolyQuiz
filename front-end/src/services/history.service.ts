@@ -1,67 +1,66 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, Subject } from "rxjs";
-import {httpOptionsBase, serverUrl } from "src/configs/server.config";
-import { Question } from "src/models/question.model";
-import {AnswerHistory, QuizHistory } from "src/models/quiz-history.model";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { Question } from '../models/question.model';
+import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import { AnswerHistory, QuizHistory } from '../models/quiz-history.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistoryService {
+  /*
+   Services Documentation:
+   https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
+   */
+
   private httpOptions = httpOptionsBase;
-
   private quizHistories: QuizHistory[] = [];
-  public quizHistories$: BehaviorSubject<QuizHistory[]> = new BehaviorSubject(this.quizHistories);
+  public quizHistories2: QuizHistory[] = [];
 
+
+  public quizHistories$: BehaviorSubject<QuizHistory[]> = new BehaviorSubject(this.quizHistories);
+  public quizHistories2$: BehaviorSubject<QuizHistory[]> = new BehaviorSubject(this.quizHistories);
 
   public quizHistorySelected$: Subject<QuizHistory> = new Subject();
 
-
-  private answerHistories: AnswerHistory[] = [];
-  public answerHistories$: BehaviorSubject<AnswerHistory[]> = new BehaviorSubject(this.answerHistories);
-
-  private quizHistoryUrl = serverUrl + '/quizHistory';
-  private answerHistoryUrl = '/answerHistory';
+  private quizHistoryUrl = serverUrl + '/history';
 
   constructor(private http: HttpClient) {
   }
 
-  recupQuizHistory(): void {
-    this.http.get<QuizHistory[]>(this.quizHistoryUrl).subscribe((newQuizHistories) => {
-      this.quizHistories = newQuizHistories;
+
+  setHistoriesUserFromUrl(userId : string) {
+    console.log("test")
+    this.http.get<QuizHistory[]>(serverUrl + '/history'+'/'+userId).subscribe((quizList) => {
+      this.quizHistories = quizList;
       this.quizHistories$.next(this.quizHistories);
     });
   }
 
-  addQuizHistory(quizHistory: QuizHistory): void {
-    const historyUrl = this.quizHistoryUrl;
-    this.http.post<QuizHistory>(historyUrl, quizHistory, this.httpOptions).subscribe(() => this.recupQuizHistory());
+  addHistory(history : QuizHistory, userId : string){
+    this.http.post<QuizHistory>(this.quizHistoryUrl,history,this.httpOptions).subscribe(() =>this.setHistoriesUserFromUrl(userId));
   }
 
-  getUserHistories(userId: string): QuizHistory[] {
-    return this.quizHistories.filter(quizHistory => quizHistory.userId === userId);
+  getHistories(userId:string , quizId : string){
+    this.http.get<QuizHistory[]>(this.quizHistoryUrl+'/'+userId+'/'+quizId).subscribe((quizList) => {
+      this.quizHistories2 = quizList;
+      this.quizHistories2$.next(this.quizHistories2);
+    }); 
   }
 
-  retrieveAnswerHistory(quizHistoryId: string): void {
-    const url = this.quizHistoryUrl + '/' + quizHistoryId + this.answerHistoryUrl;
-    this.http.get<AnswerHistory[]>(url).subscribe((answerHistoryList) => {
-      this.answerHistories = answerHistoryList;
-      this.answerHistories$.next(this.answerHistories);
+  getHistory(idHistory : string){
+    this.http.get<QuizHistory>(this.quizHistoryUrl+'/one/'+idHistory).subscribe((history) => {
+      this.quizHistorySelected$.next(history);
     });
   }
 
-  addAnswerHistory(quizHistory: QuizHistory, answerHistory: AnswerHistory): void {
-    const answerUrl = this.quizHistoryUrl + '/' + quizHistory.id + '/answerHistory';
-    this.http.post<Question>(answerUrl, answerHistory, this.httpOptions).subscribe(() => this.setSelectedQuizHistory(quizHistory.id));
+  addAnswerHistory(idHistory: string, idQuestion : string, answer : AnswerHistory ){
+    this.http.post<AnswerHistory>(serverUrl+'/answerHistory/'+idQuestion,answer,this.httpOptions).subscribe(() =>this.getHistory(idHistory));
   }
 
-  setSelectedQuizHistory(quizHistoryId: string): void {
-    const urlWithId = this.quizHistoryUrl + '/' + quizHistoryId;
-    this.http.get<QuizHistory>(urlWithId).subscribe((quizHistory) => {
-      this.quizHistorySelected$.next(quizHistory);
-    });
-  }
+
+
+ 
+
 }
-
-

@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {AnswerHistory, QuizHistory } from 'src/models/quiz-history.model';
+import { AnswerHistory, QuestionHistory, QuizHistory } from 'src/models/quiz-history.model';
 import { User } from 'src/models/user.model';
 import { HistoryService } from 'src/services/history.service';
 import { UserService } from 'src/services/user.service';
@@ -18,9 +20,9 @@ import { TextSpeechService } from '../../../services/text-speech.service';
 })
 
 export class PlayQuizComponent implements OnInit {
-  public question: Question;
   private quizHistory: QuizHistory;
   private answerHistory: AnswerHistory;
+  public question: Question;
   public quiz: Quiz;
   public user: User;
   resultAffiche: boolean = false;
@@ -35,9 +37,10 @@ export class PlayQuizComponent implements OnInit {
   answer: number;
   info = "Veuillez attendre l'ouverture de votre microphone après 10 secondes pour insérer votre réponse."
   voiceInfo : String ;
+  idQuiz : any;
+  idUser : any;
 
-
-  constructor( private route: ActivatedRoute, private quizService: QuizService,
+  constructor( private route: ActivatedRoute, private quizService: QuizService,private http: HttpClient,
     private userService: UserService, private textspeechService: TextSpeechService, public historyService: HistoryService,
     public service: VoiceRecognitionService) {
     this.service.init();
@@ -46,10 +49,10 @@ export class PlayQuizComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.quizHistory = null;
+    this.answerHistory = null;
+    this.historyGenerated = false;
     this.voiceInfo = this.info;
-    this.quizHistory=null;
-    this.answerHistory=null;
-
     setTimeout(() => {
       this.begin = false, this.indexQuiz++ ; this.speak();
 
@@ -57,27 +60,60 @@ export class PlayQuizComponent implements OnInit {
         this.startVoice()
      },10000);
     }, 4000);
-    const idQuiz = this.route.snapshot.paramMap.get('idQuiz');
-    this.quizService.setSelectedQuiz(idQuiz);
-    const idUser = this.route.snapshot.paramMap.get('idUser');
-    this.userService.setSelectedUser(idUser);
+    this.idQuiz = this.route.snapshot.paramMap.get('idQuiz');
+    this.quizService.setSelectedQuiz(this.idQuiz);
+    this.idUser = this.route.snapshot.paramMap.get('idUser');
+    this.userService.setSelectedUser(this.idUser);
       console.log("test")
     console.log(document.getElementById('sound'))
+
   }
+
+  beginHistory(): void {
+
+
+    this.historyService.getHistories(this.idUser, this.idQuiz)
+    this.historyService.quizHistories2$.subscribe((histories: QuizHistory[]) => {
+      this.quizHistory = histories[0];
+    });
+
+      setTimeout(() => {
+         console.log("finaltest")
+         if(this.quizHistory === undefined){
+           this.initHistory();}
+      }, 1000);
+  }
+
+
+
+  initHistory(): void {
+    const questionHistory :QuestionHistory[]  = []
+    for(let i = 0 ; i< this.quiz.questions.length; i++){
+
+      const quH = {
+        id : this.quiz.questions[i].id,
+        nom : this.quiz.questions[i].label,
+        answers : [],
+        recaps: []
+      }
+      questionHistory.push(quH);
+    }
+
+    this.quizHistory = {
+      id: '',
+      name: this.quiz.name,
+      userId: this.user.id,
+      quizId : this.quiz.id,
+      questions : questionHistory
+    };
+    this.historyService.addHistory(this.quizHistory, this.user.id)
+    
+  }
+
 
   startVoice() {
     if(this.user.vocal)
     this.start('sound');
-  }
-
-  recordHistory(): void {
-    this.quizHistory = {
-      id: '',
-      name: this.quiz.name,
-      date: Date.now(),
-      userId: this.user.id,
-    };
-    this.historyService.addQuizHistory(this.quizHistory);
   }
 
   speechRecogStop: boolean;
@@ -124,7 +160,7 @@ export class PlayQuizComponent implements OnInit {
     });
   }
 
-  speak(){
+  public speak(){
     if (this.indexQuiz >= 0) {
       if (!this.resultAffiche) this.speakQuestion();
       else this.speakResultat()
@@ -174,6 +210,8 @@ export class PlayQuizComponent implements OnInit {
   resultDisplay() {
     this.resultAffiche = true;
     this.speak();
+    this.answerGenerated = false;
+
     setTimeout(() => {
       this.resultAffiche = false;
       this.indexQuiz++;
@@ -182,12 +220,22 @@ export class PlayQuizComponent implements OnInit {
       setTimeout(()=> {this.startVoice()},10000);
       if (this.indexQuiz === this.quiz.questions.length && this.user.withRecap) {
         this.toYesNo = true;
-        setTimeout(() => {this.toYesNo = false;}, 6000);
+        
       }
     }, 6000);
   }
 
   answerQuestion(answer: Answer) {
+    this.beginHistory();
+    setTimeout(() => {
+      this.answerHistory = {
+        date : Date.now(),
+        answer : answer.value,
+        correct : answer.isCorrect,
+        questionHistoryId : this.quiz.questions[this.indexQuiz].id
+      }
+      this.historyService.addAnswerHistory(this.quizHistory.id,this.quiz.questions[this.indexQuiz].id,this.answerHistory)
+    this.generateAnswer(answer);
     this.textspeechService.stop();
     if (answer.isCorrect) {
       this.resultDisplay()
@@ -198,7 +246,8 @@ export class PlayQuizComponent implements OnInit {
       else {
         this.resultDisplay();
       }
-    }
-    this.historyService.addAnswerHistory(this.quizHistory, this.answerHistory);
+    }}, 300);
+
+
   }
 }
