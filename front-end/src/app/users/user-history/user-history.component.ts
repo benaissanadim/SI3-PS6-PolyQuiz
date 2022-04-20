@@ -14,28 +14,38 @@ import { UserService } from "src/services/user.service";
 export class UserHistoryComponent implements OnInit {
 
 
+  current : String
   public user: User;
   public history: QuizHistory[];
+  id : number
+  historyQuiz: QuizHistory;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private historyService: HistoryService) {
+    this.id = +this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {
+    this.historyQuiz = null ;
     this.getUser();
   }
 
   getUserHistory(): void {
-    this.historyService.recupQuizHistory();
-    this.historyService.quizHistories$.subscribe((history) => {
-      if (history) {
-        this.history = this.historyService.getUserHistories(this.user.id).reverse();
-      }
+    this.historyService.setHistoriesUserFromUrl(this.id.toString())
+    this.historyService.quizHistories$.subscribe((histories: QuizHistory[]) => {
+      this.history = histories;
     });
   }
 
+  getNbCorrect(qu : any){
+    let nb = 0;
+    for(let i=0 ; i< qu.answers.length ; i++ ){
+      if(qu.answers[i].correct) nb++;
+    }
+    return nb
+  }
+
   getUser(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.userService.setSelectedUser('' + id);
+    this.userService.setSelectedUser('' + this.id);
     this.userService.userSelected$.subscribe((user: User) => {
       this.user = user;
       if (user) {
@@ -43,6 +53,22 @@ export class UserHistoryComponent implements OnInit {
       }
     });
   }
+
+  chooseQuizHistory(idH: string){
+    this.historyService.getHistory(idH);
+    this.historyService.quizHistorySelected$.subscribe((history: QuizHistory) => {
+      console.log("ok")
+      this.historyQuiz = history;
+    });
+    console.log("kkk")
+
+  }
+
+  affiche(qu : any){
+    this.current = qu.nom
+  }
+
+
 }
 
 
