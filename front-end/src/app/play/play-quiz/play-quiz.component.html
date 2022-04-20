@@ -1,22 +1,22 @@
 <div *ngIf="begin " class="yes-no">
     <p class="span">Bienvenue {{user.name}} <br>Quiz {{quiz.name}}</p>
     </div>
-  
+
     <div *ngIf="!begin ">
   <div *ngIf="toYesNo" class="yes-no">
   <p class="span">Questions avec <br>VRAI - FAUX</p>
   </div>
-  
+
   <div *ngIf="!isEnd()"class='card-play' >
     <table>
         <td class="number"><span class="quiz-info">
              Question {{indexQuiz + 1}} / {{quiz.questions.length}} </span>
             </td>
-        <td class="question"> <span class="question-title">{{quiz.questions[indexQuiz].label}} 
+        <td class="question"> <span class="question-title">{{quiz.questions[indexQuiz].label}}
         </span></td>
         <td  class="name"> <span class="quiz-info"> {{quiz.name}} </span> </td>
     </table>
-  
+
     <div   *ngIf="!resultAffiche" >
     <div class="row">
     <div class="column" *ngFor="let answer of  getAnswers(quiz.questions[indexQuiz]) ; let i = index;">
@@ -29,7 +29,7 @@
             <strong>{{this.voiceInfo}} {{service.text}}</strong>
         </div>
         <main>
-            <section>             
+            <section>
                 <div class="voice_wave" id="sound" style="text-align: center; visibility:visible;" *ngIf="user.vocal" >
                     <span></span>
                     <span></span>
@@ -80,6 +80,12 @@
             </section>
         </main>
     </div>
+
+    <div class="hints" *ngIf="user.hint">
+      Indice : {{question.indice}}
+    </div>
+
+    
     <div  *ngIf="resultAffiche">
     <div class="row">
         <div class="column">
@@ -92,7 +98,7 @@
   </div>
   <app-yes-no-quiz *ngIf="isEnd() && !toYesNo && user.withRecap"></app-yes-no-quiz>
   <app-recap-quiz *ngIf="isEnd() && !toYesNo && !user.withRecap"></app-recap-quiz>
-  
+
   </div>
 
-  
+

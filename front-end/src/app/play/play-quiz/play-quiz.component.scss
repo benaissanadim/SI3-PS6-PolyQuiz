@@ -14,4 +14,12 @@
 .yes-no{
     position: relative;
     margin-top: 15%;
+
+
+  .hints {
+    position: absolute;
+    bottom: 5vh;
+    font-size: 1rem;
+    font-weight: 600;
+  }
 }
