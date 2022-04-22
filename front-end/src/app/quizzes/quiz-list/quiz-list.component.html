@@ -1,12 +1,15 @@
-<section class="quiz-list">
-    <button type="button" class="button" routerLink="/quiz-add/{{idUser}}">
+
+  <span *ngIf="user.role===0" class="nom" > Bienvenue {{user.name}}
+  </span>
+  <span class="bt">
+    <button *ngIf="user.role===1" class="button" type="button" routerLink="/quiz-add/{{idUser}}">
         <span class="buttontext"> Ajouter Quiz</span>
         <span class="buttonicon"><i class="fa fa-plus"></i></span>
-    </button>
+    </button></span>
     <div class="quiz-container">
     <div class="quiz" *ngFor="let quiz of quizList" >
         <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"
-                  [idUser]="idUser"></app-quiz>
+                  [idUser]="idUser" ></app-quiz>
     </div>
   </div>
-</section>
+

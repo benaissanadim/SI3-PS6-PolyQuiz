@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { User } from 'src/models/user.model';
+import { UserService } from 'src/services/user.service';
 import { Quiz } from '../../../models/quiz.model';
 
 @Component({
@@ -10,6 +12,8 @@ export class QuizComponent implements OnInit {
 
   @Input()
   quiz: Quiz;
+
+  user: User;
 
   @Input()
   idUser : Number
@@ -24,10 +28,21 @@ export class QuizComponent implements OnInit {
   @Output()
   deleteQuiz: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
-  constructor() {
+  constructor( private userService: UserService) {
   }
 
   ngOnInit() {
+    this.userService.setSelectedUser(this.idUser.toString())
+    this.userService.userSelected$.subscribe((userr: User) => {
+      console.log(userr)
+      this.user = userr;
+      console.log(this.user)
+
+    });
+    console.log("final")
+
+    console.log(this.user)
+
   }
 
   selectQuiz() {

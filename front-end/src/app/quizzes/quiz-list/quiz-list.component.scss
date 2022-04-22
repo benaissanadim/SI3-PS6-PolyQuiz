@@ -7,12 +7,35 @@
 
 .quiz-container{
   display: grid; 
-  grid-template-columns : 1fr 1fr 1fr  ;
-  grid-column-gap :5px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap :10px;
+  grid-row-gap: 10px;
 }
 
+.nom{
+  font-size: 30px;
+  margin-top: 2%;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 2%;
+}
+
+
+.image{
+  width: 15%;
+  height: 15%;
+  border-radius: 10px;
+  margin-bottom: 2%;}
+
+  .bt{
+    margin-top: 2%;
+    display: flex;
+    justify-content: right;
+    margin-bottom: 2%;
+  }
+
 .button{
-  display: inline-flex;
   height : 50px;
   padding : 0 ;
   background-color: #009578;
@@ -24,7 +47,6 @@
   font-size: 16px;
   font-weight: 500;
   cursor : pointer;
-  margin-left: 1150px;
 }
 
 .button:hover{
@@ -47,10 +69,3 @@
   background: rgba(0,0,0,0.08);
 }
 
-
-.container{
-  padding-top: 50px;
-  padding-right: 30px;
-  padding-bottom: 50px;
-  padding-left: 80px;
-}
