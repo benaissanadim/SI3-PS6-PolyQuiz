@@ -8,6 +8,7 @@ export interface User{
   hint ?:boolean
   vocal ?:boolean
   password ?: string;
-  role ?: number
+  role ?: number;
+  disabledQuestions: string[];
 
 }

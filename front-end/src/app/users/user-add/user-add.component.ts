@@ -28,7 +28,9 @@ export class UserAddComponent implements OnInit{
       withRecap:true,
       deleteFalseAnswer:false,
       hint:false,
-      vocal:false
+      vocal:false,
+      role:0,
+      disabledQuestions: []
     };
 
   }
@@ -59,7 +61,7 @@ export class UserAddComponent implements OnInit{
         this.user.hint = false;
         this.user.deleteFalseAnswer = false;
         this.user.withRecap = false;
-        this.user.vocal = true 
+        this.user.vocal = true
         break;
     }
   }

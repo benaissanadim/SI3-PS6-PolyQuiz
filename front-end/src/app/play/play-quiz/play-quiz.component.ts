@@ -28,6 +28,7 @@ export class PlayQuizComponent implements OnInit {
   indice : boolean = false
   resultAffiche: boolean = false;
   listAnswer: Answer[];
+  questionList: Question[];
   toYesNo: boolean = false;
   begin: boolean = true;
   indexQuiz: number = -1;
@@ -107,7 +108,7 @@ export class PlayQuizComponent implements OnInit {
       questions : questionHistory
     };
     this.historyService.addHistory(this.quizHistory, this.user.id)
-    
+
   }
 
 
@@ -184,6 +185,22 @@ export class PlayQuizComponent implements OnInit {
     this.textspeechService.speak(text);
 
   }
+  removeDisabledQuestions(): void {
+    const questToRemove: Question[] = [];
+    this.questionList.forEach((question) => {
+      if (this.user.disabledQuestions.indexOf(question.label) > -1) {
+        questToRemove.push(question);
+      }
+    });
+    this.questionList = this.questionList.filter( (el) => {
+      return !questToRemove.includes(el);
+    });
+  }
+  getQuestion(){
+    this.questionList = this.quiz.questions
+    this.removeDisabledQuestions();
+    return this.questionList;
+  }
 
   isEnd() {
     return this.indexQuiz >= this.quiz.questions.length;
@@ -219,7 +236,7 @@ export class PlayQuizComponent implements OnInit {
       setTimeout(()=> {this.startVoice()},10000);
       if (this.indexQuiz === this.quiz.questions.length && this.user.withRecap) {
         this.toYesNo = true;
-        
+
       }
     }, 6000);
   }

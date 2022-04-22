@@ -67,6 +67,21 @@ export class UserHistoryComponent implements OnInit {
   affiche(qu : any){
     this.current = qu.nom
   }
+  isDisabled(question: string): boolean {
+    return this.user.disabledQuestions.indexOf(question) > -1;
+  }
+
+  disable(question: string): void {
+    console.log(this.user)
+    console.log(this.user.disabledQuestions.indexOf(question));
+    if (this.user.disabledQuestions.indexOf(question) > -1) {
+      this.user.disabledQuestions.splice(this.user.disabledQuestions.indexOf(question), 1);
+    } else {
+      this.user.disabledQuestions.push(question);
+    }
+    this.userService.updateUser(this.user);
+
+  }
 
 
 }

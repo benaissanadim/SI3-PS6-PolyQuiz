@@ -12,4 +12,5 @@ module.exports = new BaseModel('User', {
   stade: Joi.string(),
   password : Joi.string(),
   role : Joi.number(),
+  disabledQuestions: Joi.array().required(),
 })
