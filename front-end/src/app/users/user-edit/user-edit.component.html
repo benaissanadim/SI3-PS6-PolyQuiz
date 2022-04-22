@@ -1,7 +1,7 @@
 <section class="get-in-touch">
 
-<div class ="title"><span>Modifier un utilisateur </span> 
-<span class="img"> <img class="image" [src]="user.image"> </span>  </div>
+<div class ="title"><span>Modifier un utilisateur </span>
+<span class="img"> <img *ngIf="user"class="image" [src]="user.image"> </span>  </div>
 <div class="card">
 
   <form (ngSubmit)="updateUser()" *ngIf="user" #f="ngForm" class="contact-form row" >

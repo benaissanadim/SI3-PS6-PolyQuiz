@@ -1,34 +1,39 @@
 
   <div class="header">
-    <h1>Historique</h1>
-    <img src="{{user.image}}" alt="user-picture" class="user-picture">
+    <h1 class="title">Historique</h1>
+    <img *ngIf="user" src="{{user.image}}" alt="user-picture" class="user-picture">
   </div>
-  test
   <div class="card" >
   <div id="list">
     <ul>
     <li class="element" *ngFor="let instance of history" routerLink="/user-history/{{user.id}}">
-      <span class="name"><button (click)="chooseQuizHistory(instance.id)">{{instance.name}}</button></span> <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+      <span class="name"><button class="quiz-selection"(click)="chooseQuizHistory(instance.id)">{{instance.name}}</button></span>
     </li>
   </ul>
 </div>
   <div id="main">
-    <div *ngIf="!historyQuiz">
+    <div class="text" *ngIf="!historyQuiz">
       aucun historique séléctionné
     </div>
-    
-    <div *ngIf="historyQuiz">
-      nom : {{historyQuiz.name}}  
 
-      <div *ngFor="let qu of historyQuiz.questions">
-        {{qu.nom}} Fait {{getNbCorrect(qu)}}/{{qu.answers.length}} Justes  <button (click)="affiche(qu)"> afficher détails</button>
-        <div *ngIf="qu.nom===current" >
-        <div *ngFor="let ans of qu.answers ">
+    <div *ngIf="historyQuiz" class="history-text">
+      Nom : {{historyQuiz.name}}
+
+      <div *ngFor="let question of historyQuiz.questions">
+        {{question.nom}} Fait {{getNbCorrect(question)}}/{{question.answers.length}} Justes  <button (click)="affiche(question)"> afficher détails</button>
+        <button (click)="disable(question)">{{isDisabled(question) ? 'Reactiver' : 'Desactiver'}}</button>
+
+        <div *ngIf="question.nom===current" >
+        <div *ngFor="let ans of question.answers ">
+
         <div [ngStyle]="{'color':ans.correct ? 'green' : 'red' }">
-       A répondu  {{ans.answer}}  le {{ans.date | date:'short'}}</div> 
+
+       A répondu  {{ans.answer}}  le {{ans.date | date:'short'}}
+
+        </div>
       </div>
     </div>
 
-    </div>  
+    </div>
   </div>
 </div>
