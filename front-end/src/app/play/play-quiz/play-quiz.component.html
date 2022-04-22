@@ -20,7 +20,7 @@
 
     <div   *ngIf="!resultAffiche" >
     <div class="row">
-    <div class="column" *ngFor="let answer of  getAnswers(getQuestion()[indexQuiz]) ; let i = index;">
+    <div class="column" *ngFor="let answer of  getAnswers() ; let i = index;">
         <img class="image" (click)="answerQuestion(getQuestion()[indexQuiz].answers[i])" src="{{getQuestion()[indexQuiz].answers[i].image}}">
        <br> <button  [id]="'nombre'+i" class="button_rep" (click)="answerQuestion(getQuestion()[indexQuiz].answers[i])"  >
                 {{getQuestion()[indexQuiz].answers[i].value}}</button>
@@ -85,9 +85,6 @@
         </main>
     </div>
 
-
-
-
     <div  *ngIf="resultAffiche">
     <div class="row">
         <div class="column">
@@ -98,8 +95,8 @@
     </div>
     </div>
   </div>
-  <app-yes-no-quiz *ngIf="isEnd() && !toYesNo && user.withRecap"></app-yes-no-quiz>
-  <app-recap-quiz *ngIf="isEnd() && !toYesNo && !user.withRecap"></app-recap-quiz>
+  <app-yes-no-quiz [questions]="questionList" *ngIf="isEnd() && !toYesNo && user.withRecap"></app-yes-no-quiz>
+  <app-recap-quiz [questions]="getQuestion()" *ngIf="isEnd() && !toYesNo && !user.withRecap"></app-recap-quiz>
 
   </div>
 </div>

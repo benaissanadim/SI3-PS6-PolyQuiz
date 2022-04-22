@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Answer, Question } from '../../../models/question.model';
 import { Quiz } from '../../../models/quiz.model';
@@ -19,6 +19,8 @@ export class YesNoQuizComponent implements OnInit {
   resultAffiche : boolean = false;
   answerToPrint : Answer;
   valueAdded: boolean = false;
+  @Input()
+  questions : Question[]
 
   constructor( private textspeechService: TextSpeechService,
     private route: ActivatedRoute,
@@ -26,11 +28,12 @@ export class YesNoQuizComponent implements OnInit {
     this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
   }
   ngOnInit(): void {
+    console.log(this.questions)
     const idQuiz = this.route.snapshot.paramMap.get('idQuiz');
     this.quizService.setSelectedQuiz(idQuiz);
   }
   isEnd() {
-    return this.indexQuiz >= this.quiz.questions.length;
+    return this.indexQuiz >= this.questions.length;
   }
   ngAfterViewInit(){
     this.speak();
@@ -38,8 +41,8 @@ export class YesNoQuizComponent implements OnInit {
   }
   getCorrectAnswer() {
     for (let i = 0; i < 4; i++) {
-      if (this.quiz.questions[this.indexQuiz].answers[i].isCorrect) {
-        return this.quiz.questions[this.indexQuiz].answers[i];
+      if (this.questions[this.indexQuiz].answers[i].isCorrect) {
+        return this.questions[this.indexQuiz].answers[i];
       }
     }
   }
@@ -54,7 +57,7 @@ export class YesNoQuizComponent implements OnInit {
 
 
   public speakQuestion(): void {
-    var text = this.quiz.questions[this.indexQuiz].label + '\n';
+    var text = this.questions[this.indexQuiz].label + '\n';
     text+= 'C est : ' + this.printAnswer().value+ '?\n';
     text += '1- VRAI \n 2- FAUX'
     this.textspeechService.speak(text);
@@ -70,8 +73,8 @@ export class YesNoQuizComponent implements OnInit {
 
   printAnswer(){
     if(this.valueAdded === false){
-      const rand = Math.floor(Math.random() * this.quiz.questions[this.indexQuiz].answers.length);
-      this.answerToPrint =  this.quiz.questions[this.indexQuiz].answers[rand];
+      const rand = Math.floor(Math.random() * this.questions[this.indexQuiz].answers.length);
+      this.answerToPrint =  this.questions[this.indexQuiz].answers[rand];
       this. valueAdded = true ;
     }
     return this.answerToPrint ;

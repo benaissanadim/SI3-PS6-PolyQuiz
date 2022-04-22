@@ -1,7 +1,7 @@
 <div class='card-play'>
     <div class ="title"> Recapitulatif Final</div>
       <table class="table">
-        <tr *ngFor="let question of quiz.questions; let q=index;">
+        <tr *ngFor="let question of questions; let q=index;">
           <td class="question">{{ question.label }}</td>
           <td class="answer">{{getCorrectAnswer(q).value}} 
             <br><img class="image"  src="{{getCorrectAnswer(q).image}}">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Answer, Question } from 'src/models/question.model';
 import { Quiz } from 'src/models/quiz.model';
@@ -15,6 +15,8 @@ export class RecapQuizComponent implements OnInit {
   public answer: Answer;
   public quiz: Quiz;
   public idUser : string;
+  @Input()
+  questions : Question[]
   
 constructor(private route: ActivatedRoute,private quizService: QuizService, 
   private userService: UserService,private router: Router) {
@@ -22,6 +24,7 @@ constructor(private route: ActivatedRoute,private quizService: QuizService,
   }
 
   ngOnInit(): void {
+    console.log(this.questions)
     const idQuiz = this.route.snapshot.paramMap.get('idQuiz');
     this.quizService.setSelectedQuiz(idQuiz);
     this.idUser = this.route.snapshot.paramMap.get('idUser');

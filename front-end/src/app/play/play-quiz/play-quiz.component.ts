@@ -64,21 +64,15 @@ export class PlayQuizComponent implements OnInit {
     this.quizService.setSelectedQuiz(this.idQuiz);
     this.idUser = this.route.snapshot.paramMap.get('idUser');
     this.userService.setSelectedUser(this.idUser);
-      console.log("test")
-    console.log(document.getElementById('sound'))
 
   }
 
   beginHistory(): void {
-
-
     this.historyService.getHistories(this.idUser, this.idQuiz)
     this.historyService.quizHistories2$.subscribe((histories: QuizHistory[]) => {
       this.quizHistory = histories[0];
     });
-
       setTimeout(() => {
-         console.log("finaltest")
          if(this.quizHistory === undefined){
            this.initHistory();}
       }, 1000);
@@ -91,8 +85,8 @@ export class PlayQuizComponent implements OnInit {
     for(let i = 0 ; i< this.quiz.questions.length; i++){
 
       const quH = {
-        id : this.quiz.questions[i].id,
-        nom : this.quiz.questions[i].label,
+        id : this.getQuestion()[i].id,
+        nom : this.getQuestion()[i].label,
         answers : [],
         recaps: []
       }
@@ -131,10 +125,9 @@ export class PlayQuizComponent implements OnInit {
       console.log(this.service.text);
       let index = 0;
       let tab: string[] = [];
-      for (let i = 0;i < this.quiz.questions[this.indexQuiz].answers.length;i++) {
-        tab.push((this.quiz.questions[this.indexQuiz].answers[i].value));
+      for (let i = 0;i < this.getQuestion()[this.indexQuiz].answers.length;i++) {
+        tab.push((this.getQuestion()[this.indexQuiz].answers[i].value));
       }
-      console.log(tab)
 
       for (; index < tab.length; index++) {
         if (tab[index].toLowerCase() === this.service.text.toLowerCase()) {
@@ -169,9 +162,9 @@ export class PlayQuizComponent implements OnInit {
 
 
   public speakQuestion(): void {
-    var text = this.getQuestion[this.indexQuiz].label + '\n';
+    var text = this.getQuestion()[this.indexQuiz].label + '\n';
     var i = 0;
-    this.getQuestion[this.indexQuiz].answers.forEach(ans => {
+    this.getQuestion()[this.indexQuiz].answers.forEach(ans => {
       i++;
       text += i + " " + ans.value + '\n'
     })
@@ -205,8 +198,8 @@ export class PlayQuizComponent implements OnInit {
     return this.indexQuiz >= this.getQuestion().length;
   }
 
-  getAnswers(question: Question) {
-    console.log(this.getQuestion())
+  getAnswers() {
+    this.listAnswer = this.getQuestion()[this.indexQuiz].answers;
     return this.listAnswer;
   }
 
@@ -217,8 +210,8 @@ export class PlayQuizComponent implements OnInit {
 
   getCorrectAnswer() {
     for (let i = 0; i < 4; i++) {
-      if (this.quiz.questions[this.indexQuiz].answers[i].isCorrect) {
-        return this.quiz.questions[this.indexQuiz].answers[i];
+      if (this.questionList[this.indexQuiz].answers[i].isCorrect) {
+        return this.questionList[this.indexQuiz].answers[i];
       }
     }
   }
@@ -233,7 +226,7 @@ export class PlayQuizComponent implements OnInit {
       this.speak();
       this.voiceInfo = this.info ;
       setTimeout(()=> {this.startVoice()},10000);
-      if (this.indexQuiz === this.quiz.questions.length && this.user.withRecap) {
+      if (this.indexQuiz === this.getQuestion().length && this.user.withRecap) {
         this.toYesNo = true;
 
       }
@@ -241,7 +234,6 @@ export class PlayQuizComponent implements OnInit {
   }
 
   answerQuestion(answer: Answer) {
-    console.log(this.quiz.questions[this.indexQuiz])
     this.beginHistory();
     setTimeout(() => {
       this.answerHistory = {
@@ -249,16 +241,16 @@ export class PlayQuizComponent implements OnInit {
         answer : answer.value,
         correct : answer.isCorrect,
         userId : this.user.id,
-        questionHistoryId : this.quiz.questions[this.indexQuiz].id
+        questionHistoryId : this.getQuestion()[this.indexQuiz].id
       }
-      this.historyService.addAnswerHistory(this.quizHistory.id,this.quiz.questions[this.indexQuiz].id,this.answerHistory)
+      this.historyService.addAnswerHistory(this.quizHistory.id,this.getQuestion()[this.indexQuiz].id,this.answerHistory)
     this.textspeechService.stop();
     if (answer.isCorrect) {
       this.resultDisplay()
     } else {
       this.indice = true;
       if (this.user.deleteFalseAnswer) {
-        this.deleteFalse(this.quiz.questions[this.indexQuiz], answer);
+        this.deleteFalse(this.getQuestion()[this.indexQuiz], answer);
       }
       else {
         this.resultDisplay();

@@ -2,9 +2,9 @@
 <div *ngIf="!isEnd() " class='card-play' >
   <table>
     <td class="number"><span class="quiz-info">
-         Question {{indexQuiz + 1}} / {{quiz.questions.length}} </span>
+         Question {{indexQuiz + 1}} / {{questions.length}} </span>
         </td>
-    <td class="question"> <span class="question-title">{{quiz.questions[indexQuiz].label}}
+    <td class="question"> <span class="question-title">{{questions[indexQuiz].label}}
     </span></td>
     <td  class="name"> <span class="quiz-info"> {{quiz.name}} </span> </td>
 </table>
@@ -33,5 +33,5 @@
   </div>
 </div>
 
-<app-recap-quiz *ngIf="isEnd() "></app-recap-quiz>
+<app-recap-quiz [questions]="questions" *ngIf="isEnd() "></app-recap-quiz>
 </div>
