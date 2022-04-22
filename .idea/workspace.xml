@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3cce4f89-1d68-4cb2-bc0e-89a2a46ccfcd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/app/play/play-quiz/play-quiz.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/app/play/play-quiz/play-quiz.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/app/play/play-quiz/play-quiz.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/app/play/play-quiz/play-quiz.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/app/questions/question/question.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/app/questions/question/question.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/src/app/users/user-add/user-add.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/app/users/user-add/user-add.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/src/app/login/login.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +44,7 @@
       <workItem from="1648840346653" duration="3760000" />
       <workItem from="1649897188272" duration="9883000" />
       <workItem from="1650488857666" duration="7776000" />
+      <workItem from="1650667983088" duration="732000" />
     </task>
     <servers />
   </component>
