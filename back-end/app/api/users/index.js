@@ -5,6 +5,16 @@ const manageAllErrors = require('../../utils/routes/error-management')
 
 const router = new Router()
 
+router.get('/:name/:password', (req, res) => {
+  try {
+    res.status(200).json(User.get().filter((user) => (
+      user.name.localeCompare(req.params.name)  ===0
+      &&   user.password.localeCompare(req.params.password) ===0  )))
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
+
 router.get('/', (req, res) => {
   try {
     res.status(200).json(User.get())
@@ -53,5 +63,7 @@ router.post('/:userId', (req, res) => {
     manageAllErrors(res, err)
   }
 })
+
+
 
 module.exports = router
