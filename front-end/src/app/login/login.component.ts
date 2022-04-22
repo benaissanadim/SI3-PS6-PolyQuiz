@@ -13,7 +13,7 @@ import { UserService } from 'src/services/user.service';
     public idUser : String
   errormessage = false;
 
-    
+
     constructor(public router : Router,private userService : UserService){
 
 
@@ -25,6 +25,7 @@ import { UserService } from 'src/services/user.service';
     id: '0',
     name:'',
     password:'',
+    disabledQuestions:[],
   };
 }
 
@@ -46,10 +47,10 @@ login(){
 
 
   } );
-  
+
 }
 
-  
+
 
 
   }
