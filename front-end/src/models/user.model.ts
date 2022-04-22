@@ -9,6 +9,6 @@ export interface User{
   vocal ?:boolean
   password ?: string;
   role ?: number;
-  disabledQuestions: string[];
+  disabledQuestions?: string[];
 
 }

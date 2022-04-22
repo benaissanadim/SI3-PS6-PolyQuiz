@@ -21,7 +21,7 @@
 
       <div *ngFor="let question of historyQuiz.questions">
         {{question.nom}} Fait {{getNbCorrect(question)}}/{{question.answers.length}} Justes  <button (click)="affiche(question)"> afficher détails</button>
-        <button (click)="disable(question)">{{isDisabled(question) ? 'Reactiver' : 'Desactiver'}}</button>
+        <button (click)="disable(question.nom)">{{isDisabled(question.nom) ? 'Reactiver' : 'Desactiver'}}</button>
 
         <div *ngIf="question.nom===current" >
         <div *ngFor="let ans of question.answers ">

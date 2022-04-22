@@ -56,7 +56,6 @@ export class PlayQuizComponent implements OnInit {
     this.voiceInfo = this.info;
     setTimeout(() => {
       this.begin = false, this.indexQuiz++ ; this.speak();
-
       setTimeout(()=> {
         this.startVoice()
      },10000);
@@ -170,9 +169,9 @@ export class PlayQuizComponent implements OnInit {
 
 
   public speakQuestion(): void {
-    var text = this.quiz.questions[this.indexQuiz].label + '\n';
+    var text = this.getQuestion[this.indexQuiz].label + '\n';
     var i = 0;
-    this.quiz.questions[this.indexQuiz].answers.forEach(ans => {
+    this.getQuestion[this.indexQuiz].answers.forEach(ans => {
       i++;
       text += i + " " + ans.value + '\n'
     })
@@ -203,12 +202,12 @@ export class PlayQuizComponent implements OnInit {
   }
 
   isEnd() {
-    return this.indexQuiz >= this.quiz.questions.length;
+    return this.indexQuiz >= this.getQuestion().length;
   }
 
   getAnswers(question: Question) {
-    this.listAnswer = question.answers;
-    return question.answers;
+    console.log(this.getQuestion())
+    return this.listAnswer;
   }
 
   deleteFalse(question: Question, answer: Answer): void {
