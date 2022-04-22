@@ -17,7 +17,9 @@ router.get('/:name/:password', (req, res) => {
 
 router.get('/', (req, res) => {
   try {
-    res.status(200).json(User.get())
+    res.status(200).json(User.get().filter((user) => (
+        user.role===0
+         )))
   } catch (err) {
     manageAllErrors(res, err)
   }
