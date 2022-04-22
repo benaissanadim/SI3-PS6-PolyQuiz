@@ -16,9 +16,7 @@ export class UserAddComponent implements OnInit{
 
   public user: User;
 
-  constructor( public router : Router,
-              public formBuilder: FormBuilder, private userService: UserService) {
-
+  constructor( public router : Router, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -58,7 +56,7 @@ export class UserAddComponent implements OnInit{
         this.user.vocal = false ;
         break;
       case 'severe':
-        this.user.hint = true;
+        this.user.hint = false;
         this.user.deleteFalseAnswer = false;
         this.user.withRecap = false;
         this.user.vocal = true 

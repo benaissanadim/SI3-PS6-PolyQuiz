@@ -25,6 +25,7 @@ export class PlayQuizComponent implements OnInit {
   public question: Question;
   public quiz: Quiz;
   public user: User;
+  indice : boolean = false
   resultAffiche: boolean = false;
   listAnswer: Answer[];
   toYesNo: boolean = false;
@@ -58,7 +59,7 @@ export class PlayQuizComponent implements OnInit {
       setTimeout(()=> {
         this.startVoice()
      },10000);
-    }, 4000);
+    }, 2000);
     this.idQuiz = this.route.snapshot.paramMap.get('idQuiz');
     this.quizService.setSelectedQuiz(this.idQuiz);
     this.idUser = this.route.snapshot.paramMap.get('idUser');
@@ -207,9 +208,9 @@ export class PlayQuizComponent implements OnInit {
   }
 
   resultDisplay() {
+    this.indice = true
     this.resultAffiche = true;
     this.speak();
-
     setTimeout(() => {
       this.resultAffiche = false;
       this.indexQuiz++;
@@ -224,6 +225,7 @@ export class PlayQuizComponent implements OnInit {
   }
 
   answerQuestion(answer: Answer) {
+    console.log(this.quiz.questions[this.indexQuiz])
     this.beginHistory();
     setTimeout(() => {
       this.answerHistory = {
@@ -238,6 +240,7 @@ export class PlayQuizComponent implements OnInit {
     if (answer.isCorrect) {
       this.resultDisplay()
     } else {
+      this.indice = true;
       if (this.user.deleteFalseAnswer) {
         this.deleteFalse(this.quiz.questions[this.indexQuiz], answer);
       }

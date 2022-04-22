@@ -1,5 +1,5 @@
 <div *ngIf="begin " class="yes-no">
-    <p class="span">Bienvenue {{user.name}} <br>Quiz {{quiz.name}}</p>
+    <p class="span">Quiz {{quiz.name}}</p>
     </div>
 
     <div *ngIf="!begin ">
@@ -25,6 +25,9 @@
                 {{quiz.questions[indexQuiz].answers[i].value}}</button>
     </div>
     </div>
+    <span class="hints" *ngIf="user.hint && indice && quiz.questions[indexQuiz].indice">
+        Indice : {{quiz.questions[indexQuiz].indice}}
+    </span>
         <div style="text-align: center" *ngIf="user.vocal">
             <strong>{{this.voiceInfo}} {{service.text}}</strong>
         </div>
@@ -79,11 +82,9 @@
                 </div>
             </section>
         </main>
-    </div>
+    </div> 
+    
 
-    <div class="hints" *ngIf="user.hint">
-      Indice : {{question.indice}}
-    </div>
 
     
     <div  *ngIf="resultAffiche">

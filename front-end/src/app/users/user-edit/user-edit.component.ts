@@ -47,7 +47,7 @@ export class UserEditComponent implements OnInit{
         this.user.vocal = false ;
         break;
       case 'severe':
-        this.user.hint = true;
+        this.user.hint = false;
         this.user.deleteFalseAnswer = false;
         this.user.withRecap = false;
         this.user.vocal = true
