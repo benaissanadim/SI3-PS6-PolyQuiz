@@ -4,8 +4,13 @@
   <div class="text-center mt-4 name"> Connexion </div>
   <br>
   <form class="p-3 mt-3">
-    <div class="form-field d-flex align-items-center">  <input type="text" name="userName" id="userName" placeholder="Nom d'utilisateur"> </div>
-    <div class="form-field d-flex align-items-center"> <input type="password" name="password" id="pwd" placeholder="Mot de passe"> </div> <button class="btn mt-3">Connexion</button>
+    <div class="form-field d-flex align-items-center"> 
+       <input type="text" name="userName" id="userName" [(ngModel)]="user.name"  placeholder="Nom d'utilisateur"> </div>
+    <div class="form-field d-flex align-items-center">
+       <input type="password" name="password" id="pwd" [(ngModel)]="user.password"  placeholder="Mot de passe"> </div>
+       <button type="submit" (click)="login()" class="btn mt-3">Connexion</button>
   </form>
-  <div class="text-center fs-6"> <a href="#">Mot de passe oublié?</a>  </div>
+  <div class="error" *ngIf="errormessage">
+    nom d'utilisateur / mot de passe incorrecte
+  </div>
 </div>
