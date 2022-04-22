@@ -1,29 +1,27 @@
 @import '../../quizzes/quiz-form/quiz-form.component.scss';
 
-.header {
-  display: flex;
-  justify-content: center;
-  padding-block: 0.5em;
-  padding-inline: 1em;
-}
+
 
 
 .get-in-touch {
-  max-width: 800px;
-  margin: 50px auto;
+  max-width: 1000px;
+  margin: 30px auto;
   position: relative;
 
 }
 .radio-button{
   padding-bottom: 20px;
 }
-.get-in-touch .title {
+ .title {
+  display: flex;
+  justify-content: right;
   text-align: center;
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 3.1em;
-  line-height: 48px;
-  padding-bottom: 30px;
+  line-height: 50px;
+  padding-bottom: 40px;
   color: #5543ca;
   background: #5543ca;
   background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
@@ -34,8 +32,11 @@
 }
 
 .contact-form .form-field {
+  display: inline-block;
+  width: 48%;
   position: relative;
   margin: 32px 0;
+  padding : 10px
 }
 .contact-form .input-text {
   display: block;
