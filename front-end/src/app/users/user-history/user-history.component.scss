@@ -16,7 +16,119 @@ width:20%;
 .green{
    color: green;
 }
+.quiz-selection{
+  display: block;
+  margin: 40px 0;
+  width: 200px;
+  height: 60px;
+  border: none;
+  background-color: #00a8ff;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: .3s linear;
+}
 
 .red{
     color: red;
 }
+.title{
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 2.9em;
+  line-height: 48px;
+  padding-bottom: 30px;
+  color: #5543ca;
+  background: #5543ca;
+  background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+  background: -webkit-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+  background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+.user-picture {
+  position: absolute;
+  right: 5vw;
+  top: 17vh;
+  width: 125px;
+  height: 100px;
+  border: 3px black solid;
+  padding: 5px;
+  border-radius: 10px;
+}
+.text{
+  font-family: "didot";
+  font-size: 1.5em;
+}
+.user{
+  position: absolute;
+  right: 7vw;
+  top: 13vh;
+}
+.afficher{
+  display: inline-flex;
+  align-items: center;
+  background: #C06C84;
+  box-shadow: 0 3px 2px 0 rgba(0,0,0,0.1);
+  border-radius: 5px;
+  height: 20px;
+  padding: 0 30px;
+  color: #fff;
+  font-family: Lato, Arial, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .3s, transform .3s, box-shadow .3s;
+  will-change: transform;
+
+  &:hover {
+    background: darken(#C06C84,10%);
+    box-shadow: 0 4px 17px rgba(0,0,0,0.2);
+
+  }
+  &:active {
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+
+  }
+}
+.activer{
+  display: inline-flex;
+  align-items: center;
+
+  background: #C06C84;
+  box-shadow: 0 3px 2px 0 rgba(0,0,0,0.1);
+  border-radius: 5px;
+  height: 20px;
+  padding: 0 30px;
+  margin-left: 1em;
+  margin-right: 1em;
+  color: #fff;
+  font-family: Lato, Arial, sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .3s, transform .3s, box-shadow .3s;
+  will-change: transform;
+
+  &:hover {
+    background: darken(#C06C84,10%);
+    box-shadow: 0 4px 17px rgba(0,0,0,0.2);
+
+  }
+  &:active {
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+
+  }
+}
+p {
+  padding: 0.5rem;
+  font-weight: 600;
+}
+.aucun{
+  right:37vw;
+  position: absolute;
+}
+
+
+

@@ -1,39 +1,42 @@
 
-  <div class="header">
-    <h1 class="title">Historique</h1>
-    <img *ngIf="user" src="{{user.image}}" alt="user-picture" class="user-picture">
-  </div>
-  <div class="card" >
+<div class="header">
+  <h1 class="title">Historique</h1>
+
+  <div class="user"> <i class="fa fa-user">{{user.name}}</i></div>
+  <img *ngIf="user" src="{{user.image}}" alt="user-picture" class="user-picture">
+
+</div>
+<div class="card" >
   <div id="list">
     <ul>
-    <li class="element" *ngFor="let instance of history" routerLink="/user-history/{{user.id}}">
-      <span class="name"><button class="quiz-selection"(click)="chooseQuizHistory(instance.id)">{{instance.name}}</button></span>
-    </li>
-  </ul>
-</div>
+      <li class="element" *ngFor="let instance of history" routerLink="/user-history/{{user.id}}">
+        <span class="name"><button class="quiz-selection"(click)="chooseQuizHistory(instance.id)">{{instance.name}}</button></span>
+      </li>
+    </ul>
+  </div>
   <div id="main">
     <div class="text" *ngIf="!historyQuiz">
-      aucun historique séléctionné
+      <p class="aucun">Aucun historique séléctionné</p>
     </div>
 
     <div *ngIf="historyQuiz" class="history-text">
-      Nom : {{historyQuiz.name}}
+      <h2>Nom <span>: {{historyQuiz.name}}</span></h2>
 
       <div *ngFor="let question of historyQuiz.questions">
-        {{question.nom}} Fait {{getNbCorrect(question)}}/{{question.answers.length}} Justes  <button (click)="affiche(question)"> afficher détails</button>
-        <button (click)="disable(question.nom)">{{isDisabled(question.nom) ? 'Reactiver' : 'Desactiver'}}</button>
+        <h2>{{question.nom}} Fait {{getNbCorrect(question)}}/{{question.answers.length}} Justes  <button class="afficher"(click)="affiche(question)"> afficher détails</button>
+          <button class="activer"(click)="disable(question.nom)">{{isDisabled(question.nom) ? 'Reactiver' : 'Desactiver'}}</button></h2>
 
         <div *ngIf="question.nom===current" >
-        <div *ngFor="let ans of question.answers ">
+          <div *ngFor="let ans of question.answers ">
 
-        <div [ngStyle]="{'color':ans.correct ? 'green' : 'red' }">
+            <div [ngStyle]="{'color':ans.correct ? 'green' : 'red' }">
 
-       A répondu  {{ans.answer}}  le {{ans.date | date:'short'}}
+              <p>{{ans.answer}}  le {{ans.date | date:'short'}}</p>
 
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
-
-    </div>
   </div>
-</div>
