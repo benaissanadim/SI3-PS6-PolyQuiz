@@ -22,6 +22,7 @@ import  {UserAddComponent} from './users/user-add/user-add.component';
 import  {UserEditComponent} from './users/user-edit/user-edit.component';
 import { UserHistoryComponent } from './users/user-history/user-history.component';
 import { LoginComponent } from './login/login.component';
+import { AdminChoiceComponent } from './admin-choice/admin-choice.component';
 
 // @ts-ignore
 // @ts-ignore
@@ -45,6 +46,7 @@ import { LoginComponent } from './login/login.component';
     UserEditComponent,
     UserHistoryComponent,
     LoginComponent,
+    AdminChoiceComponent,
   ],
   imports: [
     BrowserModule,

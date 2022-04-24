@@ -45,18 +45,25 @@ td{
 
 .image{
   width: 50%;
-  height: 7%;
+  height: 80px;
 }
 
 .logo{
   width: 20%;
+  height: 30%;
   border-top-style : solid ;
   border-top-color : #f7a14e;
   border-top-width : 4px;
   color: #f7a14e;
+  cursor: pointer;
+
 }
 
-.deconnexion{
+.td2{
+  width: 40%;
+}
+
+.td1{
   width: 40%;
 }
 

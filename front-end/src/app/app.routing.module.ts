@@ -10,6 +10,8 @@ import  {UserAddComponent} from './users/user-add/user-add.component';
 import  {UserEditComponent} from './users/user-edit/user-edit.component';
 import { UserHistoryComponent } from './users/user-history/user-history.component';
 import { LoginComponent } from './login/login.component';
+import { AdminChoiceComponent } from './admin-choice/admin-choice.component';
+
 
 const routes: Routes = [
     {path: 'quiz-list/:idUser', component: QuizListComponent},
@@ -23,7 +25,7 @@ const routes: Routes = [
     {path:'edit-user/:id',component: UserEditComponent},
     {path:'user-history/:id' , component: UserHistoryComponent},
     {path: 'login', component: LoginComponent},
-
+    {path: 'choice-admin/:id', component: AdminChoiceComponent},
 ];
 
 @NgModule({
