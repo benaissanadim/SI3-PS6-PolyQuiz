@@ -1,33 +1,388 @@
 @import '../../../styles/play-card.scss';
-.span{
-    font-size: 50px;
-    font-weight: bold;
-    color: #c85306;
-    margin-right : 350px;
-    margin-left : 350px;
-    text-align: center;
-    border-top : 6px solid #c85306;
-    border-bottom: 6px solid #c85306;
-    line-height: 70px;
+
+
+/** Animation */
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:700");
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
-.yes-no{
-    position: relative;
-    margin-top: 15%;
+main {
+  position: relative;
+  width: 800px;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 5cm;
+}
+
+main section {
+  position: relative;
+  background: transparent;
+  //padding: 44px;
+  white-space: 100%;
+  height: 100px;
+  width: 800px;
+}
+
+section {
+  text-align: center;
+}
+
+.voice_wave {
+  position: relative;
+  height: 65%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (4px);
+  grid-template-columns: repeat(45, 4px);
+  -ms-grid-rows: 100%;
+  grid-template-rows: 100%;
+  grid-gap: 14px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  animation-delay: 2s;
+  visibility:hidden;
+}
 
 
-  .hints {
-    position: absolute;
-    bottom: 5vh;
-    font-size: 1rem;
-    font-weight: 600;
+
+.voice_wave span {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 2px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #201c26), color-stop(purple), color-stop(cyan), color-stop(rgb(161, 229, 224)), color-stop(cyan), color-stop(purple), color-stop(85%, #201c26));
+  background: linear-gradient(#201c26 5%, purple, cyan, rgb(161, 229, 224), cyan, purple, #201c26 85%);
+  -webkit-animation: bounce-001;
+  animation: bounce-001;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in;
+  animation-timing-function: ease-in;
+  -webkit-animation-duration: 900ms;
+  animation-duration: 900ms;
+  animation-delay: 2s;
+}
+
+.voice_wave span:nth-child(1) {
+  -webkit-animation-delay: 1500ms;
+  animation-delay: 1500ms;
+}
+
+.voice_wave span:nth-child(2) {
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
+}
+
+.voice_wave span:nth-child(3) {
+  -webkit-animation-delay: 150ms;
+  animation-delay: 150ms;
+}
+
+.voice_wave span:nth-child(4) {
+  -webkit-animation-delay: 200ms;
+  animation-delay: 200ms;
+}
+
+.voice_wave span:nth-child(5) {
+  -webkit-animation-delay: 250ms;
+  animation-delay: 250ms;
+}
+
+.voice_wave span:nth-child(6) {
+  -webkit-animation-delay: 300ms;
+  animation-delay: 300ms;
+}
+
+.voice_wave span:nth-child(7) {
+  -webkit-animation-delay: 350ms;
+  animation-delay: 350ms;
+}
+
+.voice_wave span:nth-child(8) {
+  -webkit-animation-delay: 400ms;
+  animation-delay: 400ms;
+}
+
+.voice_wave span:nth-child(9) {
+  -webkit-animation-delay: 450ms;
+  animation-delay: 450ms;
+}
+
+.voice_wave span:nth-child(10) {
+  -webkit-animation-delay: 500ms;
+  animation-delay: 500ms;
+}
+
+.voice_wave span:nth-child(11) {
+  -webkit-animation-delay: 550ms;
+  animation-delay: 550ms;
+}
+
+.voice_wave span:nth-child(12) {
+  -webkit-animation-delay: 600ms;
+  animation-delay: 600ms;
+}
+
+.voice_wave span:nth-child(13) {
+  -webkit-animation-delay: 650ms;
+  animation-delay: 650ms;
+}
+
+.voice_wave span:nth-child(14) {
+  -webkit-animation-delay: 700ms;
+  animation-delay: 700ms;
+}
+
+.voice_wave span:nth-child(15) {
+  -webkit-animation-delay: 750ms;
+  animation-delay: 750ms;
+}
+
+.voice_wave span:nth-child(16) {
+  -webkit-animation-delay: 800ms;
+  animation-delay: 800ms;
+}
+
+.voice_wave span:nth-child(17) {
+  -webkit-animation-delay: 850ms;
+  animation-delay: 850ms;
+}
+
+.voice_wave span:nth-child(18) {
+  -webkit-animation-delay: 900ms;
+  animation-delay: 900ms;
+}
+
+.voice_wave span:nth-child(19) {
+  -webkit-animation-delay: 950ms;
+  animation-delay: 950ms;
+}
+
+.voice_wave span:nth-child(20) {
+  -webkit-animation-delay: 1000ms;
+  animation-delay: 1000ms;
+}
+
+.voice_wave span:nth-child(21) {
+  -webkit-animation-delay: 1050ms;
+  animation-delay: 1050ms;
+}
+
+.voice_wave span:nth-child(22) {
+  -webkit-animation-delay: 1100ms;
+  animation-delay: 1100ms;
+}
+
+.voice_wave span:nth-child(23) {
+  -webkit-animation-delay: 1150ms;
+  animation-delay: 1150ms;
+}
+
+.voice_wave span:nth-child(24) {
+  -webkit-animation-delay: 1200ms;
+  animation-delay: 1200ms;
+}
+
+.voice_wave span:nth-child(25) {
+  -webkit-animation-delay: 1250ms;
+  animation-delay: 1250ms;
+}
+
+.voice_wave span:nth-child(26) {
+  -webkit-animation-delay: 1300ms;
+  animation-delay: 1300ms;
+}
+
+.voice_wave span:nth-child(27) {
+  -webkit-animation-delay: 1350ms;
+  animation-delay: 1350ms;
+}
+
+.voice_wave span:nth-child(28) {
+  -webkit-animation-delay: 1400ms;
+  animation-delay: 1400ms;
+}
+
+.voice_wave span:nth-child(29) {
+  -webkit-animation-delay: 1450ms;
+  animation-delay: 1450ms;
+}
+
+.voice_wave span:nth-child(30) {
+  -webkit-animation-delay: 1500ms;
+  animation-delay: 1500ms;
+}
+
+.voice_wave span:nth-child(31) {
+  -webkit-animation-delay: 1550ms;
+  animation-delay: 1550ms;
+}
+
+.voice_wave span:nth-child(32) {
+  -webkit-animation-delay: 1600ms;
+  animation-delay: 1600ms;
+}
+
+.voice_wave span:nth-child(33) {
+  -webkit-animation-delay: 1650ms;
+  animation-delay: 1650ms;
+}
+
+.voice_wave span:nth-child(34) {
+  -webkit-animation-delay: 1700ms;
+  animation-delay: 1700ms;
+}
+
+.voice_wave span:nth-child(35) {
+  -webkit-animation-delay: 1750ms;
+  animation-delay: 1750ms;
+}
+
+.voice_wave span:nth-child(36) {
+  -webkit-animation-delay: 1800ms;
+  animation-delay: 1800ms;
+}
+
+.voice_wave span:nth-child(37) {
+  -webkit-animation-delay: 1850ms;
+  animation-delay: 1850ms;
+}
+
+.voice_wave span:nth-child(38) {
+  -webkit-animation-delay: 1900ms;
+  animation-delay: 1900ms;
+}
+
+.voice_wave span:nth-child(39) {
+  -webkit-animation-delay: 1950ms;
+  animation-delay: 1950ms;
+}
+
+.voice_wave span:nth-child(40) {
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
+}
+
+.voice_wave span:nth-child(41) {
+  -webkit-animation-delay: 2050ms;
+  animation-delay: 2050ms;
+}
+
+.voice_wave span:nth-child(42) {
+  -webkit-animation-delay: 2100ms;
+  animation-delay: 2100ms;
+}
+
+.voice_wave span:nth-child(43) {
+  -webkit-animation-delay: 2150ms;
+  animation-delay: 2150ms;
+}
+
+.voice_wave span:nth-child(44) {
+  -webkit-animation-delay: 2200ms;
+  animation-delay: 2200ms;
+}
+
+.voice_wave span:nth-child(45) {
+  -webkit-animation-delay: 2250ms;
+  animation-delay: 2250ms;
+}
+
+.voice_wave span:nth-child(2n) {
+  -webkit-animation-name: bounce-002;
+  animation-name: bounce-002;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+}
+
+.voice_wave span:nth-child(3n) {
+  -webkit-animation-name: bounce-003;
+  animation-name: bounce-003;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.voice_wave:after {
+  position: absolute;
+  z-index: 3;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.25;
+  background: no-repeat 50% 50%;
+}
+
+@-webkit-keyframes bounce-001 {
+  0% {
+    height: 100%;
+  }
+  50% {
+    height: 50%;
+  }
+  100% {
+    height: 100%;
   }
 }
-.hints{
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
 
+@keyframes bounce-001 {
+  0% {
+    height: 100%;
+  }
+  50% {
+    height: 50%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@-webkit-keyframes bounce-002 {
+  0% {
+    height: 100%;
+  }
+  80% {
+    height: 30%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes bounce-002 {
+  0% {
+    height: 100%;
+  }
+  80% {
+    height: 30%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes bounce-003 {
+  0% {
+    height: 80%;
+  }
+  30% {
+    height: 20%;
+  }
+  100% {
+    height: 80%;
+  }
 }
