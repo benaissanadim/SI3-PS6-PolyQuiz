@@ -41,6 +41,7 @@ export class PlayQuizComponent implements OnInit {
   voiceInfo : String ;
   idQuiz : any;
   idUser : any;
+  text: String = "";
 
   constructor( private route: ActivatedRoute, private quizService: QuizService,private http: HttpClient,
     private userService: UserService, private textspeechService: TextSpeechService, public historyService: HistoryService,
@@ -57,7 +58,7 @@ export class PlayQuizComponent implements OnInit {
     setTimeout(() => {
       this.begin = false, this.indexQuiz++ ; this.speak();
       setTimeout(()=> {
-        this.startVoice()
+        this.startVoice(0)
      },10000);
     }, 2000);
     this.idQuiz = this.route.snapshot.paramMap.get('idQuiz');
@@ -77,8 +78,6 @@ export class PlayQuizComponent implements OnInit {
            this.initHistory();}
       }, 1000);
   }
-
-
 
   initHistory(): void {
     const questionHistory :QuestionHistory[]  = []
@@ -105,17 +104,16 @@ export class PlayQuizComponent implements OnInit {
   }
 
 
-  startVoice() {
+  startVoice(id :number) {
     if(this.user.vocal)
-    this.start('sound');
+    this.start(id);
   }
 
   speechRecogStop: boolean;
-  start(id: String) {
+  start(id: number) {
     this.service.setText();
     this.voiceInfo = "vous avez dit "
-    this.answer = 0;
-    document.getElementById('sound').classList.add('animated');
+     this.answer = 0;
     this.speechRecogStop = false;
     this.service.sound.start();
     console.log('Reconnaissance vocale commence');
@@ -124,32 +122,39 @@ export class PlayQuizComponent implements OnInit {
 
       console.log(this.service.text);
       let index = 0;
-      let tab: string[] = [];
+      let tab: Answer[] = [];
       for (let i = 0;i < this.getQuestion()[this.indexQuiz].answers.length;i++) {
-        tab.push((this.getQuestion()[this.indexQuiz].answers[i].value));
+        tab.push((this.getQuestion()[this.indexQuiz].answers[i]));
       }
 
+      this.text = this.service.text;
       for (; index < tab.length; index++) {
-        if (tab[index].toLowerCase() === this.service.text.toLowerCase()) {
+        if (tab[index].value.toLowerCase() === this.service.text.toLowerCase()) {
           this.answer = index;
           this.speechRecogStop = true;
           this.service.text = "";
           break;
         }
       }
-
-      if (this.speechRecogStop) {
+      console.log(tab)
+      console.log("ok",index)
+      if(this.speechRecogStop){
+      if(!tab[index].isCorrect){
+        this.deleteFalse(this.getQuestion()[this.indexQuiz], tab[index]);
+        this.speechRecogStop = false
+      }
+      else {
         this.service.stop();
+        this.text = ""
         document.getElementById('nombre' + index).style.backgroundColor =
           'rgb(94, 199, 85)';
         setTimeout(() => {
           this.resultDisplay()
-          this.service.stop()
           this.service.sound.stop();
         }, 4000);
-      }
+      }}
       this.service.stop();
-      this.service.sound.start();
+      if (id===0)    this.service.sound.start();
     });
   }
 
@@ -175,8 +180,8 @@ export class PlayQuizComponent implements OnInit {
   public speakResultat(): void {
     var text = 'la reponse correcte est : \n' + this.getCorrectAnswer().value;
     this.textspeechService.speak(text);
-
   }
+
   removeDisabledQuestions(): void {
     const questToRemove: Question[] = [];
     this.questionList.forEach((question) => {
@@ -225,7 +230,7 @@ export class PlayQuizComponent implements OnInit {
       this.indexQuiz++;
       this.speak();
       this.voiceInfo = this.info ;
-      setTimeout(()=> {this.startVoice()},10000);
+      setTimeout(()=> {this.startVoice(1)},10000);
       if (this.indexQuiz === this.getQuestion().length && this.user.withRecap) {
         this.toYesNo = true;
 

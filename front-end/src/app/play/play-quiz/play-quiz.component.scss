@@ -1,5 +1,17 @@
 @import '../../../styles/play-card.scss';
 
+.span{
+  margin-top: 200px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #c85306;
+  margin-right : 350px;
+  margin-left : 350px;
+  text-align: center;
+  border-top : 6px solid #c85306;
+  border-bottom: 6px solid #c85306;
+  line-height: 70px;
+}
 
 /** Animation */
 
@@ -9,6 +21,8 @@
   -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
+
+
 
 main {
   position: relative;

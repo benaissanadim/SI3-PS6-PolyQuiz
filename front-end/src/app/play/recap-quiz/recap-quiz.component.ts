@@ -33,8 +33,8 @@ constructor(private route: ActivatedRoute,private quizService: QuizService,
 
   getCorrectAnswer(index) {
     for (let i = 0; i < 4; i++) {
-      if (this.quiz.questions[index].answers[i].isCorrect) {
-        return this.quiz.questions[index].answers[i];
+      if (this.questions[index].answers[i].isCorrect) {
+        return this.questions[index].answers[i];
       }
     }
   }

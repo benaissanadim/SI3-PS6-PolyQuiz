@@ -53,10 +53,14 @@ table {
   border-collapse: collapse;
   border-style: hidden;
   font-size: 18px;
-  border: 2px solid rgb(248, 18, 114);
+  border: 2px solid black;
 
 }
 
+table td{
+  border: 2px solid black;
+
+}
 table tr {
   vertical-align: middle;
   padding: 0.5rem;
