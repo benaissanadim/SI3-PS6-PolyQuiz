@@ -6,7 +6,7 @@
 
 
 .quiz-container{
-  display: grid; 
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap :10px;
   grid-row-gap: 10px;
@@ -29,7 +29,7 @@
   margin-bottom: 2%;}
 
   .bt{
-    margin-top: 2%;
+    margin-top: 0%;
     display: flex;
     justify-content: right;
     margin-bottom: 2%;
@@ -48,13 +48,25 @@
   font-weight: 500;
   cursor : pointer;
 }
+.retour{
+  height : 50px;
+  background-color: #009578;
+  border : none;
+  outline : none;
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: 'Quicksand' , sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor : pointer;
+}
 
 .button:hover{
   background-color: #006e58;
 
 }
 
-.buttontext, .buttonicon { 
+.buttontext, .buttonicon {
  display: inline-flex;
   align-items: center;
   padding : 0 24px ;

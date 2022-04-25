@@ -7,7 +7,7 @@ export class TextSpeechService {
 
   constructor() { }
 
-  
+
   public voice: SpeechSynthesisVoice | null ;
 	public text: string;
 	public voices: SpeechSynthesisVoice[] = speechSynthesis.getVoices();
@@ -25,7 +25,7 @@ export class TextSpeechService {
 
   public synthesizeSpeechFromText(text: string) : void {
 		var utterance = new SpeechSynthesisUtterance( text );
-		utterance.voice = speechSynthesis.getVoices()[2];
+		utterance.voice = speechSynthesis.getVoices()[3];
     utterance.rate = 0.7
 		speechSynthesis.speak( utterance );
 	}

@@ -61,7 +61,7 @@ export class QuestionFormComponent implements OnInit {
       const question = this.questionForm.getRawValue() as Question;
       this.quizService.addQuestion(this.id, question);
       this.initializeQuestionForm();
-      this.router.navigateByUrl('/edit-quiz/'+this.id)
+      this.router.navigateByUrl('/edit-quiz/'+this.id+'/1')
     }
   }
 }

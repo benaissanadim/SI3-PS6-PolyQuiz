@@ -59,7 +59,7 @@ export class PlayQuizComponent implements OnInit {
       this.begin = false, this.indexQuiz++ ; this.speak();
       setTimeout(()=> {
         this.startVoice(0)
-     },10000);
+     },15000);
     }, 2000);
     this.idQuiz = this.route.snapshot.paramMap.get('idQuiz');
     this.quizService.setSelectedQuiz(this.idQuiz);
@@ -222,7 +222,7 @@ export class PlayQuizComponent implements OnInit {
   }
 
   resultDisplay() {
-    this.indice = true
+    this.indice = false
     this.resultAffiche = true;
     this.speak();
     setTimeout(() => {
@@ -230,7 +230,7 @@ export class PlayQuizComponent implements OnInit {
       this.indexQuiz++;
       this.speak();
       this.voiceInfo = this.info ;
-      setTimeout(()=> {this.startVoice(1)},10000);
+      setTimeout(()=> {this.startVoice(1)},15000);
       if (this.indexQuiz === this.getQuestion().length && this.user.withRecap) {
         this.toYesNo = true;
 
