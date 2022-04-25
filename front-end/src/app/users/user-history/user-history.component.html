@@ -22,7 +22,7 @@
     <div *ngIf="historyQuiz" class="history-text">
       <h2>Nom <span>: {{historyQuiz.name}}</span></h2>
 
-      <div *ngFor="let question of historyQuiz.questions">
+      <div class="text1"*ngFor="let question of historyQuiz.questions">
         <h2>{{question.nom}}<button class="activer"(click)="disable(question.nom)">{{isDisabled(question.nom) ? 'Reactiver' : 'Desactiver'}}</button></h2>
         <h2>Fait {{getNbCorrect(question)}}/{{question.answers.length}} Justes  <button class="afficher"(click)="affiche(question)"> afficher détails</button></h2>
         <div *ngIf="question.nom===current" >
