@@ -2,3 +2,24 @@
 <div class="main-content">
     <router-outlet></router-outlet>
 </div>
+<div class="container text-center">
+    <h1>{{titleSearch}}</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="search-quiz">
+        <input class="form-control" type="text" name="Recherche" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Rechercher un quiz">
+      </div>
+      <table class="table table-striped">
+        
+        <tbody>
+        <tr *ngFor="let quiz of quizzes | filter:searchText">
+         
+          <td>{{quiz.name}}</td>
+         
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -23,6 +23,9 @@ import  {UserEditComponent} from './users/user-edit/user-edit.component';
 import { UserHistoryComponent } from './users/user-history/user-history.component';
 import { LoginComponent } from './login/login.component';
 import { AdminChoiceComponent } from './admin-choice/admin-choice.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+
 
 // @ts-ignore
 // @ts-ignore
@@ -47,6 +50,7 @@ import { AdminChoiceComponent } from './admin-choice/admin-choice.component';
     UserHistoryComponent,
     LoginComponent,
     AdminChoiceComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +58,7 @@ import { AdminChoiceComponent } from './admin-choice/admin-choice.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
