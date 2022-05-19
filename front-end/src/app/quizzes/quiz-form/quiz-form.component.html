@@ -13,7 +13,7 @@
      Image :  <input id="company" class="input-text js-input" type="text" [formControlName]="'image'"placeholder="saisir l'url de l'image du quiz">
     </div>
     <div class="form-field col-lg-12">Ajouter ce quiz à : 
-      <input type="text" class="input-text2 js-input" list="names"  [formControlName]="'userName'" (change)="onUserChanged(currentUser)" />
+      <input type="text" class="input-text2 js-input" list="names"  [formControlName]="'userName'" />
       <datalist id="names">
         <option *ngFor="let user of userList" [value]="user.name">{{user.name}}</option> 
       </datalist>

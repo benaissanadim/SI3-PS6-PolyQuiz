@@ -41,7 +41,7 @@ login(){
     console.log(userr)
     if(userr){
       if(userr.role ===0)
-      this.router.navigate(['/quiz-list/'+ userr.id]);
+      this.router.navigate(['/quiz-list/'+ userr.id+'/'+ userr.name]);
       else  this.router.navigate(['/choice-admin/'+ userr.id]);
     }else{
       this.errormessage = true;
