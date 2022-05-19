@@ -48,6 +48,13 @@ export class QuizService {
     });
   }
 
+  setQuizzesFromName(name: String) {
+    this.http.get<Quiz[]>(this.quizUrl+'/userName/'+name).subscribe((quizList) => {
+      this.quizzes = quizList;
+      this.quizzes$.next(this.quizzes);
+    });
+  }
+
   addQuiz(quiz: Quiz) {
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
   }

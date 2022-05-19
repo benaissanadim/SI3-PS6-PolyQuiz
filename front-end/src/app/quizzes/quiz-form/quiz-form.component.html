@@ -1,18 +1,27 @@
 <section class="get-in-touch">
   <h1 class="title">AJOUT QUIZ</h1>
   <form class="contact-form row" [formGroup]="quizForm">
+    <div>
     <div class="form-field col-lg-6">
-      <input id="name" class="input-text js-input" type="text" [formControlName]="'name'"placeholder="Titre *" required>
+      Titre : <input id="name" class="input-text js-input" type="text" [formControlName]="'name'"placeholder="saisir le titre du quiz *" required>
     </div>
     <div class="form-field col-lg-6 ">
-      <input id="email" class="input-text js-input" type="email" [formControlName]="'theme'"placeholder="Theme *"required>
+     Thème : <input id="theme" class="input-text js-input" type="theme" [formControlName]="'theme'"placeholder="saisir le thème du quiz *"required>
     </div>
+  </div>
     <div class="form-field col-lg-6 ">
-      <input id="company" class="input-text js-input" type="text" [formControlName]="'image'"placeholder="Image">
+     Image :  <input id="company" class="input-text js-input" type="text" [formControlName]="'image'"placeholder="saisir l'url de l'image du quiz">
     </div>
+    <div class="form-field col-lg-12">Ajouter ce quiz à : 
+      <input type="text" class="input-text2 js-input" list="names"  [formControlName]="'userName'" (change)="onUserChanged(currentUser)" />
+      <datalist id="names">
+        <option *ngFor="let user of userList" [value]="user.name">{{user.name}}</option> 
+      </datalist>
+      </div>
     <div class="form-field col-lg-12">
       <button type="submit" class="submit-btn" (click)="addQuiz()">Ajouter</button>
     </div>
+    
   </form>
 </section>
 

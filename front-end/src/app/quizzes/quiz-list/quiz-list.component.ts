@@ -4,6 +4,7 @@ import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
 import { User } from 'src/models/user.model';
 import { UserService } from 'src/services/user.service';
+import { VoiceRecognitionService } from 'src/services/voice-quiz-service';
 
 @Component({
   selector: 'app-quiz-list',
@@ -15,21 +16,22 @@ export class QuizListComponent implements OnInit {
   public quizList: Quiz[] = [];
   
   idUser:Number;
-
+  userName: String;
   user: User;
+  quiz: Quiz;
 
   constructor(private router: Router, public quizService: QuizService,private route: ActivatedRoute,
-    private userService: UserService) {
-    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
-      this.quizList = quizzes;
-    });
-    console.log('url')
-    console.log(this.router.url)
-
+    private userService: UserService,  public service: VoiceRecognitionService) {
+    this.quizService.quizSelected$.subscribe((quiz) => (this.quiz = quiz));
   }
 
   ngOnInit() {
     this.idUser = +this.route.snapshot.paramMap.get('idUser');
+    this.userName = this.route.snapshot.paramMap.get('userName');
+    this.quizService.setQuizzesFromName(this.userName)
+    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+      this.quizList = quizzes;
+    });
     this.userService.setSelectedUser(this.idUser.toString())
     this.userService.userSelected$.subscribe((userr: User) => {
       this.user = userr;
@@ -47,8 +49,8 @@ export class QuizListComponent implements OnInit {
   deleteQuiz(quiz: Quiz) {
     this.quizService.deleteQuiz(quiz);
   }
-}
-function input() {
-    throw new Error('Function not implemented.');
+
+
+
 }
 
