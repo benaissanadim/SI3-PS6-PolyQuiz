@@ -9,10 +9,23 @@ const router = new Router()
 
 router.use('/:quizId/questions', QuestionsRouter)
 
+
 router.get('/', (req, res) => {
   try {
     const quizzes = buildQuizzes()
     res.status(200).json(quizzes)
+  } catch (err) {
+    manageAllErrors(res, err)
+  }
+})
+
+router.get('/userName/:name', (req, res) => {
+  try {
+    const quizzes = buildQuizzes()
+    if("admin" === req.params.name ){ res.status(200).json((quizzes));}
+    else{
+      res.status(200).json(quizzes.filter((quiz) => quiz.userName === req.params.name || quiz.userName === "tous les utilisateurs"))
+    }
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -27,6 +40,7 @@ router.get('/:quizId', (req, res) => {
   }
 })
 
+
 router.post('/', (req, res) => {
   try {
     const quiz = Quiz.create({ ...req.body })
@@ -40,9 +54,7 @@ router.put('/:quizId', (req, res) => {
   try {
     res.status(200).json(Quiz.update(req.params.quizId, req.body))
   } catch (err) {
-    manage
-
-    AllErrors(res, err)
+    manageAllErrors(res, err)
   }
 })
 router.post('/:quizId', (req, res) => {
