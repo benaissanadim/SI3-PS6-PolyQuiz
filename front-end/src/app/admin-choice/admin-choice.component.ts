@@ -18,7 +18,7 @@ export class AdminChoiceComponent implements OnInit {
 
   navigateQuiz(){
     console.log(this.idUser)
-    this.router.navigate(['quiz-list/'+this.idUser]);
+    this.router.navigate(['quiz-list/'+this.idUser+'/admin']);
   }
 
   navigateUser(){
