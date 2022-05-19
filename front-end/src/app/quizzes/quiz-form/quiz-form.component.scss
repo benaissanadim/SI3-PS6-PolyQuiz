@@ -11,7 +11,7 @@
   letter-spacing: 3px;
   font-size: 3.1em;
   line-height: 48px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   color: #5543ca;
   background: #5543ca;
   background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
@@ -22,15 +22,28 @@
 }
 
 .contact-form .form-field {
+  font-weight: bold;
+  color : rgb(77, 16, 141);
   position: relative;
-  margin: 60px 0;
+  margin: 40px 0;
 }
 .contact-form .input-text {
-  display: block;
-  width: 100%;
+  width: 80%;
   height: 36px;
   border-width: 0 0 2px 0;
-  border-color: #5543ca;
+  border-color: #8800C7;
+  margin-left: 10px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+.contact-form .input-text2 {
+  width: 50%;
+  height: 36px;
+  border-width: 0 0 2px 0;
+  border-color: #8800C7;
+  margin-left: 10px;
   font-size: 18px;
   line-height: 26px;
   font-weight: 400;
