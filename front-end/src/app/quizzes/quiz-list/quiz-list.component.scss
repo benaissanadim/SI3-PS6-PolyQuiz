@@ -1,4 +1,6 @@
 @import '../../../styles/texts.scss';
+@import '../../../styles/search-bar.scss';
+
 
 .quiz-list {
   padding : 3em ;
@@ -30,8 +32,7 @@
 
   .bt{
     margin-top: 0%;
-    display: flex;
-    justify-content: right;
+    margin-left: 10%;
     margin-bottom: 2%;
   }
 
@@ -81,3 +82,11 @@
   background: rgba(0,0,0,0.08);
 }
 
+.all{
+  margin-top: 1%;
+}
+
+.pagination{
+  margin: 2%;
+  text-align: center
+}
