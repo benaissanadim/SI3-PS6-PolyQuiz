@@ -1,18 +1,28 @@
+<div class="all">
+  <button type="button" class="retour" routerLink="/choice-admin/1">
+    <i class="fa fa-angle-double-left" style="font-size:25px; color:white"></i>
+    <span class="buttontext"> retour</span>
+  </button>
 
+</div>
+<span class="search-container">
+  <input type="text" placeholder="Recherchez un Utilisateur..." name="search " [(ngModel)]="searchText">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</span>
+<span class="bt">
+  <button type="button" class="button" routerLink="/user-add">
+    <span class="buttontext"> Ajouter Utilisateur</span>
+      <span class="buttonicon"><i class="fa fa-plus"></i></span>
+  </button></span>
+  <br><br>
 
-      <button type="button" class="retour" routerLink="/choice-admin/1">
-        <i class="fa fa-angle-double-left" style="font-size:25px; color:white"></i>
-        <span class="buttontext"> retour</span>
+  
 
-    </button>
-      <span class="bt">
-    <button type="button" class="button" routerLink="/user-add">
-        <span class="buttontext"> Ajouter Utilisateur</span>
-        <span class="buttonicon"><i class="fa fa-plus"></i></span>
-    </button>
-    </span>
-    <div class="quiz-container">
-    <div class="user" *ngFor="let user of userList">
-        <app-user [user]="user" (userSelected)="userSelected($event)" (deleteUser)="deleteUser($event)" (editUser)="editUser($event)"></app-user>
-    </div>
-  </div>
+  
+<div class="quiz-container">
+<div class="user" *ngFor="let user of userList | filter:searchText">
+    <app-user [user]="user" (userSelected)="userSelected($event)" (deleteUser)="deleteUser($event)" (editUser)="editUser($event)"></app-user>
+</div>
+
+</div>
+
