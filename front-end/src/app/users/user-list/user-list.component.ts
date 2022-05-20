@@ -11,6 +11,7 @@ import { User } from '../../../models/user.model';
 export class UserListComponent implements OnInit {
 
   public userList: User[] = [];
+  p: number =1;
 
   constructor(private router: Router, public userService: UserService) {
     this.userService.users$.subscribe((users: User[]) => {
