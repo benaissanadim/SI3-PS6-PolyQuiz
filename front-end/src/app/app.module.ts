@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminChoiceComponent } from './admin-choice/admin-choice.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 //import { SearchBarComponent } from './search-bar/search-bar.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 // @ts-ignore
@@ -58,7 +59,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
