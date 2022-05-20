@@ -24,13 +24,17 @@
 
 
     <div class="quiz-container">
-    <div class="quiz" *ngFor="let quiz of quizList  | filter:searchText" >
+    <div class="quiz" *ngFor="let quiz of quizList  | filter:searchText | paginate: {
+    itemsPerPage: 4, currentPage: p}" >
         <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (deleteQuiz)="deleteQuiz($event)" (editQuiz)="editQuiz($event)"
                   [idUser]="idUser" ></app-quiz>
     </div>
   </div>
 
-  
+  <pagination-controls class="pagination"
+  (pageChange)="p = $event"
+  previousLabel="précédant"
+  nextLabel="suivant"></pagination-controls>
 
   </div>
 

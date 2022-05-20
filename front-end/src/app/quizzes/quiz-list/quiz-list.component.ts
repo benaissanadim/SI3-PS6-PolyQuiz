@@ -19,6 +19,7 @@ export class QuizListComponent implements OnInit {
   userName: String;
   user: User;
   quiz: Quiz;
+  p: number =1;
 
   constructor(private router: Router, public quizService: QuizService,private route: ActivatedRoute,
     private userService: UserService,  public service: VoiceRecognitionService) {
