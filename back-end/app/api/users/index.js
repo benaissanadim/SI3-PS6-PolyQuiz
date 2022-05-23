@@ -1,4 +1,6 @@
 const { Router } = require('express')
+const { findUserLogin, findUsers } = require('./manager')
+
 
 const { User } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
@@ -7,9 +9,7 @@ const router = new Router()
 
 router.get('/:name/:password', (req, res) => {
   try {
-    res.status(200).json(User.get().filter((user) => (
-      user.name.localeCompare(req.params.name)  ===0
-      &&   user.password.localeCompare(req.params.password) ===0  )))
+    res.status(200).json(findUserLogin(req.params.name, req.params.password))
   } catch (err) {
     manageAllErrors(res, err)
   }
@@ -17,9 +17,7 @@ router.get('/:name/:password', (req, res) => {
 
 router.get('/', (req, res) => {
   try {
-    res.status(200).json(User.get().filter((user) => (
-        user.role===0
-         )))
+    res.status(200).json(findUsers())
   } catch (err) {
     manageAllErrors(res, err)
   }
