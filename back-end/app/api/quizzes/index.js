@@ -3,7 +3,7 @@ const { Router } = require('express')
 const { Quiz } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
 const QuestionsRouter = require('./questions')
-const { buildQuizz, buildQuizzes } = require('./manager')
+const { buildQuizz, buildQuizzes, findQuizzes } = require('./manager')
 
 const router = new Router()
 
@@ -21,11 +21,7 @@ router.get('/', (req, res) => {
 
 router.get('/userName/:name', (req, res) => {
   try {
-    const quizzes = buildQuizzes()
-    if("admin" === req.params.name ){ res.status(200).json((quizzes));}
-    else{
-      res.status(200).json(quizzes.filter((quiz) => quiz.userName === req.params.name || quiz.userName === "tous les utilisateurs"))
-    }
+      res.status(200).json(findQuizzes())
   } catch (err) {
     manageAllErrors(res, err)
   }

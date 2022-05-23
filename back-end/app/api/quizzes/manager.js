@@ -18,6 +18,15 @@ const buildQuizz = (quizId) => {
 }
 
 /**
+ * 
+ */
+const findQuizzes = ()=>{
+    const quizzes = buildQuizzes()
+    if("admin" === req.params.name ){ return (quizzes);}
+    else return quizzes.filter((quiz) => quiz.userName === req.params.name || quiz.userName === "tous les utilisateurs");
+}
+
+/**
  * Function buildQuizzes.
  * This function aggregates the questions and answers from the database to build entire quizzes.
  */
@@ -28,5 +37,6 @@ const buildQuizzes = () => {
 
 module.exports = {
     buildQuizz,
-    buildQuizzes
+    buildQuizzes,
+    findQuizzes
 }
