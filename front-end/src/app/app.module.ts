@@ -26,6 +26,8 @@ import { AdminChoiceComponent } from './admin-choice/admin-choice.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 //import { SearchBarComponent } from './search-bar/search-bar.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HeaderLogoutComponent } from './header/header-logout/header-logout.component';
+import { HeaderAdminComponent } from './header/header-admin/header-admin.component';
 
 
 // @ts-ignore
@@ -51,6 +53,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UserHistoryComponent,
     LoginComponent,
     AdminChoiceComponent,
+    HeaderLogoutComponent,
+    HeaderAdminComponent
     //SearchBarComponent
   ],
   imports: [
