@@ -22,7 +22,7 @@ export class AdminChoiceComponent implements OnInit {
   }
 
   navigateUser(){
-    this.router.navigate(['user-list']);
+    this.router.navigate(['user-list/1']);
   }
 
 }
