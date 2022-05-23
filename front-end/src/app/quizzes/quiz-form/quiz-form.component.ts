@@ -51,6 +51,10 @@ export class QuizFormComponent implements OnInit {
   addQuiz() {
     // We retrieve here the quiz object from the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
+    if(quizToCreate.image ==""){
+      quizToCreate.image = "https://st.depositphotos.com/1005979/2976/i/600/depositphotos_29760945-stock-photo-quiz-red-3d-word-test.jpg"
+    }
+    
 
     this.quizService.addQuiz(quizToCreate);
     this.router.navigate(['/quiz-list/'+this.idUser+'/admin']);

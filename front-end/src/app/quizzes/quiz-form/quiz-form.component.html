@@ -1,6 +1,8 @@
+<app-header-logout></app-header-logout>
+<div class="main-content">
 <section class="get-in-touch">
   <h1 class="title">AJOUT QUIZ</h1>
-  <form class="contact-form row" [formGroup]="quizForm">
+  <form  #f="ngForm" class="contact-form row" [formGroup]="quizForm">
     <div>
     <div class="form-field col-lg-6">
       Titre : <input id="name" class="input-text js-input" type="text" [formControlName]="'name'"placeholder="saisir le titre du quiz *" required>
@@ -18,19 +20,15 @@
         <option *ngFor="let user of userList" [value]="user.name">{{user.name}}</option> 
       </datalist>
       </div>
-    <div class="form-field col-lg-12">
-      <button type="submit" class="submit-btn" (click)="addQuiz()">Ajouter</button>
+    <div style="text-align:center">
+      <button type="submit" class="submit-btn" [disabled]="f.invalid" (click)="addQuiz()">Ajouter</button>
+    </div>
+    <div class="alert"[hidden]="f.valid">
+      <b>Certains champs obligatoires ne sont pas encore rempli ! </b>
     </div>
     
   </form>
 </section>
-
-
-
-
-
-
-
-
+</div>
 
 
