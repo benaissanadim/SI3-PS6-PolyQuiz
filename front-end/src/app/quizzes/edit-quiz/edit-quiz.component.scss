@@ -1,6 +1,5 @@
-
 @import '../../quizzes/quiz-form/quiz-form.component.scss';
-
+@import "../../../app/app.component.scss";
 
 .input-custom {
   margin-top : 10px;
@@ -12,15 +11,20 @@
 }
 
 
+.right{
+  display: block;
+  float:right;
+  margin-right: 150px;
+  font-size: 17px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(240, 69, 69);
+}
+
+
 .theme {
   padding: 80px;
 }
 
-.image{
-  width: 35%;
-  height: 25%;
-  border: solid rgb(71, 141, 247) 5px;
-}
 .input-custom-2 {
   margin-top : 10px;
   display: inline-flex;

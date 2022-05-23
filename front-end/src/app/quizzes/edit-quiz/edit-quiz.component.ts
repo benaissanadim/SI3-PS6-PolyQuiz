@@ -18,6 +18,7 @@ export class EditQuizComponent implements OnInit {
   quizUrl: string;
   id: string;
   idUser: string
+  
 
 
   constructor(public router:Router ,private route: ActivatedRoute,public formBuilder: FormBuilder, private quizService: QuizService) {
@@ -37,7 +38,7 @@ export class EditQuizComponent implements OnInit {
   }
   onSubmit(): void {
     this.quizService.updateQuiz(this.quiz);
-    this.router.navigate(['/quiz-list/'+this.idUser]).catch();
+    this.router.navigate(['/quiz-list/1/admin']).catch();
     console.log(this.quiz);
   }
 }
