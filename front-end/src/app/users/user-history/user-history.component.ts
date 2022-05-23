@@ -19,6 +19,7 @@ export class UserHistoryComponent implements OnInit {
   public history: QuizHistory[];
   id : number
   historyQuiz: QuizHistory;
+  afficher: boolean;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private historyService: HistoryService) {
     this.id = +this.route.snapshot.paramMap.get('id');
@@ -57,15 +58,19 @@ export class UserHistoryComponent implements OnInit {
   chooseQuizHistory(idH: string){
     this.historyService.getHistory(idH);
     this.historyService.quizHistorySelected$.subscribe((history: QuizHistory) => {
-      console.log("ok")
       this.historyQuiz = history;
     });
-    console.log("kkk")
 
   }
 
   affiche(qu : any){
-    this.current = qu.nom
+    this.current = qu.nom;
+    this.afficher = true;
+  }
+  cacher(){
+    this.afficher = false;
+    console.log("called hidden")
+
   }
   isDisabled(question: string): boolean {
     return this.user.disabledQuestions.indexOf(question) > -1;
@@ -85,7 +90,3 @@ export class UserHistoryComponent implements OnInit {
 
 
 }
-
-
-
-
