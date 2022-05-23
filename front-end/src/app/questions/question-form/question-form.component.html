@@ -1,42 +1,49 @@
+<app-header-logout></app-header-logout>
+<div class="main-content">
 <section class="get-in-touch">
-<div class ="title"> AJOUTER QUESTION </div>
+<h1 class ="title"> AJOUTER QUESTION </h1>
 <div class="card">
-  <form class="contact-form row" [formGroup]="questionForm">
+  <form #f="ngForm" class="contact-form" [formGroup]="questionForm">
 
     <div class="form-field col-lg-6">
-      <input id="name" class="input-text js-input" type="text" [formControlName]="'label'"placeholder="Intitulé de la question *" required>
+      Intitulé:<input id="name" class="input-text js-input" type="text" [formControlName]="'label'"placeholder="saisir votre question *" required>
     </div>
-
     <div class="form-field col-lg-6">
-      <input id="indice" class="input-text js-input" type="text" [formControlName]="'indice'"placeholder="Ajouter un indice " >
+      Indice : <input id="indice" class="input-text js-input" type="text" [formControlName]="'indice'"placeholder="ajouter un indice  *" required >
     </div>
-
     Ajouter une Réponse
     <button  class="button" (click)="addAnswer()">
       <span><i class="fa fa-plus"></i></span>
     </button>
+    <div *ngIf="alertMax"  class="right">
+      <i class='fas fa-exclamation-circle'></i>  Maximum 4 réponses pour une question
+    </div>
 
-    <div *ngIf="alert" class="right">
-      <i class='fas fa-exclamation-circle'></i>
-      Maximum 4 réponses possibles  </div>
+    <div *ngIf="alertMin"  class="right">
+      <i class='fas fa-exclamation-circle'></i>  Minimum 2 réponses pour une question
+    </div>
+
     <div class="row" formArrayName="answers">
       <div class="column" *ngFor="let address of answers.controls; let i=index">
         <div class="answer-form" [formGroupName]="i">
-          <input type="text" class="input-reponse" placeholder="reponse" [formControlName]="'value'">
+          <input type="text" class="input-reponse" placeholder="reponse" [formControlName]="'value'" required>
           <br>
-          <input type="text" class="input-reponse" placeholder="image" [formControlName]="'image'">
+          <input type="text" class="input-reponse" placeholder="image" [formControlName]="'url image'" required>
           <br>
-          <span class="correct">Correct </span>
-          <input type="checkbox" [formControlName]="'isCorrect'">     <br>
+          <input type="checkbox" [formControlName]="'isCorrect'" name="answerr"> <label for="choixe">correct</label>     <br>
         </div>
       </div>
     </div>
-    <br>
 
-    <br> <br>
+    <br>
     <div style='text-align:center'>
-      <button type="submit" class="submit-btn" (click)="addQuestion()">Ajouter</button>
+      <button type="submit" class="submit-btn" (click)="addQuestion()" [disabled]="f.invalid">Ajouter</button>
     </div>
+    <div class="alert"[hidden]="f.valid">
+      <b>Certains champs obligatoires ne sont pas encore rempli ! </b>
+    </div>
+
   </form>
 </div>
 </section>
+</div>

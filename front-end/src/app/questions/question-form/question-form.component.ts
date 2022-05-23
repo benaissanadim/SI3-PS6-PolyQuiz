@@ -14,7 +14,8 @@ export class QuestionFormComponent implements OnInit {
   public questionForm: FormGroup;
   id : string
   nbAnswer =0;
-  alert = false;
+  alertMax = false;
+  alertMin = true;
 
   constructor(private route: ActivatedRoute, public router : Router,
               public formBuilder: FormBuilder, private quizService: QuizService) {
@@ -50,9 +51,10 @@ export class QuestionFormComponent implements OnInit {
   addAnswer() {
     if(this.nbAnswer <4){
       this.nbAnswer ++;
+      if(this.nbAnswer==2) this.alertMin = false;
       this.answers.push(this.createAnswer());}
     else{
-      this.alert = true;
+      this.alertMax = true;
     }
   }
 
