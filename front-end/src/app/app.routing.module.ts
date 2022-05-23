@@ -15,9 +15,9 @@ import { AdminChoiceComponent } from './admin-choice/admin-choice.component';
 
 const routes: Routes = [
     {path: 'quiz-list/:idUser/:userName', component: QuizListComponent},
-    {path: 'user-list', component: UserListComponent},
+    {path: 'user-list/:id', component: UserListComponent},
     {path: 'edit-quiz/:id/:idUser', component: EditQuizComponent},
-    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/user-list/0', pathMatch: 'full' },
     {path: 'quiz-add/:idUser', component : QuizFormComponent},
     {path: 'add-question/:id',component:  QuestionFormComponent },
     {path: 'quiz-play/:idUser/:idQuiz',component: PlayQuizComponent},

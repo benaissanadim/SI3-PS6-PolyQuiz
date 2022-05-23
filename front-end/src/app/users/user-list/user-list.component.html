@@ -1,16 +1,24 @@
+
+<app-header *ngIf="id===0"></app-header>
+<app-header-logout *ngIf="id===1"></app-header-logout>
+
+<div class="main-content">
+<span *ngIf="id===0" class="title" > BIENVENUE</span>
+
 <div class="all">
-  <button type="button" class="retour" routerLink="/choice-admin/1">
+  <button type="button" *ngIf="id===1"class="retour" routerLink="/choice-admin/1">
     <i class="fa fa-angle-double-left" style="font-size:25px; color:white"></i>
     <span class="buttontext"> retour</span>
   </button>
 
 </div>
 <span class="search-container">
-  <input type="text" placeholder="Recherchez un Utilisateur..." name="search " [(ngModel)]="searchText">
+  <input type="text"*ngIf="id===0" placeholder="Recherchez votre profil..." name="search " [(ngModel)]="searchText">
+  <input type="text"*ngIf="id===1" placeholder="Recherchez un Utilisateur..." name="search " [(ngModel)]="searchText">
   <button type="submit"><i class="fa fa-search"></i></button>
 </span>
 <span class="bt">
-  <button type="button" class="button" routerLink="/user-add">
+  <button type="button" *ngIf="id===1" class="button" routerLink="/user-add">
     <span class="buttontext"> Ajouter Utilisateur</span>
       <span class="buttonicon"><i class="fa fa-plus"></i></span>
   </button></span>
@@ -21,8 +29,8 @@
   
 <div class="quiz-container">
 <div class="user" *ngFor="let user of userList | filter:searchText | paginate: {
-  itemsPerPage: 8, currentPage: p}">
-    <app-user [user]="user" (userSelected)="userSelected($event)" (deleteUser)="deleteUser($event)" (editUser)="editUser($event)"></app-user>
+  itemsPerPage: 4, currentPage: p}">
+    <app-user [user]="user" [id]="id" (userSelected)="userSelected($event)" (deleteUser)="deleteUser($event)" (editUser)="editUser($event)"></app-user>
 </div>
 
 </div>
@@ -31,3 +39,4 @@
 (pageChange)="p = $event"
 previousLabel="précédant"
 nextLabel="suivant"></pagination-controls>
+</div>

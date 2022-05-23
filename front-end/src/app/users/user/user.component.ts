@@ -12,6 +12,9 @@ export class UserComponent implements OnInit {
   @Input()
   user: User;
 
+  @Input()
+  id: number;
+
   @Output()
   userSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
 

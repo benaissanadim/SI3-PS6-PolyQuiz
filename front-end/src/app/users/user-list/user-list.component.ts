@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user.model';
 
@@ -12,14 +12,17 @@ export class UserListComponent implements OnInit {
 
   public userList: User[] = [];
   p: number =1;
+  id : number;
 
-  constructor(private router: Router, public userService: UserService) {
+  constructor(private route: ActivatedRoute,private router: Router, public userService: UserService) {
     this.userService.users$.subscribe((users: User[]) => {
       this.userList = users;
     });
   }
 
   ngOnInit() {
+    this.id = +this.route.snapshot.paramMap.get('id');
+
   }
 
   userSelected(selected: boolean) {
