@@ -1,25 +1,19 @@
-
+<app-header-logout></app-header-logout>
+<div class="main-content">
 <section class="get-in-touch">
 
-<div class ="title"> Ajouter un utilisateur  </div>
+<h1 class ="title"> Ajout utilisateur  </h1>
 <div class="card">
 
   <form (ngSubmit)="addUser()" #f="ngForm" class="contact-form row">
 
     <div class="form-field col-lg-6 " >
-      <input id="name" class="input-text js-input" type="text" name="name" [(ngModel)]="user.name" placeholder="Nom *" required>
+    Nom :  <input id="name" class="input-text js-input" type="text" name="name" [(ngModel)]="user.name" placeholder="saisir le nom de l'utilisateur *" required>
     </div>
     <div class="form-field col-lg-6 " >
-      <input id="image" class="input-text js-input" type="text" name="image"[(ngModel)]="user.image"placeholder="Image *">
+    Image :  <input id="image" class="input-text js-input" type="text" name="image"[(ngModel)]="user.image"placeholder="saisir l'url de l'image de l'utilisateur">
     </div>
 
-    <div >
-      <input id="password" class="input-text js-input" type="text" name="password" [(ngModel)]="user.password" placeholder="mot de passe *">
-    </div>
-    <br>
-
-  <div class="form-group severity-form">
-    <div class="radio-button">
       <div class="stade">
         <label class="form-group-title">Stade d'Alhzeimer :</label>
         <label> <span>Léger</span>
@@ -32,43 +26,26 @@
           <input type="radio" value="severe" name="radioGroup" [(ngModel)]="user.stade" (change)="addOptions(f)">
         </label>
       </div>
-    </div>
+      <br>
 
     <div >
-      <label class="container">
-      <input type="checkbox" name="hints" [(ngModel)]="user.hint" disabled>
-        Ajout d'indices
-      </label>
-      <label class="container">
-      <input type="checkbox" name="yes-no-recap" [(ngModel)]="user.withRecap" disabled>
-       Récapitulatif avec questions vrai/faux
-      </label >
-      <label class="container">
-        <input type="checkbox" name="delete-false" [(ngModel)]="user.deleteFalseAnswer" disabled>
-        Suppression des réponses fausses
-      </label>
-        <div>
-          <label class="container">
-        <input type="checkbox" name="vocal-quiz" [(ngModel)]="user.vocal" disabled>
-        Répondre par voix
-      </label>
-      <label class="container">
-        <input type="checkbox" name="vocal-quiz" [checked]="!user.vocal" disabled>
-        Répondre par clic
-      </label>
-
-      </div>
-
+      <input type="checkbox" name="hints" [(ngModel)]="user.hint" disabled> Ajout d'indices<br>
+      <input type="checkbox" name="yes-no-recap" [(ngModel)]="user.withRecap" disabled> Récapitulatif avec questions vrai/faux<br>
+      <input type="checkbox" name="delete-false" [(ngModel)]="user.deleteFalseAnswer" disabled>Suppression des réponses fausses<br>
+        <input type="checkbox" name="vocal-quiz" [(ngModel)]="user.vocal" disabled>Répondre par voix<br>
+        <input type="checkbox" name="vocal-quiz" [checked]="!user.vocal" disabled>Répondre par clic<br>
     </div>
-
-  </div>
 
   <div style='text-align:center'>
     <button class="submit-btn"  type="submit" [disabled]="f.invalid">Ajouter</button>
   </div>
+  <div class="alert"[hidden]="f.valid">
+    <b>Certains champs obligatoires ne sont pas encore rempli ! </b>
+  </div>
+  
 
   </form>
 </div>
 </section>
-
+</div>
 

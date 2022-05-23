@@ -39,7 +39,7 @@ export class UserAddComponent implements OnInit{
     if (this.user.image === '')
     this.user.image = '/assets/profile.png';
     this.userService.addUser(this.user);
-    this.router.navigate(['/user-list'])
+    this.router.navigate(['/user-list/1'])
   }
 
 
@@ -59,7 +59,7 @@ export class UserAddComponent implements OnInit{
         break;
       case 'severe':
         this.user.hint = false;
-        this.user.deleteFalseAnswer = false;
+        this.user.deleteFalseAnswer = true;
         this.user.withRecap = false;
         this.user.vocal = true
         break;

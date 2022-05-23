@@ -28,7 +28,7 @@ export class UserEditComponent implements OnInit{
     if (this.user.image === '')
       this.user.image = '/assets/profile.png';
     this.userService.updateUser(this.user);
-    this.router.navigate(['/user-list'])
+    this.router.navigate(['/user-list/1'])
   }
 
 
