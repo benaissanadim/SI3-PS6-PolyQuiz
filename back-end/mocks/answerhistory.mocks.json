@@ -1,0 +1,18 @@
+[
+  {
+    "date": 1653384563305,
+    "answer": "J'appuie sur le frein",
+    "userId": 1649151009534,
+    "correct": true,
+    "questionHistoryId": 1650919830927,
+    "id": 1653384563323
+  },
+  {
+    "date": 1653384574145,
+    "answer": "Couteau",
+    "userId": 1649151009534,
+    "correct": true,
+    "questionHistoryId": 1650920273928,
+    "id": 1653384574171
+  }
+]
