@@ -60,7 +60,8 @@ export class QuestionFormComponent implements OnInit {
 
   addQuestion() {
     if(this.questionForm.valid) {
-      const question = this.questionForm.getRawValue() as Question;
+      let question = this.questionForm.getRawValue() as Question;
+      question.indice = 'hello';
       this.quizService.addQuestion(this.id, question);
       this.initializeQuestionForm();
       this.router.navigateByUrl('/edit-quiz/'+this.id+'/1')

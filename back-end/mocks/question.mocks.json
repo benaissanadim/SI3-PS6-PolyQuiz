@@ -42,5 +42,17 @@
     "indice": "réréré",
     "quizId": 1650921783751,
     "id": 1650921821770
+  },
+  {
+    "label": "Parmi ces photos , quelle est celle de votre fils Jules ? ",
+    "indice": "hello",
+    "quizId": 1653386785497,
+    "id": 1653388927768
+  },
+  {
+    "label": "Parmi ces photos , quelle est celle de votre fille Carla ? ",
+    "indice": "hello",
+    "quizId": 1653386785497,
+    "id": 1653389115557
   }
 ]

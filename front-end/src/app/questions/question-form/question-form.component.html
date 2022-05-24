@@ -9,7 +9,7 @@
       Intitulé:<input id="name" class="input-text js-input" type="text" [formControlName]="'label'"placeholder="saisir votre question *" required>
     </div>
     <div class="form-field col-lg-6">
-      Indice : <input id="indice" class="input-text js-input" type="text" [formControlName]="'indice'"placeholder="ajouter un indice  *" required >
+      Indice : <input id="indice" class="input-text js-input" type="text" [formControlName]="'indice'"placeholder="ajouter un indice">
     </div>
     Ajouter une Réponse
     <button  class="button" (click)="addAnswer()">
@@ -28,7 +28,7 @@
         <div class="answer-form" [formGroupName]="i">
           <input type="text" class="input-reponse" placeholder="reponse" [formControlName]="'value'" required>
           <br>
-          <input type="text" class="input-reponse" placeholder="image" [formControlName]="'url image'" required>
+          <input type="text" class="input-reponse" placeholder="image" [formControlName]="'image'" required>
           <br>
           <input type="checkbox" [formControlName]="'isCorrect'" name="answerr"> <label for="choixe">correct</label>     <br>
         </div>
