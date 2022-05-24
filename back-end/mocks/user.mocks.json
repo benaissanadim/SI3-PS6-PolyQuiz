@@ -32,53 +32,5 @@
     "password": "admin",
     "role": 1,
     "disabledQuestions": []
-  },
-  {
-    "id": 1653339831415,
-    "name": "okk",
-    "image": "/assets/profile.png",
-    "stade": "leger",
-    "withRecap": true,
-    "deleteFalseAnswer": false,
-    "hint": false,
-    "vocal": false,
-    "role": 0,
-    "disabledQuestions": []
-  },
-  {
-    "id": 1653339832397,
-    "name": "okk",
-    "image": "/assets/profile.png",
-    "stade": "leger",
-    "withRecap": true,
-    "deleteFalseAnswer": false,
-    "hint": false,
-    "vocal": false,
-    "role": 0,
-    "disabledQuestions": []
-  },
-  {
-    "id": 1653339857768,
-    "name": "hamza",
-    "image": "/assets/profile.png",
-    "stade": "leger",
-    "withRecap": true,
-    "deleteFalseAnswer": false,
-    "hint": false,
-    "vocal": false,
-    "role": 0,
-    "disabledQuestions": []
-  },
-  {
-    "id": 1653339858529,
-    "name": "hamza",
-    "image": "/assets/profile.png",
-    "stade": "leger",
-    "withRecap": true,
-    "deleteFalseAnswer": false,
-    "hint": false,
-    "vocal": false,
-    "role": 0,
-    "disabledQuestions": []
   }
 ]
