@@ -1,11 +1,12 @@
 <div class="card">
-    <div class="text">
-        <div class="title">{{quiz.name}}</div>
-        <img  class="image"src="{{quiz.image}}">
-    <div *ngIf="user"> 
-        <button *ngIf="user.role==0" class="button-card" style="width: 100%;"routerLink="/quiz-play/{{idUser}}/{{quiz.id}}"><i class="fa fa-play"></i>    Jouer</button>
-        <button *ngIf="user.role===1" class="button-card" (click)="delete()"> <i class="fa fa-trash"> </i>    Supprimer</button>
-        <button *ngIf="user.role===1" class="button-card" routerLink="/edit-quiz/{{quiz.id}}/{{idUser}}"> <i class="fa fa-pen"></i>    Modifier</button>
+  <div class="text">
+    <div class="title1">{{quiz.name}}</div>
+    <img  class="image"src="{{quiz.image}}">
+    <div *ngIf="user.role==0" style="text-decoration:underline">{{quiz.questions.length}} questions</div>
+    <div *ngIf="user">
+      <button *ngIf="user.role==0" class="button-card" style="width: 100%; font-size: 15px;"routerLink="/quiz-play/{{idUser}}/{{quiz.id}}"><i class="fa fa-play"></i>    Jouer</button>
+      <button *ngIf="user.role===1" class="button-card" routerLink="/edit-quiz/{{quiz.id}}/{{idUser}}"> Modifier <i class="fa fa-pen"></i>  </button>
+      <button *ngIf="user.role===1" class="button-card" (click)="delete()"> Supprimer  <i class="fa fa-trash"> </i>  </button>
     </div>
-    </div>
+  </div>
 </div>

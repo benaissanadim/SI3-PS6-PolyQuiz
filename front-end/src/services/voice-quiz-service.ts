@@ -35,7 +35,6 @@ export class VoiceRecognitionService {
 
   stop() {
     this.text = "";
-    document.getElementById('sound').classList.remove('animated');
     this.sound.stop();
     console.log('Terminer');
   }

@@ -1,6 +1,6 @@
 <div class="card">
     <div class="text">
-        <div class="title">{{user.name}}</div>
+        <div class="title1">{{user.name}}</div>
         <img  class="image"src="{{user.image}}">
         <div *ngIf="id==1">stade {{user.stade}}</div>
         <button *ngIf="id==0"  class="button-card" style="width: 100%;   font-size: 15px;" routerLink="/quiz-list/{{user.id}}/{{user.name}}"> Se connecter <i class="fa fa-sign-in-alt" style="font-size: 15px;margin-left:5px"></i> </button>

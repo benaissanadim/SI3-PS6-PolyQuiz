@@ -6,3 +6,18 @@
   text-align: center;
   padding-top: 50px;
 }
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 30px;
+  font-size: 50px;   display: flex;justify-content: center; padding-top: 30px;
+  color: #5543ca;
+  background: #5543ca;
+  background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+  background: -webkit-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
+  background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}

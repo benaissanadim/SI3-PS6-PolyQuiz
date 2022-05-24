@@ -1,23 +1,13 @@
 
 @import '../../quizzes/quiz-list/quiz-list.component.scss';
 @import "../../../app/app.component.scss";
+@import "../../../styles/texts.scss";
+
+
 .bt{
     margin-top: 0%;
     margin-left: 7%;
     margin-bottom: 2%;
   }
 
-  .title {
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-    padding-bottom: 30px;
-    font-size: 50px;   display: flex;justify-content: center; padding-top: 30px;
-    color: #5543ca;
-    background: #5543ca;
-    background: -moz-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-    background: -webkit-linear-gradient(left,#f4524d  0%,#5543ca 100%) !important;
-    background: linear-gradient(to right,#f4524d  0%,#5543ca  100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-  }
+
