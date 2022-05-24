@@ -1,0 +1,84 @@
+[
+  {
+    "id": 1649150340436,
+    "name": "Charles",
+    "image": "https://maisonmediation.fr/images/personne-agee-mini.jpg",
+    "stade": "severe",
+    "withRecap": false,
+    "deleteFalseAnswer": false,
+    "hint": false,
+    "vocal": true,
+    "password": "admin",
+    "disabledQuestions": [],
+    "role": 0
+  },
+  {
+    "id": 1649151009534,
+    "name": "Lucile",
+    "image": "https://www.nexity.fr/uploads/media/nfr-image-titre-article/03/9463-logement-personne-agee-autonome.jpg?v=1-0",
+    "stade": "modere",
+    "withRecap": false,
+    "deleteFalseAnswer": true,
+    "hint": true,
+    "vocal": false,
+    "password": "admin",
+    "disabledQuestions": [],
+    "role": 0
+  },
+  {
+    "id": 1,
+    "name": "admin",
+    "image": "/assets/profile.png",
+    "password": "admin",
+    "role": 1,
+    "disabledQuestions": []
+  },
+  {
+    "id": 1653339831415,
+    "name": "okk",
+    "image": "/assets/profile.png",
+    "stade": "leger",
+    "withRecap": true,
+    "deleteFalseAnswer": false,
+    "hint": false,
+    "vocal": false,
+    "role": 0,
+    "disabledQuestions": []
+  },
+  {
+    "id": 1653339832397,
+    "name": "okk",
+    "image": "/assets/profile.png",
+    "stade": "leger",
+    "withRecap": true,
+    "deleteFalseAnswer": false,
+    "hint": false,
+    "vocal": false,
+    "role": 0,
+    "disabledQuestions": []
+  },
+  {
+    "id": 1653339857768,
+    "name": "hamza",
+    "image": "/assets/profile.png",
+    "stade": "leger",
+    "withRecap": true,
+    "deleteFalseAnswer": false,
+    "hint": false,
+    "vocal": false,
+    "role": 0,
+    "disabledQuestions": []
+  },
+  {
+    "id": 1653339858529,
+    "name": "hamza",
+    "image": "/assets/profile.png",
+    "stade": "leger",
+    "withRecap": true,
+    "deleteFalseAnswer": false,
+    "hint": false,
+    "vocal": false,
+    "role": 0,
+    "disabledQuestions": []
+  }
+]
