@@ -1,33 +1,43 @@
-
 .question{
-    width: 350px;
+  width: 270px;
+  font-weight: bold;
 }
 .answer{
-    text-align: center;
-    width : 120px
+  text-align: center;
+  width : 120px;
+  font-weight: bold;
+  font-size: 17px;
 }
 
 .image{
-    width : 40px;
-    height : 40px;
+  width : 110px;
+  height : 90px;
 }
 
 .edit{
-    text-align: center;
-
-    float:right;
-    width : 35px;
+  text-align: center;
+  float:right;
+  width : 35px;
   height: 30px;
   cursor : pointer;
   background-color: white;
-  border-color: rgb(1, 1, 133) ;
+  border-color: rgb(77, 16, 141) ;
   border-radius: 5px;
 }
 
 .delete{
-    text-align: center;
-    float:right;
-    width: 35px;
+  text-align: center;
+  float:right;
+  width: 35px;
+  height: 30px;
+  cursor : pointer;
+  background-color: white;
+  border-color: rgb(77, 16, 141) ;
+  border-radius: 5px;
+}
+
+.btn{
+  width: 30px;
   height: 30px;
   cursor : pointer;
   background-color: white;
@@ -35,17 +45,7 @@
   border-radius: 5px;
 
 }
-
-.btn{
-   width: 30px;
-   height: 30px;
-   cursor : pointer;
-   background-color: white;
-   border-color: rgb(1, 1, 133) ;
-   border-radius: 5px;
-
-}
 td {
-    vertical-align: middle;
-    padding: 0.5rem;
+  vertical-align: middle;
+  padding: 0.5rem;
 }

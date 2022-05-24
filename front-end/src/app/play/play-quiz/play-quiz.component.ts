@@ -129,7 +129,7 @@ export class PlayQuizComponent implements OnInit {
 
       this.text = this.service.text;
       for (; index < tab.length; index++) {
-        if (tab[index].value.toLowerCase() === this.service.text.toLowerCase()) {
+        if ( "numéro "+(index+1) === this.service.text) {
           this.answer = index;
           this.speechRecogStop = true;
           this.service.text = "";
@@ -230,6 +230,7 @@ export class PlayQuizComponent implements OnInit {
       this.indexQuiz++;
       this.speak();
       this.voiceInfo = this.info ;
+      this.text="";
       setTimeout(()=> {this.startVoice(1)},15000);
       if (this.indexQuiz === this.getQuestion().length && this.user.withRecap) {
         this.toYesNo = true;

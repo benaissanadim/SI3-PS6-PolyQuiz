@@ -1,15 +1,17 @@
-<div class ="nom"> Bienvenue Admin  </div>
+<app-header-admin></app-header-admin>
+
+<div class ="title"> Bienvenue Admin  </div>
 
 <section>
-<div class="container">
+  <div class="container">
     <div class="quiz">
-<img src="/assets/quizz.png" style="width: 90% ;" ><br>
-<button (click)="navigateQuiz()">Réglages Quiz </button>
-</div>
-<div class="user">
-<img src="/assets/user.png" style="width: 44%;" >
-<br>
-<button (click)="navigateUser()">Profils Utilisateur</button>
-</div>
-</div>
+      <img src="/assets/quizz.png" style="width: 90% ;" ><br>
+      <button (click)="navigateQuiz()">Réglages Quiz </button>
+    </div>
+    <div class="user">
+      <img src="/assets/user.png" style="width: 44%;" >
+      <br>
+      <button (click)="navigateUser()">Profils Utilisateur</button>
+    </div>
+  </div>
 </section>
