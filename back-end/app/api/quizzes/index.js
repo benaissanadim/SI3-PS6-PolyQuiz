@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
 router.get('/userName/:name', (req, res) => {
   try {
-      res.status(200).json(findQuizzes())
+      res.status(200).json(findQuizzes(req.params.name))
   } catch (err) {
     manageAllErrors(res, err)
   }

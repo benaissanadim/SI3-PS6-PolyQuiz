@@ -25,8 +25,8 @@ export class TextSpeechService {
 
   public synthesizeSpeechFromText(text: string) : void {
 		var utterance = new SpeechSynthesisUtterance( text );
-		utterance.voice = speechSynthesis.getVoices()[3];
-    utterance.rate = 0.7
+		utterance.voice = speechSynthesis.getVoices()[0];
+    utterance.rate = 0.9
 		speechSynthesis.speak( utterance );
 	}
 

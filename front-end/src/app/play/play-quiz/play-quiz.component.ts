@@ -59,7 +59,7 @@ export class PlayQuizComponent implements OnInit {
       this.begin = false, this.indexQuiz++ ; this.speak();
       setTimeout(()=> {
         this.startVoice(0)
-     },15000);
+     },11000);
     }, 2000);
     this.idQuiz = this.route.snapshot.paramMap.get('idQuiz');
     this.quizService.setSelectedQuiz(this.idQuiz);
@@ -129,7 +129,7 @@ export class PlayQuizComponent implements OnInit {
 
       this.text = this.service.text;
       for (; index < tab.length; index++) {
-        if ( "numéro "+(index+1) === this.service.text) {
+        if ( "réponse "+(index+1) === this.service.text.toLowerCase()) {
           this.answer = index;
           this.speechRecogStop = true;
           this.service.text = "";
@@ -151,7 +151,7 @@ export class PlayQuizComponent implements OnInit {
         setTimeout(() => {
           this.resultDisplay()
           this.service.sound.stop();
-        }, 4000);
+        }, 2000);
       }}
       this.service.stop();
       if (id===0)    this.service.sound.start();
@@ -171,7 +171,7 @@ export class PlayQuizComponent implements OnInit {
     var i = 0;
     this.getQuestion()[this.indexQuiz].answers.forEach(ans => {
       i++;
-      text += i + " " + ans.value + '\n'
+      text += " " + ans.value + '\n'
     })
     this.textspeechService.speak(text);
 
@@ -231,7 +231,7 @@ export class PlayQuizComponent implements OnInit {
       this.speak();
       this.voiceInfo = this.info ;
       this.text="";
-      setTimeout(()=> {this.startVoice(1)},15000);
+      setTimeout(()=> {this.startVoice(1)},11000);
       if (this.indexQuiz === this.getQuestion().length && this.user.withRecap) {
         this.toYesNo = true;
 

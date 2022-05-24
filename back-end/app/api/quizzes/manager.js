@@ -20,10 +20,10 @@ const buildQuizz = (quizId) => {
 /**
  * 
  */
-const findQuizzes = ()=>{
+const findQuizzes = (name)=>{
     const quizzes = buildQuizzes()
-    if("admin" === req.params.name ){ return (quizzes);}
-    else return quizzes.filter((quiz) => quiz.userName === req.params.name || quiz.userName === "tous les utilisateurs");
+    if("admin" === name ){ return (quizzes);}
+    else return quizzes.filter((quiz) => quiz.userName === name || quiz.userName === "tous les utilisateurs");
 }
 
 /**

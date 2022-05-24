@@ -1,10 +1,18 @@
 <app-header-logout></app-header-logout>
 <div class="main-content">
+<div class="all">
+  <button type="button" class="retour" routerLink="/user-list/1">
+    <i class="fa fa-angle-double-left" style="font-size:25px; color:white"></i>
+    <span class="buttontext"> retour</span>
+  </button>
+</div>
+<div class="main-content">
   <div class="header">
     <h1 class="title">Historique </h1>
     <div class="user"> <i class="fa fa-user"></i>{{user.name}}</div>
     <img *ngIf="user" src="{{user.image}}" alt="user-picture" class="user-picture">
 
+    
 
   </div>
   <div class="card" >
@@ -41,3 +49,4 @@
       </div>
     </div>
   </div>
+</div>
